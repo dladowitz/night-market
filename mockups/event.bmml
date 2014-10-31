@@ -1,0 +1,100 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1060" measuredH="648" mockupW="1042" mockupH="636">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="18" y="12" w="1042" h="636" measuredW="450" measuredH="400" zOrder="0" locked="true" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Accordion" x="20" y="85" w="150" h="538" measuredW="150" measuredH="267" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>event%26bm%3Bevent.bmml%26bm%3Bevent.bmml%26bm%3Bevent.bmml%2Cmeals%26bm%3Bmeals.bmml%26bm%3Bmeals.bmml%26bm%3Bmeals.bmml%2C%2C%2Csupplies%26bm%3Bsupplies.bmml%26bm%3Bsupplies.bmml%26bm%3Bsupplies.bmml%2C%2C%2C%2C</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%222%2C73%2C152%2C103%22%20href%3D%22event.bmml%22%20alt%3D%22event%22%20id%3D%222%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%222%2C100%2C152%2C130%22%20href%3D%22meals.bmml%22%20alt%3D%22meals%22%20id%3D%222%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%222%2C127%2C152%2C157%22%20href%3D%22supplies.bmml%22%20alt%3D%22supplies%22%20id%3D%222%22/%3E</map>
+        <selectedIndex>-1</selectedIndex>
+        <text>Event%0AMeals%0A-%20Sub-Item%202.1%0A-%20Sub-Item%202.2%0ASupplies%0AOrganizers%0AItem%20Five%0AItem%20Six%0AItem%20Seven</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Title" x="486" y="105" w="-1" h="-1" measuredW="106" measuredH="43" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Event</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::TextInput" x="383" y="181" w="-1" h="-1" measuredW="268" measuredH="34" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>Startup%20Weekend%20Education</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="248" y="184" w="-1" h="-1" measuredW="112" measuredH="28" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>Event%20Name</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="248" y="266" w="-1" h="-1" measuredW="96" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>Start%20Date</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Label" x="248" y="307" w="-1" h="-1" measuredW="84" measuredH="28" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>End%20Date</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Label" x="248" y="223" w="-1" h="-1" measuredW="77" measuredH="28" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>Location</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::TextInput" x="383" y="223" w="-1" h="-1" measuredW="179" measuredH="34" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>San%20Francisco%2C%20CA</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::DateChooser" x="382" y="311" w="-1" h="-1" measuredW="133" measuredH="25" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>up</state>
+        <text>07/05/2015%20%20%20%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::DateChooser" x="382" y="271" w="-1" h="-1" measuredW="134" measuredH="25" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <state>up</state>
+        <text>07/03/2015%20%20%20%20</text>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::Label" x="248" y="350" w="-1" h="-1" measuredW="66" measuredH="28" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>Guests</text>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::NumericStepper" x="381" y="352" w="-1" h="-1" measuredW="49" measuredH="24" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>50</text>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::TextArea" x="439" y="344" w="131" h="40" measuredW="200" measuredH="140" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>16777215</borderColor>
+        <size>10</size>
+        <text>Participants%2C%20Volunteers%2C%20%0AOrganizers%20%26%20Judges</text>
+      </controlProperties>
+    </control>
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::Button" x="248" y="487" w="119" h="39" measuredW="68" measuredH="28" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>2848996</color>
+        <size>20</size>
+        <text>Save</text>
+      </controlProperties>
+    </control>
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::CheckBox" x="251" y="416" w="-1" h="-1" measuredW="90" measuredH="22" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Gluten-Free</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

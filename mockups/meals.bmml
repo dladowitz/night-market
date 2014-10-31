@@ -1,0 +1,42 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1060" measuredH="648" mockupW="1042" mockupH="636">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="18" y="12" w="1042" h="636" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Accordion" x="20" y="85" w="150" h="538" measuredW="150" measuredH="267" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>event%26bm%3Bevent.bmml%26bm%3Bevent.bmml%26bm%3Bevent.bmml%2Cmeals%26bm%3Bmeals.bmml%26bm%3Bmeals.bmml%26bm%3Bmeals.bmml%2C%2C%2Csupplies%26bm%3Bsupplies.bmml%26bm%3Bsupplies.bmml%26bm%3Bsupplies.bmml%2C%2C%2C%2C</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%222%2C73%2C152%2C103%22%20href%3D%22event.bmml%22%20alt%3D%22event%22%20id%3D%222%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%222%2C100%2C152%2C130%22%20href%3D%22meals.bmml%22%20alt%3D%22meals%22%20id%3D%222%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%222%2C127%2C152%2C157%22%20href%3D%22supplies.bmml%22%20alt%3D%22supplies%22%20id%3D%222%22/%3E</map>
+        <selectedIndex>-1</selectedIndex>
+        <text>Event%0AMeals%0A-%20Sub-Item%202.1%0A-%20Sub-Item%202.2%0ASupplies%0AOrganizers%0AItem%20Five%0AItem%20Six%0AItem%20Seven</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Title" x="486" y="105" w="-1" h="-1" measuredW="108" measuredH="43" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Meals</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::DataGrid" x="198" y="170" w="745" h="355" measuredW="497" measuredH="347" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <borderStyle>square</borderStyle>
+        <hLines>false</hLines>
+        <rowHeight>45</rowHeight>
+        <selectedIndex>0</selectedIndex>
+        <size>24</size>
+        <text>Name%2C%20Date%20%20%20%20%20%2C%20%25%20Planned%2C%20Overide%0ADinner%20Fri%2C%201/15%2C%2080%25%2C%20%5Bx%5D%0ABreakfast%20Sat%2C%201/16%2C%2070%25%2C%20%5Bx%5D%0A%2C1/16%2C%2025%25%2C%20%5B%5D%0ADinner%20Sat%2C%201/16%2C%2050%25%2C%20%5Bx%5D%0ABreakfast%20Sun%2C%201/17%2C%2090%25%2C%20%5B%5D%0ALunch%20Sun%2C%201/17%2C%2060%25%2C%20%5B%5D%0ADinner%20Sun%2C%201/17%2C%2080%25%2C%20%5B%5D</text>
+        <vLines>false</vLines>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Link" x="207" y="300" w="-1" h="-1" measuredW="109" measuredH="30" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>meal%26bm%3Bmeal.bmml%26bm%3Bmeal.bmml%26bm%3Bmeal.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22189%2C288%2C298%2C318%22%20href%3D%22meal.bmml%22%20alt%3D%22meal%22%20id%3D%2216%22/%3E</map>
+        <size>24</size>
+        <text>Lunch%20Sat</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
