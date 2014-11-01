@@ -52,7 +52,7 @@
         <text>Guests%3A%2050%20ppl</text>
       </controlProperties>
     </control>
-    <control controlID="232" controlTypeID="com.balsamiq.mockups::DataGrid" x="266" y="410" w="701" h="355" measuredW="732" measuredH="380" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="232" controlTypeID="com.balsamiq.mockups::DataGrid" x="266" y="410" w="701" h="415" measuredW="746" measuredH="427" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <bold>false</bold>
         <borderStyle>square</borderStyle>
@@ -60,12 +60,12 @@
         <hLines>false</hLines>
         <rowHeight>44</rowHeight>
         <size>20</size>
-        <text>Item%2C%20Per%20Meal%2C%20Meals%2C%20Total%2C%20Vendor%2C%20Purchaser%2C%20Purchased%20%5Ev%2C%20Delete%2C%20Cost%0APlates%2C%2060%2C%207%2C%20420%2C%20Costco%2C%20Teresa%2C%20%5Bx%5D%2C%20del%2C%20%2420%0AForks%2C%2060%2C%205%2C%20300%2C%20Costco%2C%20Teresa%2C%20%5Bx%5D%2C%20del%2C%20%2415%0ASpoons%2C%2060%2C%202%2C%20120%2C%20Costco%2C%20David%2C%20%5B%5D%2C%20del%2C%20%2419%0AKnives%2C%2060%2C%205%2C%20300%2C%20Costco%2C%20David%2C%20%5Bx%5D%2C%20del%2C%20%2422%0ANapkins%2C%2060%2C%207%2C%20420%2C%20Costco%2C%20Teresa%2C%20%5B%5D%2C%20del%2C%20%2410%0ACups%2C%2030%2C%207%2C%20210%2C%20Costco%2C%20David%2C%20%5B%5D%2C%20del%2C%20%2410%0A%20%0A%20</text>
+        <text>Item%2C%20Per%20Meal%2C%20Meals%2C%20Total%2C%20Vendor%2C%20Purchaser%2C%20Purchased%20%5Ev%2C%20Delete%2C%20Cost%0APlates%2C%2060%2C%207%2C%20420%2C%20Costco%2C%20Teresa%2C%20%5Bx%5D%2C%20del%2C%20%2420%0AForks%2C%2060%2C%205%2C%20300%2C%20Costco%2C%20Teresa%2C%20%5Bx%5D%2C%20del%2C%20%2415%0ASpoons%2C%2060%2C%202%2C%20120%2C%20Costco%2C%20David%2C%20%5B%5D%2C%20del%2C%20%2419%0AKnives%2C%2060%2C%205%2C%20300%2C%20Costco%2C%20David%2C%20%5Bx%5D%2C%20del%2C%20%2422%0ANapkins%2C%2060%2C%207%2C%20420%2C%20Costco%2C%20Teresa%2C%20%5B%5D%2C%20del%2C%20%2410%0ACups%2C%2030%2C%207%2C%20210%2C%20Costco%2C%20David%2C%20%5B%5D%2C%20del%2C%20%2410%0ACooler%5Crfor%20drinks%2C%201%2C%201%2C%201%2C%20Costco%2C%20David%2C%20%5B%5D%2C%20del%2C%20%2410%0A%20%0A%20</text>
         <verticalScrollbar>false</verticalScrollbar>
         <vLines>false</vLines>
       </controlProperties>
     </control>
-    <control controlID="234" controlTypeID="com.balsamiq.mockups::Button" x="272" y="707" w="-1" h="-1" measuredW="74" measuredH="27" zOrder="11" locked="false" isInGroup="-1">
+    <control controlID="234" controlTypeID="com.balsamiq.mockups::Button" x="283" y="753" w="-1" h="-1" measuredW="74" measuredH="27" zOrder="11" locked="false" isInGroup="-1">
       <controlProperties>
         <color>9684093</color>
         <text>add%20item</text>

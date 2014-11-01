@@ -10,22 +10,22 @@
         <text>Meals</text>
       </controlProperties>
     </control>
-    <control controlID="15" controlTypeID="com.balsamiq.mockups::DataGrid" x="198" y="170" w="745" h="410" measuredW="497" measuredH="347" zOrder="2" locked="false" isInGroup="-1">
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::DataGrid" x="198" y="170" w="745" h="410" measuredW="515" measuredH="376" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
         <bold>false</bold>
         <borderStyle>square</borderStyle>
+        <color>16777215</color>
         <hLines>false</hLines>
         <rowHeight>45</rowHeight>
-        <selectedIndex>0</selectedIndex>
         <size>24</size>
-        <text>Name%2C%20Date%20%20%20%20%20%2C%20%25%20Planned%2C%20Overide%0ADinner%20Fri%2C%201/15%2C%2080%25%2C%20%5Bx%5D%0ABreakfast%20Sat%2C%201/16%2C%2070%25%2C%20%5Bx%5D%0A%2C1/16%2C%2025%25%2C%20%5B%5D%0ADinner%20Sat%2C%201/16%2C%2050%25%2C%20%5Bx%5D%0ABreakfast%20Sun%2C%201/17%2C%2090%25%2C%20%5B%5D%0ALunch%20Sun%2C%201/17%2C%2060%25%2C%20%5B%5D%0ADinner%20Sun%2C%201/17%2C%2080%25%2C%20%5B%5D</text>
+        <text>Name%2C%20Date%20%20%20%20%20%2C%20Planning%5CrCompleted%2C%20Ignore%5CrWarnings%0ADinner%20Fri%2C%201/15%2C%20Yes%2C%20%5B%5D%0ABreakfast%20Sat%2C%201/16%2C%20Yes%2C%20%5B%5D%0A%2C1/16%2C%20No%2C%20%5B%5D%0ADinner%20Sat%2C%201/16%2C%20Yes%2C%20%5B%5D%0ABreakfast%20Sun%2C%201/17%2C%20No%2C%20%5B%5D%0ALunch%20Sun%2C%201/17%2C%20Yes%2C%20%5B%5D%0ADinner%20Sun%2C%201/17%2C%20No%2C%20%5Bx%5D</text>
         <vLines>false</vLines>
       </controlProperties>
     </control>
-    <control controlID="16" controlTypeID="com.balsamiq.mockups::Link" x="207" y="300" w="-1" h="-1" measuredW="109" measuredH="30" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Link" x="210" y="325" w="-1" h="-1" measuredW="109" measuredH="30" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <href>meal%26bm%3Bmeal.bmml%26bm%3Bmeal.bmml%26bm%3Bmeal.bmml</href>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22189%2C288%2C298%2C318%22%20href%3D%22meal.bmml%22%20alt%3D%22meal%22%20id%3D%2216%22/%3E</map>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22192%2C313%2C301%2C343%22%20href%3D%22meal.bmml%22%20alt%3D%22meal%22%20id%3D%2216%22/%3E</map>
         <size>24</size>
         <text>Lunch%20Sat</text>
       </controlProperties>
@@ -38,10 +38,28 @@
         <text>Event%0AMeals%0ASupplies%0AOrganizers%0ACosts%0AItem%20Six%0AItem%20Seven</text>
       </controlProperties>
     </control>
-    <control controlID="18" controlTypeID="com.balsamiq.mockups::Button" x="210" y="529" w="64" h="27" measuredW="44" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::Button" x="209" y="545" w="64" h="27" measuredW="44" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <color>40463</color>
         <text>add</text>
+      </controlProperties>
+    </control>
+    <control controlID="19" controlTypeID="com.balsamiq.mockups::RoundButton" x="201" y="324" w="739" h="32" measuredW="32" measuredH="32" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>0.5</backgroundAlpha>
+        <borderColor>15658734</borderColor>
+        <color>15374745</color>
+        <shape>rectangle</shape>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::RoundButton" x="201" y="418" w="739" h="32" measuredW="32" measuredH="32" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>0.5</backgroundAlpha>
+        <borderColor>15658734</borderColor>
+        <color>15374745</color>
+        <shape>rectangle</shape>
+        <text/>
       </controlProperties>
     </control>
   </controls>

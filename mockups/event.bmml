@@ -122,7 +122,7 @@
       <groupChildrenDescriptors>
         <control controlID="0" controlTypeID="com.balsamiq.mockups::FieldSet" x="0" y="0" w="530" h="56" measuredW="200" measuredH="170" zOrder="0" locked="false" isInGroup="58">
           <controlProperties>
-            <text>Options%20offered%20for%20each%20meal</text>
+            <text>Options%20needed%20for%20each%20meal</text>
           </controlProperties>
         </control>
         <control controlID="1" controlTypeID="com.balsamiq.mockups::CheckBox" x="12" y="15" w="90" h="23" measuredW="90" measuredH="22" zOrder="1" locked="false" isInGroup="58">
@@ -134,6 +134,7 @@
         </control>
         <control controlID="2" controlTypeID="com.balsamiq.mockups::CheckBox" x="144" y="18" w="85" h="23" measuredW="85" measuredH="22" zOrder="2" locked="false" isInGroup="58">
           <controlProperties>
+            <state>selected</state>
             <text>Vegetarian</text>
           </controlProperties>
         </control>
