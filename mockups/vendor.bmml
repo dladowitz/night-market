@@ -1,0 +1,117 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1060" measuredH="1218" mockupW="1042" mockupH="1206">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="18" y="12" w="1042" h="1206" measuredW="450" measuredH="400" zOrder="0" locked="true" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Title" x="486" y="105" w="-1" h="-1" measuredW="128" measuredH="43" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Vendor</text>
+      </controlProperties>
+    </control>
+    <control controlID="61" controlTypeID="com.balsamiq.mockups::Label" x="60" y="59" w="-1" h="-1" measuredW="61" measuredH="21" zOrder="2" locked="false" isInGroup="-1"/>
+    <control controlID="77" controlTypeID="com.balsamiq.mockups::SubTitle" x="220" y="200" w="-1" h="-1" measuredW="64" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Name</text>
+      </controlProperties>
+    </control>
+    <control controlID="78" controlTypeID="com.balsamiq.mockups::TextInput" x="334" y="200" w="-1" h="-1" measuredW="117" measuredH="32" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>18</size>
+        <text>Patxi%27s%20Pizza</text>
+      </controlProperties>
+    </control>
+    <control controlID="79" controlTypeID="com.balsamiq.mockups::SubTitle" x="220" y="240" w="-1" h="-1" measuredW="67" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Phone</text>
+      </controlProperties>
+    </control>
+    <control controlID="80" controlTypeID="com.balsamiq.mockups::TextInput" x="334" y="240" w="-1" h="-1" measuredW="128" measuredH="32" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>18</size>
+        <text>415%20998%207732</text>
+      </controlProperties>
+    </control>
+    <control controlID="81" controlTypeID="com.balsamiq.mockups::SubTitle" x="220" y="280" w="-1" h="-1" measuredW="88" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Contact</text>
+      </controlProperties>
+    </control>
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::TextInput" x="334" y="280" w="-1" h="-1" measuredW="133" measuredH="32" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>18</size>
+        <text>Saul%20Goodman</text>
+      </controlProperties>
+    </control>
+    <control controlID="83" controlTypeID="com.balsamiq.mockups::SubTitle" x="220" y="320" w="-1" h="-1" measuredW="59" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Email</text>
+      </controlProperties>
+    </control>
+    <control controlID="84" controlTypeID="com.balsamiq.mockups::TextInput" x="334" y="320" w="-1" h="-1" measuredW="229" measuredH="32" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>18</size>
+        <text>SaulGoodman@Patxis.com</text>
+      </controlProperties>
+    </control>
+    <control controlID="85" controlTypeID="com.balsamiq.mockups::SubTitle" x="220" y="360" w="-1" h="-1" measuredW="89" measuredH="27" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Address</text>
+      </controlProperties>
+    </control>
+    <control controlID="86" controlTypeID="com.balsamiq.mockups::TextInput" x="334" y="361" w="-1" h="-1" measuredW="152" measuredH="32" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>18</size>
+        <text>1453%20Harrison%20St</text>
+      </controlProperties>
+    </control>
+    <control controlID="87" controlTypeID="com.balsamiq.mockups::SubTitle" x="220" y="400" w="-1" h="-1" measuredW="45" measuredH="27" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>City</text>
+      </controlProperties>
+    </control>
+    <control controlID="88" controlTypeID="com.balsamiq.mockups::TextInput" x="334" y="400" w="-1" h="-1" measuredW="130" measuredH="32" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>18</size>
+        <text>San%20Francisco</text>
+      </controlProperties>
+    </control>
+    <control controlID="89" controlTypeID="com.balsamiq.mockups::SubTitle" x="220" y="480" w="-1" h="-1" measuredW="36" measuredH="27" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Zip</text>
+      </controlProperties>
+    </control>
+    <control controlID="90" controlTypeID="com.balsamiq.mockups::TextInput" x="334" y="480" w="-1" h="-1" measuredW="58" measuredH="32" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>18</size>
+        <text>94111</text>
+      </controlProperties>
+    </control>
+    <control controlID="92" controlTypeID="com.balsamiq.mockups::SubTitle" x="220" y="442" w="-1" h="-1" measuredW="60" measuredH="27" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>State</text>
+      </controlProperties>
+    </control>
+    <control controlID="93" controlTypeID="com.balsamiq.mockups::TextInput" x="334" y="442" w="-1" h="-1" measuredW="39" measuredH="32" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>18</size>
+        <text>CA</text>
+      </controlProperties>
+    </control>
+    <control controlID="94" controlTypeID="com.balsamiq.mockups::Button" x="223" y="525" w="-1" h="-1" measuredW="65" measuredH="27" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16167531</color>
+        <text>Update</text>
+      </controlProperties>
+    </control>
+    <control controlID="95" controlTypeID="com.balsamiq.mockups::Accordion" x="18" y="85" w="150" h="538" measuredW="150" measuredH="294" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>event%26bm%3Bevent.bmml%26bm%3Bevent.bmml%26bm%3Bevent.bmml%2Cmeals%26bm%3Bmeals.bmml%26bm%3Bmeals.bmml%26bm%3Bmeals.bmml%2Csupplies%26bm%3Bsupplies.bmml%26bm%3Bsupplies.bmml%26bm%3Bsupplies.bmml%2Corganizers%26bm%3Borganizers.bmml%26bm%3Borganizers.bmml%26bm%3Borganizers.bmml%2Ccosts%26bm%3Bcosts.bmml%26bm%3Bcosts.bmml%26bm%3Bcosts.bmml%2Ctask_lists%26bm%3Btask_lists.bmml%26bm%3Btask_lists.bmml%26bm%3Btask_lists.bmml%2Cvendors%26bm%3Bvendors.bmml%26bm%3Bvendors.bmml%26bm%3Bvendors.bmml%2Ctips%26bm%3Btips.bmml%26bm%3Btips.bmml%26bm%3Btips.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C73%2C150%2C103%22%20href%3D%22event.bmml%22%20alt%3D%22event%22%20id%3D%2295%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C100%2C150%2C130%22%20href%3D%22meals.bmml%22%20alt%3D%22meals%22%20id%3D%2295%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C127%2C150%2C157%22%20href%3D%22supplies.bmml%22%20alt%3D%22supplies%22%20id%3D%2295%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C154%2C150%2C184%22%20href%3D%22organizers.bmml%22%20alt%3D%22organizers%22%20id%3D%2295%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C181%2C150%2C211%22%20href%3D%22costs.bmml%22%20alt%3D%22costs%22%20id%3D%2295%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C208%2C150%2C238%22%20href%3D%22task_lists.bmml%22%20alt%3D%22task_lists%22%20id%3D%2295%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C235%2C150%2C265%22%20href%3D%22vendors.bmml%22%20alt%3D%22vendors%22%20id%3D%2295%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C262%2C150%2C292%22%20href%3D%22tips.bmml%22%20alt%3D%22tips%22%20id%3D%2295%22/%3E</map>
+        <selectedIndex>-1</selectedIndex>
+        <text>Event%0AMeals%0ASupplies%0AOrganizers%0ACosts%0ATask%20Lists%0AVendors%0APro%20Tips</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

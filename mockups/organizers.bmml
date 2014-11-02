@@ -1,0 +1,152 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1060" measuredH="1218" mockupW="1042" mockupH="1206">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="18" y="12" w="1042" h="1206" measuredW="450" measuredH="400" zOrder="0" locked="true" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Title" x="486" y="105" w="-1" h="-1" measuredW="199" measuredH="43" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Organizers</text>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::FieldSet" x="238" y="152" w="731" h="186" measuredW="200" measuredH="170" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Current%20Organizers</text>
+      </controlProperties>
+    </control>
+    <control controlID="61" controlTypeID="com.balsamiq.mockups::Label" x="60" y="59" w="-1" h="-1" measuredW="61" measuredH="21" zOrder="3" locked="false" isInGroup="-1"/>
+    <control controlID="75" controlTypeID="com.balsamiq.mockups::SubTitle" x="264" y="204" w="-1" h="-1" measuredW="210" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Current%20Organizers</text>
+      </controlProperties>
+    </control>
+    <control controlID="76" controlTypeID="com.balsamiq.mockups::Label" x="284" y="231" w="-1" h="-1" measuredW="63" measuredH="28" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>Teresa</text>
+      </controlProperties>
+    </control>
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::ComboBox" x="264" y="385" w="83" h="-1" measuredW="59" measuredH="24" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Todd</text>
+      </controlProperties>
+    </control>
+    <control controlID="84" controlTypeID="com.balsamiq.mockups::Button" x="368" y="384" w="62" h="27" measuredW="56" measuredH="28" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>9684093</color>
+        <size>20</size>
+        <text>add</text>
+      </controlProperties>
+    </control>
+    <control controlID="85" controlTypeID="com.balsamiq.mockups::Button" x="431" y="234" w="17" h="24" measuredW="29" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>14706278</color>
+        <text>x</text>
+      </controlProperties>
+    </control>
+    <control controlID="91" controlTypeID="com.balsamiq.mockups::FieldSet" x="239" y="352" w="730" h="90" measuredW="200" measuredH="170" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>New%20Organizers</text>
+      </controlProperties>
+    </control>
+    <control controlID="92" controlTypeID="com.balsamiq.mockups::ComboBox" x="353" y="235" w="-1" h="-1" measuredW="70" measuredH="24" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Owner</text>
+      </controlProperties>
+    </control>
+    <control controlID="93" controlTypeID="com.balsamiq.mockups::Label" x="284" y="271" w="-1" h="-1" measuredW="52" measuredH="28" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>David</text>
+      </controlProperties>
+    </control>
+    <control controlID="94" controlTypeID="com.balsamiq.mockups::Button" x="431" y="274" w="17" h="24" measuredW="29" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>14706278</color>
+        <text>x</text>
+      </controlProperties>
+    </control>
+    <control controlID="95" controlTypeID="com.balsamiq.mockups::ComboBox" x="353" y="275" w="-1" h="-1" measuredW="70" measuredH="24" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Owner</text>
+      </controlProperties>
+    </control>
+    <control controlID="96" controlTypeID="com.balsamiq.mockups::Label" x="484" y="231" w="-1" h="-1" measuredW="60" measuredH="28" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>Walter</text>
+      </controlProperties>
+    </control>
+    <control controlID="98" controlTypeID="com.balsamiq.mockups::ComboBox" x="553" y="235" w="-1" h="-1" measuredW="98" measuredH="24" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Non-Owner</text>
+      </controlProperties>
+    </control>
+    <control controlID="102" controlTypeID="com.balsamiq.mockups::Button" x="663" y="234" w="17" h="24" measuredW="29" measuredH="27" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>14706278</color>
+        <text>x</text>
+      </controlProperties>
+    </control>
+    <control controlID="103" controlTypeID="com.balsamiq.mockups::Label" x="484" y="271" w="-1" h="-1" measuredW="55" measuredH="28" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>Jesse</text>
+      </controlProperties>
+    </control>
+    <control controlID="104" controlTypeID="com.balsamiq.mockups::ComboBox" x="553" y="275" w="-1" h="-1" measuredW="98" measuredH="24" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Non-Owner</text>
+      </controlProperties>
+    </control>
+    <control controlID="105" controlTypeID="com.balsamiq.mockups::Button" x="663" y="274" w="17" h="24" measuredW="29" measuredH="27" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>14706278</color>
+        <text>x</text>
+      </controlProperties>
+    </control>
+    <control controlID="106" controlTypeID="com.balsamiq.mockups::Label" x="724" y="231" w="-1" h="-1" measuredW="58" measuredH="28" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>Skyler</text>
+      </controlProperties>
+    </control>
+    <control controlID="107" controlTypeID="com.balsamiq.mockups::ComboBox" x="793" y="235" w="-1" h="-1" measuredW="98" measuredH="24" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Non-Owner</text>
+      </controlProperties>
+    </control>
+    <control controlID="108" controlTypeID="com.balsamiq.mockups::Button" x="903" y="234" w="17" h="24" measuredW="29" measuredH="27" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>14706278</color>
+        <text>x</text>
+      </controlProperties>
+    </control>
+    <control controlID="109" controlTypeID="com.balsamiq.mockups::Label" x="724" y="271" w="-1" h="-1" measuredW="47" measuredH="28" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>20</size>
+        <text>Hank</text>
+      </controlProperties>
+    </control>
+    <control controlID="110" controlTypeID="com.balsamiq.mockups::ComboBox" x="793" y="275" w="-1" h="-1" measuredW="98" measuredH="24" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Non-Owner</text>
+      </controlProperties>
+    </control>
+    <control controlID="111" controlTypeID="com.balsamiq.mockups::Button" x="903" y="274" w="17" h="24" measuredW="29" measuredH="27" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>14706278</color>
+        <text>x</text>
+      </controlProperties>
+    </control>
+    <control controlID="112" controlTypeID="com.balsamiq.mockups::Accordion" x="18" y="85" w="150" h="538" measuredW="150" measuredH="294" zOrder="26" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>event%26bm%3Bevent.bmml%26bm%3Bevent.bmml%26bm%3Bevent.bmml%2Cmeals%26bm%3Bmeals.bmml%26bm%3Bmeals.bmml%26bm%3Bmeals.bmml%2Csupplies%26bm%3Bsupplies.bmml%26bm%3Bsupplies.bmml%26bm%3Bsupplies.bmml%2Corganizers%26bm%3Borganizers.bmml%26bm%3Borganizers.bmml%26bm%3Borganizers.bmml%2Ccosts%26bm%3Bcosts.bmml%26bm%3Bcosts.bmml%26bm%3Bcosts.bmml%2Ctask_lists%26bm%3Btask_lists.bmml%26bm%3Btask_lists.bmml%26bm%3Btask_lists.bmml%2Cvendors%26bm%3Bvendors.bmml%26bm%3Bvendors.bmml%26bm%3Bvendors.bmml%2Ctips%26bm%3Btips.bmml%26bm%3Btips.bmml%26bm%3Btips.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C73%2C150%2C103%22%20href%3D%22event.bmml%22%20alt%3D%22event%22%20id%3D%22112%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C100%2C150%2C130%22%20href%3D%22meals.bmml%22%20alt%3D%22meals%22%20id%3D%22112%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C127%2C150%2C157%22%20href%3D%22supplies.bmml%22%20alt%3D%22supplies%22%20id%3D%22112%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C154%2C150%2C184%22%20href%3D%22organizers.bmml%22%20alt%3D%22organizers%22%20id%3D%22112%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C181%2C150%2C211%22%20href%3D%22costs.bmml%22%20alt%3D%22costs%22%20id%3D%22112%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C208%2C150%2C238%22%20href%3D%22task_lists.bmml%22%20alt%3D%22task_lists%22%20id%3D%22112%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C235%2C150%2C265%22%20href%3D%22vendors.bmml%22%20alt%3D%22vendors%22%20id%3D%22112%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C262%2C150%2C292%22%20href%3D%22tips.bmml%22%20alt%3D%22tips%22%20id%3D%22112%22/%3E</map>
+        <selectedIndex>-1</selectedIndex>
+        <text>Event%0AMeals%0ASupplies%0AOrganizers%0ACosts%0ATask%20Lists%0AVendors%0APro%20Tips</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

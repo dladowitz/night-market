@@ -353,7 +353,8 @@
     </control>
     <control controlID="389" controlTypeID="com.balsamiq.mockups::ComboBox" x="377" y="681" w="153" h="-1" measuredW="102" measuredH="24" zOrder="61" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Patxis%20Pizza</text>
+        <state>closed</state>
+        <text>Patxis%20Pizza%0Aadd</text>
       </controlProperties>
     </control>
     <control controlID="390" controlTypeID="com.balsamiq.mockups::FieldSet" x="281" y="828" w="284" h="83" measuredW="200" measuredH="170" zOrder="62" locked="false" isInGroup="-1">
@@ -1190,12 +1191,79 @@
         <text>Changes%20to%20Drink%20options%20if%20Type%20is%20%27Drinks%27</text>
       </controlProperties>
     </control>
-    <control controlID="551" controlTypeID="com.balsamiq.mockups::Accordion" x="18" y="85" w="150" h="538" measuredW="150" measuredH="267" zOrder="195" locked="false" isInGroup="-1">
+    <control controlID="553" controlTypeID="com.balsamiq.mockups::FieldSet" x="264" y="2016" w="333" h="234" measuredW="200" measuredH="170" zOrder="195" locked="false" isInGroup="-1">
       <controlProperties>
-        <hrefs>event%26bm%3Bevent.bmml%26bm%3Bevent.bmml%26bm%3Bevent.bmml%2Cmeals%26bm%3Bmeals.bmml%26bm%3Bmeals.bmml%26bm%3Bmeals.bmml%2Csupplies%26bm%3Bsupplies.bmml%26bm%3Bsupplies.bmml%26bm%3Bsupplies.bmml%2C%2Ccosts%26bm%3Bcosts.bmml%26bm%3Bcosts.bmml%26bm%3Bcosts.bmml%2Ctask_lists%26bm%3Btask_lists.bmml%26bm%3Btask_lists.bmml%26bm%3Btask_lists.bmml%2C</hrefs>
-        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C73%2C150%2C103%22%20href%3D%22event.bmml%22%20alt%3D%22event%22%20id%3D%22551%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C100%2C150%2C130%22%20href%3D%22meals.bmml%22%20alt%3D%22meals%22%20id%3D%22551%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C127%2C150%2C157%22%20href%3D%22supplies.bmml%22%20alt%3D%22supplies%22%20id%3D%22551%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C181%2C150%2C211%22%20href%3D%22costs.bmml%22%20alt%3D%22costs%22%20id%3D%22551%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C208%2C150%2C238%22%20href%3D%22task_lists.bmml%22%20alt%3D%22task_lists%22%20id%3D%22551%22/%3E</map>
+        <backgroundAlpha>0.5</backgroundAlpha>
+        <color>16777215</color>
+        <text>Dish</text>
+      </controlProperties>
+    </control>
+    <control controlID="554" controlTypeID="com.balsamiq.mockups::Label" x="281" y="2081" w="-1" h="-1" measuredW="42" measuredH="21" zOrder="196" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Vendor</text>
+      </controlProperties>
+    </control>
+    <control controlID="555" controlTypeID="com.balsamiq.mockups::SubTitle" x="281" y="2043" w="-1" h="-1" measuredW="139" measuredH="27" zOrder="197" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Bread%20Sticks</text>
+      </controlProperties>
+    </control>
+    <control controlID="556" controlTypeID="com.balsamiq.mockups::Label" x="281" y="2117" w="-1" h="-1" measuredW="59" measuredH="21" zOrder="198" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Organizer</text>
+      </controlProperties>
+    </control>
+    <control controlID="557" controlTypeID="com.balsamiq.mockups::ComboBox" x="377" y="2115" w="99" h="-1" measuredW="30" measuredH="24" zOrder="199" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="558" controlTypeID="com.balsamiq.mockups::Label" x="282" y="2158" w="-1" h="-1" measuredW="86" measuredH="21" zOrder="200" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>People%20Served</text>
+      </controlProperties>
+    </control>
+    <control controlID="559" controlTypeID="com.balsamiq.mockups::NumericStepper" x="377" y="2154" w="64" h="-1" measuredW="41" measuredH="24" zOrder="201" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="560" controlTypeID="com.balsamiq.mockups::ComboBox" x="377" y="2190" w="49" h="-1" measuredW="30" measuredH="24" zOrder="202" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="561" controlTypeID="com.balsamiq.mockups::Label" x="281" y="2192" w="-1" h="-1" measuredW="30" measuredH="21" zOrder="203" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Type</text>
+      </controlProperties>
+    </control>
+    <control controlID="562" controlTypeID="com.balsamiq.mockups::ComboBox" x="377" y="2079" w="153" h="-1" measuredW="34" measuredH="78" zOrder="204" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>7317724</color>
+        <state>up</state>
+        <text>%20%0APatxis%20Pizza%0ACostco%0Aadd</text>
+      </controlProperties>
+    </control>
+    <control controlID="576" controlTypeID="com.balsamiq.mockups::Button" x="492" y="2038" w="91" h="28" measuredW="68" measuredH="28" zOrder="205" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>2848996</color>
+        <size>20</size>
+        <text>Save</text>
+      </controlProperties>
+    </control>
+    <control controlID="577" controlTypeID="com.balsamiq.mockups::Arrow" x="441" y="2143" w="226" h="92" measuredW="150" measuredH="100" zOrder="206" locked="false" isInGroup="-1">
+      <controlProperties>
+        <rightArrow>false</rightArrow>
+        <text>Add%20a%20new%20vendor</text>
+      </controlProperties>
+    </control>
+    <control controlID="578" controlTypeID="com.balsamiq.mockups::Accordion" x="18" y="85" w="150" h="538" measuredW="150" measuredH="294" zOrder="207" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>event%26bm%3Bevent.bmml%26bm%3Bevent.bmml%26bm%3Bevent.bmml%2Cmeals%26bm%3Bmeals.bmml%26bm%3Bmeals.bmml%26bm%3Bmeals.bmml%2Csupplies%26bm%3Bsupplies.bmml%26bm%3Bsupplies.bmml%26bm%3Bsupplies.bmml%2Corganizers%26bm%3Borganizers.bmml%26bm%3Borganizers.bmml%26bm%3Borganizers.bmml%2Ccosts%26bm%3Bcosts.bmml%26bm%3Bcosts.bmml%26bm%3Bcosts.bmml%2Ctask_lists%26bm%3Btask_lists.bmml%26bm%3Btask_lists.bmml%26bm%3Btask_lists.bmml%2Cvendors%26bm%3Bvendors.bmml%26bm%3Bvendors.bmml%26bm%3Bvendors.bmml%2Ctips%26bm%3Btips.bmml%26bm%3Btips.bmml%26bm%3Btips.bmml</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C73%2C150%2C103%22%20href%3D%22event.bmml%22%20alt%3D%22event%22%20id%3D%22578%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C100%2C150%2C130%22%20href%3D%22meals.bmml%22%20alt%3D%22meals%22%20id%3D%22578%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C127%2C150%2C157%22%20href%3D%22supplies.bmml%22%20alt%3D%22supplies%22%20id%3D%22578%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C154%2C150%2C184%22%20href%3D%22organizers.bmml%22%20alt%3D%22organizers%22%20id%3D%22578%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C181%2C150%2C211%22%20href%3D%22costs.bmml%22%20alt%3D%22costs%22%20id%3D%22578%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C208%2C150%2C238%22%20href%3D%22task_lists.bmml%22%20alt%3D%22task_lists%22%20id%3D%22578%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C235%2C150%2C265%22%20href%3D%22vendors.bmml%22%20alt%3D%22vendors%22%20id%3D%22578%22/%3E%3Carea%20shape%3D%22rect%22%20coords%3D%220%2C262%2C150%2C292%22%20href%3D%22tips.bmml%22%20alt%3D%22tips%22%20id%3D%22578%22/%3E</map>
         <selectedIndex>-1</selectedIndex>
-        <text>Event%0AMeals%0ASupplies%0AOrganizers%0ACosts%0ATask%20Lists%0AItem%20Seven</text>
+        <text>Event%0AMeals%0ASupplies%0AOrganizers%0ACosts%0ATask%20Lists%0AVendors%0APro%20Tips</text>
       </controlProperties>
     </control>
   </controls>
