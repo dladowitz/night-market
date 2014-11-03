@@ -20,12 +20,12 @@ group :development do
 end
 
 group :development, :test do
-  ## gem 'factory_girl_rails', '~> 4.2.1'
-  ## gem 'faker'
+  gem 'factory_girl_rails', '~> 4.2.1'
+  gem 'faker'
   # gem 'fixture_builder'
   # gem 'jazz_hands'
-  ## gem 'pry-byebug'
-  ## gem 'quiet_assets'
+  gem 'pry-byebug'
+  gem 'quiet_assets'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'sqlite3'
 end
