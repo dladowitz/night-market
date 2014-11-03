@@ -11,7 +11,7 @@ describe Event do
     expect(event).to be_a Event
   end
 
-  skip "has a valid factory" do
+  it "has a valid factory" do
     event = create :event
     expect(event).to be_a Event
   end
