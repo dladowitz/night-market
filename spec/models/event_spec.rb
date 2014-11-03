@@ -1,8 +1,8 @@
 require "rails_helper"
 
 describe Event do
-  it { should validate_presence_of :name }
-
+  it { should validate_presence_of :name   }
+  it { should validate_presence_of :guests }
 
   it "creates an Event object" do
     event = Event.new name: "Startup Weekend San Francisco"
