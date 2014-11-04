@@ -15,6 +15,9 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  # Used to send deprecation warnings to a log file: http://myronmars.to/n/dev-blog/2013/07/rspec-2-14-is-released#core_deprecation_output_now_configurable
+  config.deprecation_stream = File.open("log/deprecations.log", "w")
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
