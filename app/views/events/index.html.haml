@@ -1,10 +1,10 @@
 %h1 Events
 
-= link_to "New", new_event_path
+= link_to "New", new_event_path, class: "btn btn-success"
 
 - @events.each do |event|
   %ul
-    %li= event.name
+    %li= link_to event.name, event_path(event)
     %li= event.guests
-    %li= event.start_date.to_date
-    %li= event.end_date.to_date
+    %li= event.start_date.to_datetime
+    %li= event.end_date.to_datetime

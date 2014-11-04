@@ -67,13 +67,44 @@ describe EventsController do
           end
         end
 
-        context "when start_date is not a date" do
+        context "when start_date is not a datetime" do
           let(:params) { { name: "Startup Weekend Oakland", guests: 100, start_date: "Sometime" } }
 
           it "does not create a new object in the database" do
             expect { subject }.to_not change{Event.count}
           end
         end
+      end
+    end
+  end
+
+  describe "GET show" do
+    subject { get :show, id: event_id }
+
+    before { subject }
+
+    context "when event is in the database" do
+      let(:event) { create :event }
+      let(:event_id) { event.id }
+
+      it "finds the correct event" do
+        expect(assigns(:event)).to eq event
+      end
+    end
+
+    context "when the event is not in the database" do
+      let(:event_id) { "Not an ID" }
+
+      it "does not find the event" do
+        expect(assigns(:event)).to be_nil
+      end
+
+      it "redirects to the index page" do
+        expect(response).to redirect_to events_path
+      end
+
+      it "sets a flash message" do
+        expect(flash[:error]).to eq "That's not an event I've ever heard of."
       end
     end
   end

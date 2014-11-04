@@ -1,0 +1,4 @@
+- flash.each do |name, message|
+  %strong
+    %div{:class => "alert alert-#{name}", :role => "alert"}
+      = message

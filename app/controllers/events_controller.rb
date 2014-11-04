@@ -9,7 +9,17 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.create(event_params)
+    flash[:success] = "Nice one. Event created successfully."
     redirect_to events_path
+  end
+
+  def show
+    @event = Event.find_by_id params[:id]
+
+    unless @event
+      flash[:danger] = "That's not an event I've ever heard of."
+      redirect_to events_path
+    end
   end
 
   private
