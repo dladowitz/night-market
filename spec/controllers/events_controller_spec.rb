@@ -17,8 +17,8 @@ describe EventsController do
       expect(assigns(:events)).to match_array [event1, event2]
     end
 
-    skip "shows them chronological order by start date" do
-      # not sure how to check order of elements in an array
+    it "shows them chronological order by start date" do
+      # TODO not sure how to check order of elements in an array
     end
   end
 
@@ -48,7 +48,6 @@ describe EventsController do
     end
 
     context "with invalid params" do
-
       context "without required params" do
         let(:params ) { { name: "Startup Weekend Oakland" } }
 
@@ -104,7 +103,132 @@ describe EventsController do
       end
 
       it "sets a flash message" do
-        expect(flash[:error]).to eq "That's not an event I've ever heard of."
+        expect(flash[:danger]).to eq "Easy tiger, that's not an event I've ever heard of."
+      end
+    end
+  end
+
+  describe "GET edit" do
+    subject { get :edit, id: event_id }
+
+    before { subject }
+
+    context "when event is in the database" do
+      let(:event_id) { event.id }
+      let(:event) { create :event }
+
+      it "renders the edit template" do
+        expect(response).to render_template :edit
+      end
+
+      it "finds the event" do
+        expect(assigns(:event)).to eq event
+      end
+    end
+
+    context "when the event is not in the database" do
+      let(:event_id) { "Not a real ID"}
+
+      it "does not find the event" do
+        expect(assigns(:event)).to eq nil
+      end
+
+      it "redirects to the index page" do
+        expect(response).to redirect_to events_path
+      end
+
+      it "sets a flash message" do
+        expect(flash[:danger]).to eq "Easy tiger, that's not an event I've ever heard of."
+      end
+    end
+  end
+
+  describe "PATCH update" do
+    subject { patch :update, id: event_id, event: params }
+
+    context "when the event is in the database" do
+      let(:event)     { create :event }
+      let(:event_id ) { event.id }
+
+      context "with valid params" do
+        let(:params) { { name: "Startup Weekend Boston", guests: 200 } }
+
+        it "updates the event" do
+          subject
+          expect(event.reload.name).to eq "Startup Weekend Boston"
+        end
+      end
+
+      context "with invalid params" do
+        context "with missing required params" do
+          let(:params) { { name: nil } }
+
+          it "does not update the event" do
+            subject
+            expect(event.reload.name).to eq "Startup Weekend San Francisco"
+          end
+        end
+
+        context "with bad datatypes" do
+          let(:original_start_date) { event.start_date}
+          let(:params) { { start_date: "Not a datetime object" } }
+
+          it "does not update the event" do
+            subject
+            expect(event.reload.start_date).to eq  original_start_date
+          end
+        end
+      end
+    end
+
+    context "when the event is not in the database" do
+      let(:event_id) { "Not a real ID" }
+      let(:params) { { name: "Startup Weekend Boston", guests: 200 } }
+
+      it "does not find the event" do
+        subject
+        expect(assigns(:event)).to be_nil
+      end
+
+      it "redirect to the index page" do
+        subject
+        expect(response).to redirect_to events_path
+      end
+
+      it "set a flash message" do
+        subject
+        expect(flash[:danger]).to eq "Easy tiger, that's not an event I've ever heard of."
+      end
+    end
+  end
+
+  describe "DELETE destroy" do
+    subject { delete :destroy, id: event_id }
+
+    context "when the event is in the database" do
+      let!(:event_id) { event.id }
+      let!(:event)    { create :event }
+
+      it "deleted the event from the database" do
+        expect { subject }.to change{Event.count}.by -1
+      end
+    end
+
+    context "when the event is not in the database" do
+      let(:event_id) { "Not a real Id" }
+
+      it "does not delete anything from the database" do
+        expect { subject }.to_not change{Event.count}
+      end
+
+      it "redirects to the index page" do
+        subject
+        expect(response).to redirect_to events_path
+      end
+
+      it "sets a flash message" do
+        subject
+        expect(flash[:danger]).to eq "Easy tiger, that's not an event I've ever heard of."
       end
     end
   end

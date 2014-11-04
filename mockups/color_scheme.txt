@@ -1,0 +1,4 @@
+Adding:     green
+Deleting:   red
+Updating:   Orange
+Info:       Blue
