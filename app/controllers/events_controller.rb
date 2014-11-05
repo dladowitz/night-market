@@ -13,6 +13,8 @@ class EventsController < ApplicationController
     @event = Event.create(event_params)
     flash[:success] = "Nice one. Event created successfully."
     redirect_to events_path
+
+    #TODO on failure probably need to re-render the form and surface errors
   end
 
   def show
@@ -34,6 +36,7 @@ class EventsController < ApplicationController
       @event.update event_params
       redirect_to @event
     else
+      #TODO probably need to re-render the form and surface errors
       flash[:danger] = "Easy tiger, that's not an event I've ever heard of."
       redirect_to events_path
     end

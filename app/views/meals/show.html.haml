@@ -9,3 +9,9 @@
   %li
     Start
     = @meal.start
+
+= link_to "All Meals", event_meals_path(@event), class: "btn btn-info"
+= link_to "Event", event_path(@event), class: "btn btn-primary"
+= link_to "Edit", edit_event_meal_path(@event, @meal), class: "btn btn-warning"
+= link_to "Delete", event_meal_path(@event, @meal), method: :delete, class: "btn btn-danger"
+
