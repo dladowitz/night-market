@@ -18,7 +18,6 @@ describe Event do
   end
 
   it "saves to the datebase" do
-    # subject { create :event }
     expect { Event.create name: "Startup Weekend SF", guests: 100, start_date: 1.day.from_now, end_date: 3.days.from_now }.to change{Event.count}.by 1
   end
 end

@@ -52,7 +52,8 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :guests, :location, :start_date, :end_date )
+    params.require(:event).permit(:name, :guests, :location, :start_date, :end_date,
+                                  :vegetarian, :vegan, :gluten_free, :dairy_free )
   end
 
   def load_event

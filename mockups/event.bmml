@@ -70,7 +70,7 @@
         <text>San%20Francisco%2C%20CA</text>
       </controlProperties>
     </control>
-    <control controlID="45" controlTypeID="com.balsamiq.mockups::DateChooser" x="642" y="663" w="133" h="-1" measuredW="133" measuredH="25" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::DateChooser" x="655" y="663" w="133" h="-1" measuredW="133" measuredH="25" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <state>up</state>
         <text>07/05/2015%20%20%20%20</text>

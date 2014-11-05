@@ -1,10 +1,51 @@
 %h1 Event
 %ul
-  %li= @event.name
-  %li= @event.location
-  %li= @event.guests
-  %li= @event.start_date.to_datetime
-  %li= @event.end_date.to_datetime
+  %li
+    %strong Name
+    = @event.name
+  %li
+    %strong Location
+    = @event.location
+  %li
+    %strong Guests
+    = @event.guests
+  %li
+    %strong Budget
+    = @event.budget
+  %li
+    %strong Start Date
+    = @event.start_date.to_date
+  %li
+    %strong End Date
+    = @event.end_date.to_date
+
+  %li
+    %strong Options
+    %ul
+      %li
+        Vegetarian:
+        - if @event.vegetarian
+          %span.text-success YES
+        - else
+          %span.text-danger NO
+      %li
+        Vegan:
+        - if @event.vegan
+          %span.text-success YES
+        - else
+          %span.text-danger NO
+      %li
+        Gluten-Free:
+        - if @event.gluten_free
+          %span.text-success YES
+        - else
+          %span.text-danger NO
+      %li
+        Dairy-Free:
+        - if @event.dairy_free
+          %span.text-success YES
+        - else
+          %span.text-danger NO
 
 = link_to "All Events", events_path, class: "btn btn-info"
 = link_to "Edit", edit_event_path(@event), class: "btn btn-warning"
