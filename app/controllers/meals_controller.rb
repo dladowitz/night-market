@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
   before_filter :load_event
-  before_filter :load_meal, only: [:show, :edit, :update]
+  before_filter :load_meal, only: [:show, :edit, :update, :destroy]
 
   def index
     @meals = @event.meals
@@ -10,10 +10,6 @@ class MealsController < ApplicationController
     @meal = Meal.new
   end
 
-  def show
-    @meal = Meal.find params[:id]
-  end
-
   def create
     @meal = @event.meals.build meal_params
 
@@ -21,14 +17,15 @@ class MealsController < ApplicationController
       flash[:success] = "Hi Five. Meal created successfully."
       redirect_to event_meal_path(@event, @meal)
     else
-      #TODO probably need to re-render the form and surface errors
       flash[:danger] = "Slow your roll partna. Meal wasn't created properly"
-      redirect_to event_meals_path(@event)
+      render :new
     end
   end
 
-  def edit
+  def show
+  end
 
+  def edit
   end
 
   def update
@@ -38,6 +35,11 @@ class MealsController < ApplicationController
       flash[:danger] = "Oh Frak, that didn't work."
       render :edit
     end
+  end
+
+  def destroy
+    @meal.delete
+    redirect_to event_meals_path(@event)
   end
 
   private

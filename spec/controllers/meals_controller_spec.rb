@@ -69,6 +69,11 @@ describe MealsController do
         it "does not create a meal in the database" do
           expect{ subject }.to_not change{ Meal.count }
         end
+
+        it "re-renders the new template" do
+          subject
+          expect(response).to render_template :new
+        end
       end
 
       context "with bad data types" do
@@ -153,6 +158,44 @@ describe MealsController do
   end
 
   describe "DELETE Destroy" do
+    let!(:meal_3) { create :meal }
+    let!(:event_3) { meal_3.event }
+    subject { delete :destroy, event_id: event_3.id, id: meal_3_id }
 
+    context "when meal is found in the database" do
+      let(:meal_3_id) { meal_3.id }
+
+      it "finds the correct meal" do
+        subject
+        expect(assigns(:meal)).to eq meal_3
+      end
+
+      it "deletes the meal from the database" do
+        expect{ subject }.to change{ Meal.count}.by -1
+      end
+
+      it "redirects to the event_meals index page" do
+        subject
+        expect(response).to redirect_to event_meals_path(event_3)
+      end
+    end
+
+    context "when meal is not found in the database" do
+      let(:meal_3_id) { "Not a real ID" }
+
+      it "doesn't find a meal" do
+        subject
+        expect(assigns(:meal)).to be_nil
+      end
+
+      it "doesn't delete anything from the database" do
+        expect{ subject }.to_not change{ Meal.count }
+      end
+
+      it "redirects to the event_meals page" do
+        subject
+        expect(response).to redirect_to event_meals_path(event_3)
+      end
+    end
   end
 end

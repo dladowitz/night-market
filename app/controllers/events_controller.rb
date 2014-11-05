@@ -10,46 +10,35 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.create(event_params)
-    flash[:success] = "Nice one. Event created successfully."
-    redirect_to events_path
+     @event = Event.new(event_params)
 
-    #TODO on failure probably need to re-render the form and surface errors
+     if @event.save
+       flash[:success] = "Nice one. Event created successfully."
+       redirect_to events_path
+     else
+       flash[:danger] = "Oh Frak, that didn't work."
+       render :new
+    end
   end
 
   def show
-    unless @event
-      flash[:danger] = "Easy tiger, that's not an event I've ever heard of."
-      redirect_to events_path
-    end
   end
 
   def edit
-    unless @event
-      flash[:danger] = "Easy tiger, that's not an event I've ever heard of."
-      redirect_to events_path
-    end
   end
 
   def update
-    if @event
-      @event.update event_params
+    if @event.update event_params
       redirect_to @event
     else
-      #TODO probably need to re-render the form and surface errors
-      flash[:danger] = "Easy tiger, that's not an event I've ever heard of."
-      redirect_to events_path
+      flash[:danger] = "Could not update."
+      render :edit
     end
   end
 
   def destroy
-    if @event
-      @event.delete
-      redirect_to events_path
-    else
-      flash[:danger] = "Easy tiger, that's not an event I've ever heard of."
-      redirect_to events_path
-    end
+    @event.delete
+    redirect_to events_path
   end
 
   private
@@ -61,5 +50,10 @@ class EventsController < ApplicationController
 
   def load_event
     @event = Event.find_by_id params[:id]
+
+    unless @event
+      flash[:danger] = "Easy tiger, that's not an event I've ever heard of."
+      redirect_to events_path
+    end
   end
 end

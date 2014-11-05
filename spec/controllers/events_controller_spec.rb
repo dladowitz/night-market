@@ -49,15 +49,19 @@ describe EventsController do
 
     context "with invalid params" do
       context "without required params" do
-        let(:params ) { { name: "Startup Weekend Oakland" } }
+        let(:params ) { { name: nil } }
 
         it "does not create a new object in the database" do
           expect { subject }.to_not change{Event.count}
         end
+
+        it "renders the new template" do
+          subject
+          expect(response).to render_template :new
+        end
       end
 
       context "with bad data types" do
-
         context "when guests is not a number" do
           let(:params) { { name: "Startup Weekend Oakland", guests: "Many" } }
 
@@ -166,6 +170,11 @@ describe EventsController do
           it "does not update the event" do
             subject
             expect(event.reload.name).to eq "Startup Weekend San Francisco"
+          end
+
+          it "renders the edit template" do
+            subject
+            expect(response).to render_template :edit
           end
         end
 
