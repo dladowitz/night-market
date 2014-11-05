@@ -1,0 +1,9 @@
+= form_for [@event, @meal] do |f|
+  = f.label :category
+  = f.select :category, [["Breakfast", "Breakfast"], ["Lunch", "Lunch"], ["Dinner", "Dinner"], ["Snack", "Snack"]]
+  = f.label :guests
+  = f.number_field :guests, value: @event.guests
+  = f.label :start
+  = f.date_select :start
+  = f.submit
+

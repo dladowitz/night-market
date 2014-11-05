@@ -1,0 +1,8 @@
+%h1
+  Meals for
+  = @event.name
+
+- @event.meals.each do |meal|
+  %li= link_to meal.category, event_meal_path(@event, meal)
+
+= link_to "New Meal", new_event_meal_path, class: "btn btn-success"
