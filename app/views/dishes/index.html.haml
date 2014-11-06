@@ -1,0 +1,39 @@
+%h1 Listing dishes
+
+%table
+  %tr
+    %th Vendor
+    %th Servings
+    %th Category
+    %th Ordered
+    %th Vegetarian
+    %th Vegan
+    %th Gluten free
+    %th Dairy free
+    %th Needs ice
+    %th Transport method
+    %th Transport time
+    %th
+    %th
+    %th
+
+  - @dishes.each do |dish|
+    %tr
+      %td= dish.vendor
+      %td= dish.servings
+      %td= dish.category
+      %td= dish.ordered
+      %td= dish.vegetarian
+      %td= dish.vegan
+      %td= dish.gluten_free
+      %td= dish.dairy_free
+      %td= dish.needs_ice
+      %td= dish.transport_method
+      %td= dish.transport_time
+      %td= link_to 'Show', dish
+      %td= link_to 'Edit', edit_dish_path(dish)
+      %td= link_to 'Destroy', dish, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Dish', new_dish_path

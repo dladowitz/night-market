@@ -1,0 +1,43 @@
+= form_for @dish do |f|
+  - if @dish.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@dish.errors.count, "error")} prohibited this dish from being saved:"
+      %ul
+        - @dish.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :vendor
+    = f.text_field :vendor
+  .field
+    = f.label :servings
+    = f.number_field :servings
+  .field
+    = f.label :category
+    = f.text_field :category
+  .field
+    = f.label :ordered
+    = f.check_box :ordered
+  .field
+    = f.label :vegetarian
+    = f.check_box :vegetarian
+  .field
+    = f.label :vegan
+    = f.check_box :vegan
+  .field
+    = f.label :gluten_free
+    = f.check_box :gluten_free
+  .field
+    = f.label :dairy_free
+    = f.check_box :dairy_free
+  .field
+    = f.label :needs_ice
+    = f.check_box :needs_ice
+  .field
+    = f.label :transport_method
+    = f.text_field :transport_method
+  .field
+    = f.label :transport_time
+    = f.text_field :transport_time
+  .actions
+    = f.submit 'Save'

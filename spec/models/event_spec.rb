@@ -7,6 +7,8 @@ describe Event do
 
   it { should_not validate_presence_of :location }
 
+  it { should have_many :meals }
+
   it "creates an Event object" do
     event = Event.new name: "Startup Weekend San Francisco", guests: 100, start_date: 1.day.from_now, end_date: 3.days.from_now
     expect(event).to be_a Event

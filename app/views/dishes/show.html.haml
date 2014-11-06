@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b Vendor:
+  = @dish.vendor
+%p
+  %b Servings:
+  = @dish.servings
+%p
+  %b Category:
+  = @dish.category
+%p
+  %b Ordered:
+  = @dish.ordered
+%p
+  %b Vegetarian:
+  = @dish.vegetarian
+%p
+  %b Vegan:
+  = @dish.vegan
+%p
+  %b Gluten free:
+  = @dish.gluten_free
+%p
+  %b Dairy free:
+  = @dish.dairy_free
+%p
+  %b Needs ice:
+  = @dish.needs_ice
+%p
+  %b Transport method:
+  = @dish.transport_method
+%p
+  %b Transport time:
+  = @dish.transport_time
+
+= link_to 'Edit', edit_dish_path(@dish)
+\|
+= link_to 'Back', dishes_path

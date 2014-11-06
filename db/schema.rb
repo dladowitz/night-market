@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105025015) do
+ActiveRecord::Schema.define(version: 20141105225133) do
+
+  create_table "dishes", force: true do |t|
+    t.string   "name",             null: false
+    t.integer  "meal_id",          null: false
+    t.string   "vendor"
+    t.integer  "servings"
+    t.string   "category"
+    t.boolean  "ordered"
+    t.boolean  "vegetarian"
+    t.boolean  "vegan"
+    t.boolean  "gluten_free"
+    t.boolean  "dairy_free"
+    t.boolean  "needs_ice"
+    t.string   "transport_method"
+    t.string   "transport_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", force: true do |t|
     t.string   "name",        null: false
@@ -30,7 +48,7 @@ ActiveRecord::Schema.define(version: 20141105025015) do
 
   create_table "meals", force: true do |t|
     t.string   "category",   null: false
-    t.integer  "event_id"
+    t.integer  "event_id",   null: false
     t.integer  "guests"
     t.datetime "start"
     t.datetime "created_at"
