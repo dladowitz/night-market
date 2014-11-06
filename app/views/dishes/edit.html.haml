@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', @dish
+= link_to 'Show', event_meal_dish_path(@event, @meal, @dish)
 \|
-= link_to 'Back', dishes_path
+= link_to 'All Dishes', event_meal_dishes_path(@event, @meal)

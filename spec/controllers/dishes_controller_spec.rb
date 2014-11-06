@@ -29,39 +29,6 @@ RSpec.describe DishesController, :type => :controller do
     end
   end
 
-  describe "GET show" do
-    subject { get :show, event_id: event.id, meal_id: meal.id, id: dish_id }
-    before { subject }
-
-    context "when the dish is in the database" do
-      let(:dish_id) { dish.id }
-
-      it "renders the show template" do
-        expect(response).to render_template :show
-      end
-
-      it "assigns the requested dish as @dish" do
-        expect(assigns(:dish)).to eq dish
-      end
-    end
-
-    context "when the dish is not found in the databaase" do
-      let(:dish_id) { "Not a real ID" }
-
-      it "doesn't find the dish" do
-        expect(assigns(:dish)).to be_nil
-      end
-
-      it "redirects to the event_meal_dishes index page" do
-        expect(response).to redirect_to event_meal_dishes_path(event, meal)
-      end
-
-      it "sets a flash messsage" do
-        expect(flash[:danger]).to eq "Listen up pilgram. That's not a dish we've seen round these parts."
-      end
-    end
-  end
-
   describe "GET new" do
     subject { get :new, event_id: event.id, meal_id: meal.id }
     before { subject }
@@ -76,14 +43,6 @@ RSpec.describe DishesController, :type => :controller do
 
     it "renders the new template" do
       expect(response).to render_template :new
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested dish as @dish" do
-      dish = Dish.create! valid_attributes
-      get :edit, {:id => dish.to_param}, valid_session
-      expect(assigns(:dish)).to eq(dish)
     end
   end
 
@@ -122,6 +81,68 @@ RSpec.describe DishesController, :type => :controller do
       it "re-renders the 'new' template" do
         subject
         expect(response).to render_template("new")
+      end
+    end
+  end
+
+  describe "GET show" do
+    subject { get :show, event_id: event.id, meal_id: meal.id, id: dish_id }
+    before { subject }
+
+    context "when the dish is in the database" do
+      let(:dish_id) { dish.id }
+
+      it "renders the show template" do
+        expect(response).to render_template :show
+      end
+
+      it "assigns the requested dish as @dish" do
+        expect(assigns(:dish)).to eq dish
+      end
+    end
+
+    context "when the dish is not found in the databaase" do
+      let(:dish_id) { "Not a real ID" }
+
+      it "doesn't find the dish" do
+        expect(assigns(:dish)).to be_nil
+      end
+
+      it "redirects to the event_meal_dishes index page" do
+        expect(response).to redirect_to event_meal_dishes_path(event, meal)
+      end
+
+      it "sets a flash messsage" do
+        expect(flash[:danger]).to eq "Listen up pilgram. That's not a dish we've seen round these parts."
+      end
+    end
+  end
+
+  describe "GET edit" do
+    subject { get :edit, event_id: event.id, meal_id: meal.id, id: dish_id }
+    before { subject }
+
+    context "when dish is found in the database" do
+      let(:dish_id) { dish.id }
+
+      it "assigns the requested dish as @dish" do
+        expect(assigns(:dish)).to eq dish
+      end
+
+      it "renders the edit template" do
+        expect(response).to render_template :edit
+      end
+    end
+
+    context "when dish is not found in the database" do
+      let(:dish_id) { "Not a real ID" }
+
+      it "@dish is nil" do
+        expect(assigns(:dish)).to be_nil
+      end
+
+      it "renders the index page" do
+        expect(response).to redirect_to event_meal_dishes_path(event, meal)
       end
     end
   end
