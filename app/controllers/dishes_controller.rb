@@ -28,14 +28,12 @@ class DishesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @dish.update(dish_params)
-        format.html { redirect_to @dish, notice: 'Dish was successfully updated.' }
-        format.json { render :show, status: :ok, location: @dish }
-      else
-        format.html { render :edit }
-        format.json { render json: @dish.errors, status: :unprocessable_entity }
-      end
+    if @dish.update(dish_params)
+      flash[:success] = 'Dish was successfully updated.'
+      redirect_to event_meal_dish_path(@event, @meal, @dish)
+    else
+      flash[:success] = 'Dish was not updated.'
+      render :edit
     end
   end
 

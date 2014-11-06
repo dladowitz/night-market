@@ -148,42 +148,34 @@ RSpec.describe DishesController, :type => :controller do
   end
 
   describe "PUT update" do
+    subject { put :update, event_id: event.id, meal_id: meal.id, id: dish.id, dish: new_attributes}
+    before  { subject }
+
     describe "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+      let(:new_attributes) { {name: "Chicken Wings"} }
 
       it "updates the requested dish" do
-        dish = Dish.create! valid_attributes
-        put :update, {:id => dish.to_param, :dish => new_attributes}, valid_session
-        dish.reload
-        skip("Add assertions for updated state")
+        expect(dish.reload.name).to eq "Chicken Wings"
       end
 
       it "assigns the requested dish as @dish" do
-        dish = Dish.create! valid_attributes
-        put :update, {:id => dish.to_param, :dish => valid_attributes}, valid_session
-        expect(assigns(:dish)).to eq(dish)
+        expect(assigns(:dish)).to eq dish
       end
 
       it "redirects to the dish" do
-        dish = Dish.create! valid_attributes
-        put :update, {:id => dish.to_param, :dish => valid_attributes}, valid_session
-        expect(response).to redirect_to(dish)
+        expect(response).to redirect_to event_meal_dish_path(event, meal, dish)
       end
     end
 
     describe "with invalid params" do
-      it "assigns the dish as @dish" do
-        dish = Dish.create! valid_attributes
-        put :update, {:id => dish.to_param, :dish => invalid_attributes}, valid_session
-        expect(assigns(:dish)).to eq(dish)
+      let(:new_attributes) { {name: nil} }
+
+      it "does not update the dish" do
+        expect(dish.reload.name).to eq "Cheese Pizza"
       end
 
       it "re-renders the 'edit' template" do
-        dish = Dish.create! valid_attributes
-        put :update, {:id => dish.to_param, :dish => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
+        expect(response).to render_template "edit"
       end
     end
   end
