@@ -13,7 +13,7 @@ class CreateDishes < ActiveRecord::Migration
       t.boolean :dairy_free
       t.boolean :needs_ice
       t.string  :transport_method
-      t.string  :transport_time
+      t.datetime  :transport_time
 
       t.timestamps
     end

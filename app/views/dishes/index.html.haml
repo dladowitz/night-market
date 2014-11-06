@@ -2,6 +2,7 @@
 
 %table
   %tr
+    %th Name
     %th Vendor
     %th Servings
     %th Category
@@ -19,6 +20,7 @@
 
   - @dishes.each do |dish|
     %tr
+      %td= dish.name
       %td= dish.vendor
       %td= dish.servings
       %td= dish.category

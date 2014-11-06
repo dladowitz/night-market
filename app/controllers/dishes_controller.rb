@@ -11,16 +11,13 @@ class DishesController < ApplicationController
   end
 
   def create
-    @dish = Dish.new(dish_params)
+    @dish = @meal.dishes.build dish_params
 
-    respond_to do |format|
-      if @dish.save
-        format.html { redirect_to @dish, notice: 'Dish was successfully created.' }
-        format.json { render :show, status: :created, location: @dish }
-      else
-        format.html { render :new }
-        format.json { render json: @dish.errors, status: :unprocessable_entity }
-      end
+    if @dish.save
+      flash[:success] = "Dish was successfully created."
+      redirect_to event_meal_dish_path(@event, @meal, @dish)
+    else
+       render :new
     end
   end
 
@@ -66,6 +63,6 @@ class DishesController < ApplicationController
     end
 
     def dish_params
-      params.require(:dish).permit(:vendor, :servings, :category, :ordered, :vegetarian, :vegan, :gluten_free, :dairy_free, :needs_ice, :transport_method, :transport_time)
+      params.require(:dish).permit(:name, :vendor, :servings, :category, :ordered, :vegetarian, :vegan, :gluten_free, :dairy_free, :needs_ice, :transport_method, :transport_time)
     end
 end

@@ -4,15 +4,12 @@ require 'rails_helper'
 
 RSpec.describe DishesController, :type => :controller do
 
-  let(:dish) { create :dish }
-  let(:meal) { dish.meal }
-  let(:event){ meal.event }
+  let!(:dish) { create :dish }
+  let!(:meal) { dish.meal }
+  let!(:event){ meal.event }
 
-  # This should return the minimal set of attributes required to create a valid
-  # Dish. As you add validations to Dish, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) { { name: "Sausage Pizza", category: "Main" } }
-  let(:invalid_attributes) { { name: nil, category: nil } }
+  let(:valid_attributes)      { {event_id: event.id, meal_id: meal.id, dish: {name: "Sausage Pizza", category: "Main"}} }
+  let(:invalid_attributes)    { {event_id: event.id, meal_id: meal.id, dish: {name: nil, category: "Bad Category"}} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -82,42 +79,48 @@ RSpec.describe DishesController, :type => :controller do
     end
   end
 
-  # describe "GET edit" do
-  #   it "assigns the requested dish as @dish" do
-  #     dish = Dish.create! valid_attributes
-  #     get :edit, {:id => dish.to_param}, valid_session
-  #     expect(assigns(:dish)).to eq(dish)
-  #   end
-  # end
+  describe "GET edit" do
+    it "assigns the requested dish as @dish" do
+      dish = Dish.create! valid_attributes
+      get :edit, {:id => dish.to_param}, valid_session
+      expect(assigns(:dish)).to eq(dish)
+    end
+  end
 
   describe "POST create" do
     describe "with valid params" do
+      subject { post :create, valid_attributes }
+
       it "creates a new Dish" do
-        expect {
-          post :create, {:dish => valid_attributes}, valid_session
-        }.to change(Dish, :count).by(1)
+        expect{ subject }.to change(Dish, :count).by 1
       end
 
       it "assigns a newly created dish as @dish" do
-        post :create, {:dish => valid_attributes}, valid_session
+        subject
         expect(assigns(:dish)).to be_a(Dish)
         expect(assigns(:dish)).to be_persisted
       end
 
       it "redirects to the created dish" do
-        post :create, {:dish => valid_attributes}, valid_session
-        expect(response).to redirect_to(Dish.last)
+        subject
+        expect(response).to redirect_to event_meal_dish_path(event, meal, assigns(:dish))
       end
     end
 
     describe "with invalid params" do
+      subject { post :create, invalid_attributes }
+
       it "assigns a newly created but unsaved dish as @dish" do
-        post :create, {:dish => invalid_attributes}, valid_session
+        subject
         expect(assigns(:dish)).to be_a_new(Dish)
       end
 
+      it "does not create a record in the database" do
+        expect{ subject }.to_not change{Dish.count}
+      end
+
       it "re-renders the 'new' template" do
-        post :create, {:dish => invalid_attributes}, valid_session
+        subject
         expect(response).to render_template("new")
       end
     end

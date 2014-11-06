@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20141105225133) do
     t.boolean  "dairy_free"
     t.boolean  "needs_ice"
     t.string   "transport_method"
-    t.string   "transport_time"
+    t.datetime "transport_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
