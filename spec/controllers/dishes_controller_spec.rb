@@ -37,6 +37,8 @@ RSpec.describe DishesController, :type => :controller do
     before { subject }
 
     context "when the dish is in the database" do
+      let(:dish_id) { dish.id }
+
       it "renders the show template" do
         expect(response).to render_template :show
       end
@@ -47,6 +49,8 @@ RSpec.describe DishesController, :type => :controller do
     end
 
     context "when the dish is not found in the databaase" do
+      let(:dish_id) { "Not a real ID" }
+
       it "doesn't find the dish" do
         expect(assigns(:dish)).to be_nil
       end
@@ -62,19 +66,29 @@ RSpec.describe DishesController, :type => :controller do
   end
 
   describe "GET new" do
+    subject { get :new, event_id: event.id, meal_id: meal.id }
+    before { subject }
+
     it "assigns a new dish as @dish" do
-      get :new, {}, valid_session
-      expect(assigns(:dish)).to be_a_new(Dish)
+      expect(assigns(:dish)).to be_a_new Dish
+    end
+
+    it "belongs to meal" do
+      expect(assigns(:dish).meal).to eq meal
+    end
+
+    it "renders the new template" do
+      expect(response).to render_template :new
     end
   end
 
-  describe "GET edit" do
-    it "assigns the requested dish as @dish" do
-      dish = Dish.create! valid_attributes
-      get :edit, {:id => dish.to_param}, valid_session
-      expect(assigns(:dish)).to eq(dish)
-    end
-  end
+  # describe "GET edit" do
+  #   it "assigns the requested dish as @dish" do
+  #     dish = Dish.create! valid_attributes
+  #     get :edit, {:id => dish.to_param}, valid_session
+  #     expect(assigns(:dish)).to eq(dish)
+  #   end
+  # end
 
   describe "POST create" do
     describe "with valid params" do

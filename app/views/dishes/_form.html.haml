@@ -1,4 +1,4 @@
-= form_for @dish do |f|
+= form_for [@event, @meal, @dish] do |f|
   - if @dish.errors.any?
     #error_explanation
       %h2= "#{pluralize(@dish.errors.count, "error")} prohibited this dish from being saved:"
@@ -14,7 +14,7 @@
     = f.number_field :servings
   .field
     = f.label :category
-    = f.text_field :category
+    = f.select :category, [["Main", "Main"], [ "Desert", "Desert"], ["Side1", "Side1"], ["Side2", "Side2"], ["Side3", "Side3"]]
   .field
     = f.label :ordered
     = f.check_box :ordered
@@ -35,9 +35,10 @@
     = f.check_box :needs_ice
   .field
     = f.label :transport_method
-    = f.text_field :transport_method
+    = f.select :transport_method, [["Pickup", "Pickup"], ["Delivery", "Delivery"]]
   .field
     = f.label :transport_time
-    = f.text_field :transport_time
+    = f.datetime_select :transport_time
   .actions
     = f.submit 'Save'
+

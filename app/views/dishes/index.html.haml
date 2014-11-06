@@ -30,10 +30,10 @@
       %td= dish.needs_ice
       %td= dish.transport_method
       %td= dish.transport_time
-      %td= link_to 'Show', dish
-      %td= link_to 'Edit', edit_dish_path(dish)
-      %td= link_to 'Destroy', dish, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', event_meal_dish_path(@event, @meal, dish)
+      %td= link_to 'Edit', edit_event_meal_dish_path(@event, @meal, dish)
+      %td= link_to 'Destroy', event_meal_dish_path(@event, @meal, dish), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Dish', new_dish_path
+= link_to "New Dish", new_event_meal_dish_path(@event, @meal), class: "btn btn-success"

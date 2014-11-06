@@ -30,6 +30,11 @@ describe Dish do
     dish = Dish.new category: "Bad Category", meal_id: 1, name: "Pizza"
     expect(dish).to_not be_valid
   end
+
+  it "validates transport_method" do
+    dish = Dish.new transport_method: "Carrier Pigeon", name: "BBQ Sandwiches", category: "Main", meal_id: 1
+    expect(dish).to_not be_valid
+  end
 end
 
 

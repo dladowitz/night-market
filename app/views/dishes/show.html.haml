@@ -34,6 +34,6 @@
   %b Transport time:
   = @dish.transport_time
 
-= link_to 'Edit', edit_dish_path(@dish)
+= link_to 'Edit', edit_event_meal_dish_path(@event, @meal, @dish)
 \|
-= link_to 'Back', dishes_path
+= link_to 'All Dishes', event_meal_dishes_path(@event, @meal)

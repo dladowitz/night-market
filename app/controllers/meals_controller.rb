@@ -7,6 +7,7 @@ class MealsController < ApplicationController
   end
 
   def new
+    #TODO build this from @event and add spec to test
     @meal = Meal.new
   end
 

@@ -13,7 +13,7 @@ FactoryGirl.define do
     gluten_free false
     dairy_free  false
     needs_ice   false
-    transport_method "MyString"
-    transport_time "MyString"
+    transport_method "Pickup"
+    transport_time 4.days.from_now
   end
 end
