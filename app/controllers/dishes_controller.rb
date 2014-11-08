@@ -39,10 +39,8 @@ class DishesController < ApplicationController
 
   def destroy
     @dish.destroy
-    respond_to do |format|
-      format.html { redirect_to dishes_url, notice: 'Dish was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Dish was successfully destroyed."
+    redirect_to event_meal_dishes_path(@event, @meal)
   end
 
   private
@@ -61,6 +59,6 @@ class DishesController < ApplicationController
     end
 
     def dish_params
-      params.require(:dish).permit(:name, :vendor, :servings, :category, :ordered, :vegetarian, :vegan, :gluten_free, :dairy_free, :needs_ice, :transport_method, :transport_time)
+      params.require(:dish).permit(:name, :vendor, :servings, :category, :ordered, :needs_ordering, :vegetarian, :vegan, :gluten_free, :dairy_free, :needs_ice, :transport_method, :transport_time)
     end
 end

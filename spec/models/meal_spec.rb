@@ -8,6 +8,9 @@ describe Meal do
   it { should belong_to :event }
   it { should have_many :dishes }
 
+  let(:dish) { create :dish }
+  let(:meal) { dish.meal }
+
   it "creates a Meal object" do
     event = create :event
     meal = event.meals.create category: "Breakfast"
@@ -32,5 +35,45 @@ describe Meal do
   it "validates category" do
     meal = Meal.new category: "Bad Category", event_id: 1
     expect(meal).to_not be_valid
+  end
+
+  describe "#has_warnings?" do
+    subject { meal.has_warnings? }
+
+    context "when dishes have warnings" do
+      it "raises warnings on the meal" do
+        allow_any_instance_of(Dish).to receive(:has_warnings?).and_return(true)
+        expect(subject).to be true
+      end
+    end
+
+    context "when dishes don't have warnings" do
+      it "doesn't have warnings on the meal" do
+        allow_any_instance_of(Dish).to receive(:has_warnings?).and_return(false)
+        expect(subject).to be false
+      end
+    end
+  end
+
+  describe "#show_warning?" do
+    subject { meal.show_warning? }
+
+    context "when a dish has warnings" do
+      context "when 'ignore_warnings' is true" do
+        before { meal.update ignore_warnings: true }
+
+        it "returns false" do
+          allow_any_instance_of(Dish).to receive(:has_warnings?).and_return(true)
+          expect(subject).to be false
+        end
+      end
+
+      context "when 'ignore_warnings' is false" do
+        it "returns true" do
+          allow_any_instance_of(Dish).to receive(:has_warnings?).and_return(true)
+          expect(subject).to be true
+        end
+      end
+    end
   end
 end

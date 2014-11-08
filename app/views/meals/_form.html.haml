@@ -8,5 +8,7 @@
   = f.number_field :guests, value: @event.guests
   = f.label :start
   = f.datetime_select :start
+  = f.label :ignore_warnings
+  = f.check_box :ignore_warnings
   = f.submit
 

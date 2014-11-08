@@ -10,6 +10,22 @@ class Meal < ActiveRecord::Base
 
   VALID_CATEGORIES = ["Breakfast", "Lunch", "Dinner", "Snack"]
 
+  def has_warnings?
+    dishes.each do |dish|
+      return true if dish.has_warnings?
+    end
+
+    return false
+  end
+
+  def show_warning?
+    if ignore_warnings?
+      false
+    else
+      has_warnings? ? true : false
+    end
+  end
+
   private
 
   def valid_category?

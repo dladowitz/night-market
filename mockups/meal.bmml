@@ -562,7 +562,7 @@
         <text>Vegetarian</text>
       </controlProperties>
     </control>
-    <control controlID="419" controlTypeID="com.balsamiq.mockups::CheckBox" x="758" y="937" w="-1" h="-1" measuredW="57" measuredH="22" zOrder="90" locked="false" isInGroup="-1">
+    <control controlID="419" controlTypeID="com.balsamiq.mockups::CheckBox" x="762" y="937" w="-1" h="-1" measuredW="57" measuredH="22" zOrder="90" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Vegan</text>
       </controlProperties>

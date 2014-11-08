@@ -35,6 +35,24 @@ describe Dish do
     dish = Dish.new transport_method: "Carrier Pigeon", name: "BBQ Sandwiches", category: "Main", meal_id: 1
     expect(dish).to_not be_valid
   end
+
+  describe "#has_warnings?" do
+    subject { dish.has_warnings? }
+
+    context "when the dish has warnings" do
+      let(:dish) { create :dish, needs_ordering: true, ordered: false }
+      it "returns true" do
+        expect(subject).to be true
+      end
+    end
+
+    context "when the dish doesn't have warnings" do
+      let(:dish) { create :dish }
+      it "returns false" do
+        expect(subject).to be false
+      end
+    end
+  end
 end
 
 

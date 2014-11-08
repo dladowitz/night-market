@@ -18,8 +18,12 @@
     = f.label :category
     = f.select :category, [["Main", "Main"], [ "Desert", "Desert"], ["Side1", "Side1"], ["Side2", "Side2"], ["Side3", "Side3"]]
   .field
-    = f.label :ordered
-    = f.check_box :ordered
+    = f.label :needs_ordering
+    = f.check_box :needs_ordering
+  - if @dish.needs_ordering
+    .field
+      = f.label :ordered
+      = f.check_box :ordered
   .field
     = f.label :vegetarian
     = f.check_box :vegetarian

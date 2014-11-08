@@ -59,6 +59,6 @@ class MealsController < ApplicationController
   end
 
   def meal_params
-    params.require(:meal).permit(:category, :guests, :start)
+    params.require(:meal).permit(:category, :guests, :start, :ignore_warnings)
   end
 end

@@ -181,18 +181,32 @@ RSpec.describe DishesController, :type => :controller do
   end
 
   describe "DELETE destroy" do
-    it "destroys the requested dish" do
-      dish = Dish.create! valid_attributes
-      expect {
-        delete :destroy, {:id => dish.to_param}, valid_session
-      }.to change(Dish, :count).by(-1)
+    subject { delete :destroy, event_id: event.id, meal_id: meal.id, id: dish_id}
+
+    context "when the dish is found" do
+      let(:dish_id) { dish.id }
+
+      it "destroys the requested dish" do
+        expect { subject }.to change(Dish, :count).by -1
+      end
+
+      it "redirects to the dishes list" do
+        subject
+        expect(response).to redirect_to event_meal_dishes_path(event, meal)
+      end
     end
 
-    it "redirects to the dishes list" do
-      dish = Dish.create! valid_attributes
-      delete :destroy, {:id => dish.to_param}, valid_session
-      expect(response).to redirect_to(dishes_url)
+    context "when the dish is not found" do
+      let(:dish_id) { "Not a real ID" }
+
+      it "does not delete any records from the database" do
+        expect{ subject }.to_not change{ Dish.count }
+      end
+
+      it "sets @dish to be nil" do
+        subject
+        expect(assigns(:dish)).to be nil
+      end
     end
   end
-
 end

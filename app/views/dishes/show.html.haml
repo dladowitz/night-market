@@ -10,8 +10,14 @@
   %b Category:
   = @dish.category
 %p
+  %b Needs Ordering:
+  = @dish.needs_ordering ? "YES" : "NO"
+%p
   %b Ordered:
-  = @dish.ordered
+  - if @dish.needs_ordering
+    = @dish.ordered ? "YES" : "NO"
+  - else
+    N/A
 %p
   %b Vegetarian:
   = @dish.vegetarian

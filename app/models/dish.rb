@@ -1,19 +1,37 @@
 class Dish < ActiveRecord::Base
   #TODO should move boolean options like vegan and needs_ice out to something else
 
-  validates :name,     presence: true
-  validates :category, presence: true
-  validates :meal_id,  numericality: true, presence: true
-  validates :servings, numericality: true, allow_nil: true
-  validate  :valid_category?
+  validates :category,                presence: true
+  validates :meal_id,                 numericality: true, presence: true
+  validates :name,                    presence: true
+  validates :servings,                numericality: true, allow_nil: true
   validate  :valid_transport_method?, allow_nil: true
+  validate  :valid_category?
 
   belongs_to :meal
 
-  VALID_CATEGORIES = ["Main", "Desert", "Side1", "Side2", "Side3"]
+  VALID_CATEGORIES =        ["Main", "Desert", "Side1", "Side2", "Side3"]
   VALID_TRANSPORT_METHODS = ["Delivery", "Pickup"]
 
+  def has_warnings?
+    return true if order_warning
+    # create methods for anything that causes a warning
+    # iterate over those methods
+    # 1. needs ordering and not ordered
+    # 2. no transport time
+    # 3. servings not enough for meal
+    # 4. no vegi or gluten free if event requires
+    # 5. no ice for soda
+
+    return false
+  end
+
   private
+
+  def order_warning
+    return true if needs_ordering && !ordered
+    return false
+  end
 
   def valid_category?
     unless VALID_CATEGORIES.include? category

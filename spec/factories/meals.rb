@@ -6,5 +6,6 @@ FactoryGirl.define do
     category "Breakfast"
     guests 100
     start 4.days.from_now
+    ignore_warnings false
   end
 end

@@ -1,11 +1,12 @@
 %h1 Listing dishes
 
-%table
+%table.table
   %tr
     %th Name
     %th Vendor
     %th Servings
     %th Category
+    %th Needs Ordering
     %th Ordered
     %th Vegetarian
     %th Vegan
@@ -19,12 +20,18 @@
     %th
 
   - @dishes.each do |dish|
-    %tr
+    %tr{ class: ("danger" if dish.has_warnings?) }
       %td= dish.name
       %td= dish.vendor
       %td= dish.servings
       %td= dish.category
-      %td= dish.ordered
+      %td= dish.needs_ordering ? "YES" : "NO"
+
+      - if dish.needs_ordering
+        %td= dish.ordered ? "YES" : "NO"
+      - else
+        %td N/A
+
       %td= dish.vegetarian
       %td= dish.vegan
       %td= dish.gluten_free

@@ -7,8 +7,11 @@
     Guests:
     = @meal.guests
   %li
-    Start
+    Start:
     = @meal.start
+  %li
+    Ignore Warnings
+    = @meal.ignore_warnings ? "YES" : "NO"
 
 = link_to "All Meals", event_meals_path(@event), class: "btn btn-info"
 = link_to "Dishes", event_meal_dishes_path(@event, @meal), class: "btn btn-info"
