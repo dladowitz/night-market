@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: meals
+#
+#  id              :integer          not null, primary key
+#  category        :string(255)      not null
+#  event_id        :integer          not null
+#  guests          :integer
+#  start           :datetime
+#  created_at      :datetime
+#  updated_at      :datetime
+#  ignore_warnings :boolean
+#
+
 class Meal < ActiveRecord::Base
   validates             :category, presence: true
   validates             :event_id, presence: true,     numericality: true

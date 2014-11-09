@@ -1,10 +1,10 @@
 require "rails_helper"
 
 describe Event do
-  it { should validate_presence_of :name }
-  it { should validate_presence_of :guests }
+  it { should validate_presence_of     :name }
+  it { should validate_presence_of     :guests }
   it { should validate_numericality_of :guests }
-
+  it { should validate_presence_of     :user_id}
   it { should_not validate_presence_of :location }
 
   it { should have_many :meals }

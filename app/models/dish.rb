@@ -1,3 +1,27 @@
+# == Schema Information
+#
+# Table name: dishes
+#
+#  id               :integer          not null, primary key
+#  name             :string(255)      not null
+#  meal_id          :integer          not null
+#  vendor           :string(255)
+#  servings         :integer
+#  category         :string(255)
+#  ordered          :boolean
+#  vegetarian       :boolean
+#  vegan            :boolean
+#  gluten_free      :boolean
+#  dairy_free       :boolean
+#  needs_ice        :boolean
+#  transport_method :string(255)
+#  transport_time   :datetime
+#  created_at       :datetime
+#  updated_at       :datetime
+#  needs_ordering   :boolean
+#  ignore_warnings  :boolean
+#
+
 class Dish < ActiveRecord::Base
   #TODO should move boolean options like vegan and needs_ice out to something else
 
