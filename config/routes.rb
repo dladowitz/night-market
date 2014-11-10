@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root to: "events#index"
 
+  resources :users, only: [:new, :create, :show]
+
+
   resources :events do
     resources :meals do
       resources :dishes

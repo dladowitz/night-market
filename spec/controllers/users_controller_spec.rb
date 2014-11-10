@@ -24,6 +24,10 @@ describe UsersController do
         expect{ subject }.to change{ User.count }.by 1
       end
 
+      it "has a valid factory" do
+        expect{ create :user }.to change{ User.count }.by 1
+      end
+
       it "redirects to the events page" do
         subject
         expect(response).to redirect_to events_path
@@ -31,7 +35,7 @@ describe UsersController do
     end
 
     context "with invalid params" do
-      let(:params) { { email_address: nil, password: nil } }
+      let(:params) { { user: { email_address: nil, password: nil } } }
 
       it "doesn't create a new user in the database" do
         expect{ subject }.to_not change{ User.count }
@@ -43,4 +47,35 @@ describe UsersController do
       end
     end
   end
+
+  describe "GET show" do
+    let(:user) { create :user }
+
+    subject { get :show, id: user_id }
+    before  { subject }
+
+    context "when the user is found in the database" do
+      let(:user_id) { user.id }
+
+      it "finds the correct user" do
+        expect(assigns(:user)).to eq user
+      end
+
+      it "renders the show template" do
+        expect(response).to render_template :show
+      end
+    end
+
+    context "when the user is not found in the database" do
+      let(:user_id) { "Not a real ID" }
+
+      it "does not find any users" do
+        expect(assigns(:user)).to be_nil
+      end
+
+      skip "redirects to the home page" do
+        # need to add an unauthorized guest page
+      end
+    end
+   end
 end
