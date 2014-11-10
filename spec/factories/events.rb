@@ -3,6 +3,7 @@ FactoryGirl.define do
     association :user
     name "Startup Weekend San Francisco"
     guests 99
+    budget 6000
     start_date 3.days.from_now
     end_date   5.days.from_now
   end

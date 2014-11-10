@@ -34,7 +34,7 @@ class Dish < ActiveRecord::Base
 
   belongs_to :meal
 
-  VALID_CATEGORIES =        ["Main", "Desert", "Side1", "Side2", "Side3"]
+  VALID_CATEGORIES =        ["Main", "Desert", "Drinks", "Side1", "Side2", "Side3"]
   VALID_TRANSPORT_METHODS = ["Delivery", "Pickup"]
 
   def has_warnings?

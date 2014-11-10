@@ -10,13 +10,13 @@
     = @event.guests
   %li
     %strong Budget
-    = @event.budget
+    = number_to_currency(@event.budget, precision: 0)
   %li
     %strong Start Date
-    = @event.start_date.to_date
+    = "#{@event.start_date.strftime("%b")} #{@event.start_date.strftime("%-d").to_i.ordinalize}, #{@event.start_date.strftime("%l:%M %p")}"
   %li
     %strong End Date
-    = @event.end_date.to_date
+    = "#{@event.end_date.strftime("%b")} #{@event.end_date.strftime("%-d").to_i.ordinalize}, #{@event.end_date.strftime("%l:%M %p")}"
 
   %li
     %strong Options

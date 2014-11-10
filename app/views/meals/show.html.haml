@@ -1,7 +1,7 @@
 %h1
   = @meal.category
   for
-  = @event.name
+  = link_to @event.name, event_path(@event)
 %ul
   %li
     Guests:

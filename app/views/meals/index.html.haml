@@ -1,6 +1,6 @@
 %h1
   Meals for
-  = @event.name
+  = link_to @event.name, event_path(@event)
 
 %table.table
   %tr
