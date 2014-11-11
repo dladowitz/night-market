@@ -15,4 +15,15 @@ class ApplicationController < ActionController::Base
       redirect_to signin_path
     end
   end
+
+  def require_admin
+    if current_user && current_user.admin?
+      return true
+    elsif current_user
+      flash[:danger] = "You must be an Admin to do that."
+      redirect_to user_path(current_user)
+    else
+      require_user
+    end
+  end
 end

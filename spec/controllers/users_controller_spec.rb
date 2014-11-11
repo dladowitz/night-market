@@ -7,10 +7,32 @@ describe UsersController do
     let(:user1) { create :user }
     let(:user2) { create :user }
     subject { get :index }
-    before  { subject }
 
-    it "finds all users" do
-      expect(assigns[:users]).to match_array [user, user1, user2]
+    it_behaves_like "an_unauthenticated_user" do
+      let(:http_request) { subject }
+    end
+
+    context "with a logged in user" do
+      context "with an admin user" do
+        let(:admin) { create :user, admin: true }
+        before { login_user(admin) && subject }
+
+        it "finds all users" do
+          expect(assigns[:users]).to match_array [user, user1, user2, admin]
+        end
+      end
+
+      context "with a non-admin user" do
+        before  { login_user(user) && subject }
+
+        it "finds no users users" do
+          expect(assigns[:users]).to be_nil
+        end
+
+        it "redirects to show page" do
+          expect(response).to redirect_to user_path(user)
+        end
+      end
     end
   end
 
@@ -63,30 +85,38 @@ describe UsersController do
 
   describe "GET show" do
     subject { get :show, id: user_id }
-    before  { subject }
 
-    context "when the user is found in the database" do
-      let(:user_id) { user.id }
-
-      it "finds the correct user" do
-        expect(assigns(:user)).to eq user
-      end
-
-      it "renders the show template" do
-        expect(response).to render_template :show
-      end
+    it_behaves_like "an_unauthenticated_user" do
+      let(:user_id) { "any" }
+      let(:http_request) { subject }
     end
 
-    context "when the user is not found in the database" do
-      let(:user_id) { "Not a real ID" }
+    context "with a logged in user" do
+      before  { login_user && subject }
 
-      it "does not find any users" do
-        expect(assigns(:user)).to be_nil
+      context "when the user is found in the database" do
+        let(:user_id) { user.id }
+
+        it "finds the correct user" do
+          expect(assigns(:user)).to eq user
+        end
+
+        it "renders the show template" do
+          expect(response).to render_template :show
+        end
       end
 
-      it "redirects to the index page" do
-        expect(response).to redirect_to users_path
+      context "when the user is not found in the database" do
+        let(:user_id) { "Not a real ID" }
+
+        it "does not find any users" do
+          expect(assigns(:user)).to be_nil
+        end
+
+        it "redirects to the index page" do
+          expect(response).to redirect_to users_path
+        end
       end
     end
-   end
+  end
 end
