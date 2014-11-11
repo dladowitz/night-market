@@ -43,4 +43,7 @@ RSpec.configure do |config|
 
   # Include Factory Girl syntax to simplify syntax from: FactoryGirl.create(:category, name: "Comedy")) to: create(:category, name: "Comedy"))
   config.include FactoryGirl::Syntax::Methods
+
+  # Include spec/support/controller_spec_helpers.rb
+  config.include ControllerSpecHelpers, type: :controller
 end

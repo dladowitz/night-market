@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
   def current_user
     User.find session[:user_id] if session[:user_id]
   end
+
+  def require_user
+    unless current_user
+      flash[:danger] = "You must be logged in to do that."
+      redirect_to signin_path
+    end
+  end
 end

@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_filter :load_event, only: [:show, :edit, :update, :destroy]
+  before_action :require_user
+  before_action :load_event, only: [:show, :edit, :update, :destroy]
 
   def index
     @events = Event.all
