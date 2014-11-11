@@ -1,12 +1,14 @@
 require 'rails_helper'
 
 describe SessionsController do
+  let(:user) { create :user }
+
   describe "GET new" do
     subject { get :new }
-    before  { subject }
 
     context "without an authenticated user" do
       it "renders the new template" do
+        subject
         expect(response).to render_template :new
       end
 
@@ -16,14 +18,16 @@ describe SessionsController do
     end
 
     context "with an authenticated user" do
-      skip "redirects to the events page" do
+      before { session[:user_id] = user.id }
+
+      it "redirects to the events page" do
+        subject
         expect(response).to redirect_to events_path
       end
     end
   end
 
   describe "POST create" do
-    let(:user) { create :user }
     subject { post :create, params }
     before  { subject }
 
@@ -67,13 +71,56 @@ describe SessionsController do
         expect(flash[:danger]).to eq "This is not the email address you are looking for."
       end
 
-      it "renders the new templare" do
+      it "renders the new template" do
         expect(response).to render_template :new
       end
     end
 
     context "when password isn't correct" do
       let(:params) { { user: {email_address: user.email_address, password: "bad password"} } }
+
+      it "finds the correct user in the database" do
+        expect(assigns(:user)).to eq user
+      end
+
+      it "renders the new template" do
+        expect(response).to render_template :new
+      end
+
+      it "sets the flash" do
+        expect(flash[:danger]).to eq "That's not your password yo."
+      end
+
+      it "does not set the session" do
+        expect(session[:user_id]).to be_nil
+      end
+    end
+  end
+
+  describe "GET destroy" do #used for signing out via url instead of a link or button {DELETE destroy}
+    subject { get :destroy }
+
+    context "with a logged in user" do
+      before :each do
+        session[:user_id] = user.id
+        subject
+      end
+
+      it "logs the user out" do
+        expect(session[:user_id]).to be_nil
+      end
+
+      it "redirects to the sign in page" do
+        expect(response).to redirect_to signin_path #TODO create signin_path
+      end
+    end
+
+    context "without a logged in user" do
+      before { subject }
+
+      it "redirects to the sign in page" do
+        expect(response).to redirect_to signin_path #TODO create signin_path
+      end
     end
   end
 end

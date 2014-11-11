@@ -5,7 +5,7 @@ FactoryGirl.define do
     first_name      "Walter"
     last_name       "White"
     email_address   { Faker::Internet.email }
-    password_digest "asdfasdf"
+    password        "asdfasdf"
     admin false
   end
 end
