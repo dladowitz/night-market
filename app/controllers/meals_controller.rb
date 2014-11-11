@@ -1,6 +1,7 @@
 class MealsController < ApplicationController
-  before_filter :load_event
-  before_filter :load_meal, only: [:show, :edit, :update, :destroy]
+  before_action :require_user
+  before_action :load_event
+  before_action :load_meal, only: [:show, :edit, :update, :destroy]
 
   def index
     @meals = @event.meals

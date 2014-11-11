@@ -104,7 +104,6 @@ describe EventsController do
           end
         end
       end
-
     end
 
     context "without a logged in user" do
@@ -151,20 +150,28 @@ describe EventsController do
     end
 
     context "without a logged in user" do
-      let(:event_id) { 1 }
+
       let(:http_request) { subject }
+    end
+
+    context "without a logged in user" do
+      it_behaves_like "an_unauthenticated_user" do
+        let(:event_id) { 1 }
+        let(:http_request) { subject }
+      end
     end
   end
 
   describe "GET edit" do
     subject { get :edit, id: event_id }
 
-    before :each do
-      login_user
-      subject
-    end
 
     context "with a logged in user" do
+      before :each do
+        login_user
+        subject
+      end
+
       context "when event is in the database" do
         let(:event_id) { event.id }
         let(:event) { create :event }
@@ -196,8 +203,10 @@ describe EventsController do
     end
 
     context "without a logged in user" do
-      let(:event_id) { 1 }
-      let(:http_request) { subject }
+      it_behaves_like "an_unauthenticated_user" do
+        let(:event_id) { 1 }
+        let(:http_request) { subject }
+      end
     end
   end
 
@@ -269,8 +278,11 @@ describe EventsController do
     end
 
     context "without a logged in user" do
-      let(:params) { { name: "Startup Weekend Boston", guests: 200 } }
-      let(:http_request) { subject }
+      it_behaves_like "an_unauthenticated_user" do
+        let(:event_id) { 1 }
+        let(:params) { { name: "Startup Weekend Boston", guests: 200 } }
+        let(:http_request) { subject }
+      end
     end
   end
 
@@ -309,8 +321,10 @@ describe EventsController do
     end
 
     context "without a logged in user" do
-      let(:event_id) { 1 }
-      let(:http_request) { subject }
+      it_behaves_like "an_unauthenticated_user" do
+        let(:event_id) { 1 }
+        let(:http_request) { subject }
+      end
     end
   end
 end

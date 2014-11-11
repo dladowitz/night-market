@@ -1,4 +1,5 @@
 class DishesController < ApplicationController
+  before_action :require_user
   before_action :set_event_and_meal
   before_action :set_dish, only: [:show, :edit, :update, :destroy]  # before_action is the new name for before_filters
 
