@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   root to: "events#index"
 
-  resources :users,    only: [:new, :create, :show]
+  # verb     /url            "controller#action"       :path_name       notes
+  get       :signout,    to: "sessions#destroy",   as: :signout         #used to signout via a url
+  get       :signin,     to: "sessions#new",       as: :signin
+
+  resources :users,    only: [:create, :show]
   resources :sessions, only: [:new, :create]
 
   resources :events do

@@ -32,7 +32,7 @@ describe SessionsController do
     before  { subject }
 
     context "with correct email and password" do
-      let(:params) { { user: {email_address: user.email_address, password: "asdfasdf"} } }
+      let(:params) { {email_address: user.email_address, password: "asdfasdf"} }
 
       it "finds the correct user in the database" do
         expect(assigns(:user)).to eq user
@@ -43,7 +43,7 @@ describe SessionsController do
       end
 
       it "sets the flash correctly" do
-        expect(flash[:success]).to eq "You did it. Login success!"
+        expect(flash[:success]).to eq "Login success! Have fun storming the castle."
       end
 
       it "redirects to the events page" do
@@ -57,7 +57,7 @@ describe SessionsController do
     end
 
     context "when email is not found in database" do
-      let(:params) { { user: {email_address: "bad_email@gmail.com", password: "asdfasdf"} } }
+      let(:params) { {email_address: "bad_email@gmail.com", password: "asdfasdf"} }
 
       it "assigns @user to nil" do
         expect(assigns(:user)).to be_nil
@@ -77,7 +77,7 @@ describe SessionsController do
     end
 
     context "when password isn't correct" do
-      let(:params) { { user: {email_address: user.email_address, password: "bad password"} } }
+      let(:params) { {email_address: user.email_address, password: "bad password"} }
 
       it "finds the correct user in the database" do
         expect(assigns(:user)).to eq user
@@ -110,6 +110,10 @@ describe SessionsController do
         expect(session[:user_id]).to be_nil
       end
 
+      it "sets the flash" do
+        expect(flash[:success]).to eq "Logged out. Don't be a stranger"
+      end
+
       it "redirects to the sign in page" do
         expect(response).to redirect_to signin_path #TODO create signin_path
       end
@@ -120,6 +124,10 @@ describe SessionsController do
 
       it "redirects to the sign in page" do
         expect(response).to redirect_to signin_path #TODO create signin_path
+      end
+
+      it "sets the flash" do
+        expect(flash[:danger]).to eq "Errr, you can't log out when you aren't logged in. That's science."
       end
     end
   end

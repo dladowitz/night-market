@@ -7,5 +7,10 @@
     = csrf_meta_tags
   %body
     .container
+      .col-xs-3.col-xs-offset-9.title-bar
+        - if current_user
+          = "Welcome #{current_user.first_name || current_user.email_address}"
+          = link_to "Log Out", signout_path
+
       = render "layouts/flash"
       = yield
