@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   def create
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      flash[:success] = "Login success! Have fun storming the castle."
+      flash[:success] = "You did it. Login success!"
       redirect_to events_path
     elsif @user
       flash[:danger] = "That's not your password yo."
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   def destroy
     if current_user
       session[:user_id] = nil
-      flash[:success] = "Logged out. Don't be a stranger"
+      flash[:success] = "Bye Bye. Have fun storming the castle!"
     else
       flash[:danger] = "Errr, you can't log out when you aren't logged in. That's science."
     end

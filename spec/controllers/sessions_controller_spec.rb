@@ -43,7 +43,7 @@ describe SessionsController do
       end
 
       it "sets the flash correctly" do
-        expect(flash[:success]).to eq "Login success! Have fun storming the castle."
+        expect(flash[:success]).to eq "You did it. Login success!"
       end
 
       it "redirects to the events page" do
@@ -111,7 +111,7 @@ describe SessionsController do
       end
 
       it "sets the flash" do
-        expect(flash[:success]).to eq "Logged out. Don't be a stranger"
+        expect(flash[:success]).to eq "Bye Bye. Have fun storming the castle!"
       end
 
       it "redirects to the sign in page" do

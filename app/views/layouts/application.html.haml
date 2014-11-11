@@ -11,6 +11,9 @@
         - if current_user
           = "Welcome #{current_user.first_name || current_user.email_address}"
           = link_to "Log Out", signout_path
+        - else
+          Welcome Guest
+          = link_to "Sign In", signin_path
 
       = render "layouts/flash"
       = yield
