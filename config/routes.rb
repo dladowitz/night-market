@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: "events#index"
 
-  resources :users, only: [:new, :create, :show]
-
+  resources :users,    only: [:new, :create, :show]
+  resources :sessions, only: [:new, :create]
 
   resources :events do
     resources :meals do
