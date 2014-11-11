@@ -1,6 +1,19 @@
 require 'rails_helper'
 
 describe UsersController do
+  let(:user) { create :user }
+
+  describe "GET index" do
+    let(:user1) { create :user }
+    let(:user2) { create :user }
+    subject { get :index }
+    before  { subject }
+
+    it "finds all users" do
+      expect(assigns[:users]).to match_array [user, user1, user2]
+    end
+  end
+
   describe "GET new" do
     subject { get :new }
     before { subject }
@@ -49,8 +62,6 @@ describe UsersController do
   end
 
   describe "GET show" do
-    let(:user) { create :user }
-
     subject { get :show, id: user_id }
     before  { subject }
 
@@ -73,8 +84,8 @@ describe UsersController do
         expect(assigns(:user)).to be_nil
       end
 
-      skip "redirects to the home page" do
-        # need to add an unauthorized guest page
+      it "redirects to the index page" do
+        expect(response).to redirect_to users_path
       end
     end
    end

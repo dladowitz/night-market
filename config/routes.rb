@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get       :signout,    to: "sessions#destroy",   as: :signout         #used to signout via a url
   get       :signin,     to: "sessions#new",       as: :signin
 
-  resources :users,    only: [:create, :show]
-  resources :sessions, only: [:new, :create]
+  resources :users,    only: [:index, :new, :create, :show]
+  resources :sessions, only: [:create]
 
   resources :events do
     resources :meals do
