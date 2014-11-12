@@ -1,15 +1,17 @@
 require 'rails_helper'
 
 describe EventsController do
+  let(:user1)  { create :user }
+  let(:user2)  { create :user }
+  let(:event1) { create :event, user_id: user1.id }
+  let(:event2) { create :event, user_id: user2.id }
+
   describe "GET index" do
     subject { get :index }
 
-    let!(:event1) { create :event }
-    let!(:event2) { create :event }
-
     context "with a logged in user" do
       before :each do
-        login_user
+        login_user(user1)
         subject
       end
 
@@ -17,8 +19,12 @@ describe EventsController do
         expect(response).to render_template :index
       end
 
-      it "finds all events" do
-        expect(assigns(:events)).to match_array [event1, event2]
+      it "finds only the users events" do
+        expect(assigns(:events)).to match_array [event1]
+      end
+
+      it "does not find other users events" do
+        expect(assigns(:events)).to_not include event2
       end
 
       it "shows them chronological order by start date" do
@@ -62,13 +68,17 @@ describe EventsController do
     subject { post :create, event: params }
 
     context "with a logged in user" do
-      before { login_user }
+      before { login_user(user1) }
 
       context "with valid params" do
         let(:params ){ { name: "Startup Weekend Oakland", guests: 55, start_date: 3.days.from_now, end_date: 5.days.from_now } }
 
         it "should create a new object in the database" do
           expect { subject }.to change{Event.count}.by 1
+        end
+
+        it "should create an event belonging to the logged in user" do
+          expect{ subject }.to change{ user1.events.count }.by 1
         end
       end
 
@@ -119,16 +129,27 @@ describe EventsController do
 
     context "with a logged in user" do
       before :each do
-        login_user
+        login_user(user1)
         subject
       end
 
       context "when event is in the database" do
-        let(:event) { create :event }
-        let(:event_id) { event.id }
+        let(:event_id) { event1.id }
 
         it "finds the correct event" do
-          expect(assigns(:event)).to eq event
+          expect(assigns(:event)).to eq event1
+        end
+
+        context "when events do not belong to the user" do
+          let(:event_id) { event2.id }
+
+          it "does not show other users events" do
+            expect(response).to redirect_to events_path
+          end
+
+          it "sets the flash" do
+            expect(flash[:danger]).to eq "Wow tiger. That's not your event."
+          end
         end
       end
 
@@ -150,13 +171,8 @@ describe EventsController do
     end
 
     context "without a logged in user" do
-
-      let(:http_request) { subject }
-    end
-
-    context "without a logged in user" do
       it_behaves_like "an_unauthenticated_user" do
-        let(:event_id) { 1 }
+        let(:event_id) { "any" }
         let(:http_request) { subject }
       end
     end
@@ -168,20 +184,19 @@ describe EventsController do
 
     context "with a logged in user" do
       before :each do
-        login_user
+        login_user(user1)
         subject
       end
 
       context "when event is in the database" do
-        let(:event_id) { event.id }
-        let(:event) { create :event }
+        let(:event_id) { event1.id }
 
         it "renders the edit template" do
           expect(response).to render_template :edit
         end
 
         it "finds the event" do
-          expect(assigns(:event)).to eq event
+          expect(assigns(:event)).to eq event1
         end
       end
 
@@ -214,18 +229,17 @@ describe EventsController do
     subject { patch :update, id: event_id, event: params }
 
     context "with a logged in user" do
-      before { login_user }
+      before { login_user(user1) }
 
       context "when the event is in the database" do
-        let(:event)     { create :event }
-        let(:event_id ) { event.id }
+        let(:event_id ) { event1.id }
 
         context "with valid params" do
           let(:params) { { name: "Startup Weekend Boston", guests: 200 } }
 
           it "updates the event" do
             subject
-            expect(event.reload.name).to eq "Startup Weekend Boston"
+            expect(event1.reload.name).to eq "Startup Weekend Boston"
           end
         end
 
@@ -235,7 +249,7 @@ describe EventsController do
 
             it "does not update the event" do
               subject
-              expect(event.reload.name).to eq "Startup Weekend San Francisco"
+              expect(event1.reload.name).to eq "Startup Weekend San Francisco"
             end
 
             it "renders the edit template" do
@@ -245,12 +259,12 @@ describe EventsController do
           end
 
           context "with bad datatypes" do
-            let(:original_start_date) { event.start_date}
+            let(:original_start_date) { event1.start_date}
             let(:params) { { start_date: "Not a datetime object" } }
 
             it "does not update the event" do
               subject
-              expect(event.reload.start_date).to eq  original_start_date
+              expect(event1.reload.start_date).to eq  original_start_date
             end
           end
         end
@@ -290,11 +304,10 @@ describe EventsController do
     subject { delete :destroy, id: event_id }
 
     context "with a logged user" do
-      before { login_user }
+      before { login_user(user1) }
 
       context "when the event is in the database" do
-        let!(:event_id) { event.id }
-        let!(:event)    { create :event }
+        let!(:event_id) { event1.id }
 
         it "deleted the event from the database" do
           expect { subject }.to change{Event.count}.by -1

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109161957) do
+ActiveRecord::Schema.define(version: 20141109155436) do
 
   create_table "dishes", force: true do |t|
     t.string   "name",             null: false
@@ -19,23 +19,24 @@ ActiveRecord::Schema.define(version: 20141109161957) do
     t.string   "vendor"
     t.integer  "servings"
     t.string   "category"
+    t.boolean  "needs_ordering"
     t.boolean  "ordered"
     t.boolean  "vegetarian"
     t.boolean  "vegan"
     t.boolean  "gluten_free"
     t.boolean  "dairy_free"
     t.boolean  "needs_ice"
+    t.boolean  "ignore_warnings"
     t.string   "transport_method"
     t.datetime "transport_time"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "needs_ordering"
-    t.boolean  "ignore_warnings"
   end
 
   create_table "events", force: true do |t|
-    t.string   "name",                         null: false
-    t.integer  "guests",                       null: false
+    t.string   "name",        null: false
+    t.integer  "guests",      null: false
+    t.integer  "user_id"
     t.string   "location"
     t.datetime "start_date"
     t.datetime "end_date"
@@ -46,7 +47,6 @@ ActiveRecord::Schema.define(version: 20141109161957) do
     t.boolean  "dairy_free"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id",     default: 999999, null: false
   end
 
   create_table "meals", force: true do |t|
@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 20141109161957) do
     t.integer  "event_id",        null: false
     t.integer  "guests"
     t.datetime "start"
+    t.boolean  "ignore_warnings"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "ignore_warnings"
   end
 
   create_table "users", force: true do |t|

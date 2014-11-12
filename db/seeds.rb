@@ -7,13 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 users = User.create([
-  { first_name: "David",  last_name: "Ladowitz", email_address: "david@ladowitz.com",        password: "asdfasdf", admin: true},
-  { first_name: "Walter", last_name: "White",    email_address: "walter_white@jp_wynne.edu", password: "asdfasdf"},
+  { first_name: "David",  last_name: "Ladowitz", email_address: "david@ladowitz.com",     password: "asdfasdf", admin: true},
+  { first_name: "Walter", last_name: "White",    email_address: "walter-white@gmail.com", password: "asdfasdf"},
 ])
 
 events = Event.create([
   { user_id: 1, name: "Startup Weekend San Francisco", location: "San Francisco, CA", guests: 100, budget: 6000, start_date: 1.day.from_now, end_date: 3.days.from_now, vegetarian: true, gluten_free: true },
-  { user_id: 1, name: "Startup Weekend London",        location: "London, England",   guests: 99,  budget: 6000, start_date: 1.day.from_now, end_date: 3.days.from_now, vegan: true }
+  { user_id: 1, name: "Startup Weekend London",        location: "London, England",   guests: 99,  budget: 6000, start_date: 1.day.from_now, end_date: 3.days.from_now, vegan: true },
+  { user_id: 2, name: "Startup Weekend Santa Fe",      location: "Santa Fe, NM",      guests: 100, budget: 6000, start_date: 1.day.from_now, end_date: 3.days.from_now, vegetarian: true, gluten_free: true }
 ])
 
 sf_event =     Event.first

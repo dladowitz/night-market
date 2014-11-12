@@ -1,1 +1,13 @@
 %h1= "Welcome #{@user.first_name}"
+
+%li
+  %strong Full Name:
+  = @user.full_name
+%li
+  %strong Email Address:
+  = @user.email_address
+%li
+  %strong Admin?
+  = @user.admin?
+
+

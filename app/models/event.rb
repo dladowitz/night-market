@@ -5,6 +5,7 @@
 #  id          :integer          not null, primary key
 #  name        :string(255)      not null
 #  guests      :integer          not null
+#  user_id     :integer
 #  location    :string(255)
 #  start_date  :datetime
 #  end_date    :datetime
@@ -15,7 +16,6 @@
 #  dairy_free  :boolean
 #  created_at  :datetime
 #  updated_at  :datetime
-#  user_id     :integer          default(999999), not null
 #
 
 class Event < ActiveRecord::Base
@@ -23,7 +23,7 @@ class Event < ActiveRecord::Base
 
   validates           :name,       presence: true
   validates           :guests,     presence: true, numericality: true
-  validates           :user_id,    presence: true
+  validates           :user_id,    presence: true, numericality: true
   validates_datetime  :start_date, :end_date #TODO change these to start and end
 
   belongs_to :user

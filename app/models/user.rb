@@ -19,4 +19,9 @@ class User < ActiveRecord::Base
   has_many :events
 
   has_secure_password
+
+  #TODO look at making this a decorator or helper
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

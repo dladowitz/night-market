@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
   before_action :require_user
-  before_action :load_event, only: [:show, :edit, :update, :destroy]
+  before_action :load_event,      only: [:show, :edit, :update, :destroy]
 
   def index
-    @events = Event.all
+    @events = current_user.events
   end
 
   def new
@@ -11,7 +11,7 @@ class EventsController < ApplicationController
   end
 
   def create
-     @event = Event.new(event_params)
+     @event = current_user.events.new(event_params)
 
      if @event.save
        flash[:success] = "Nice one. Event created successfully."
@@ -54,6 +54,15 @@ class EventsController < ApplicationController
 
     unless @event
       flash[:danger] = "Easy tiger, that's not an event I've ever heard of."
+      redirect_to events_path and return
+    end
+
+    authorize_event(@event)
+  end
+
+  def authorize_event(event)
+    unless event.user == current_user
+      flash[:danger] = "Wow tiger. That's not your event."
       redirect_to events_path
     end
   end

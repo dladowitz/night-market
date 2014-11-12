@@ -5,4 +5,12 @@ describe User do
   it { should validate_presence_of :email_address }
   it { should validate_uniqueness_of :email_address }
   it { should validate_presence_of :password_digest }
+
+  describe "#full_name" do
+    let(:user) { create :user, first_name: "Gus", last_name: "Fring" }
+
+    it "concatanates first and last name" do
+      expect(user.full_name).to eq "Gus Fring"
+    end
+  end
 end
