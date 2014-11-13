@@ -4,6 +4,7 @@ gem 'rails', '4.1.6'
 
 gem 'bcrypt'
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'cancancan', '~> 1.9'
 gem 'coffee-rails', '~> 4.0.0'
 # gem "font-awesome-rails"
 gem 'haml-rails'

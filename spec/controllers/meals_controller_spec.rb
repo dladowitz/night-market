@@ -1,34 +1,52 @@
 require 'rails_helper'
 
 describe MealsController do
-  let(:meal)  { create :meal}
-  let(:meal2) { event.meals.create category: "Dinner" }
-  let(:event) { meal.event }
+  let(:user)   { create :user }
+  let(:user2)  { create :user }
+  let(:meal)   { event.meals.create category: "Lunch"}
+  let(:meal2)  { event.meals.create category: "Dinner" }
+  let(:meal3)  { event2.meals.create category: "Dinner" }
+  let(:event)  { create :event, user: user }
+  let(:event2) { create :event, user: user2 }
 
   describe "GET index" do
     subject { get :index, event_id: event.id }
 
     it_behaves_like "an_unauthenticated_user" do
-      let(:event_id) { 1 }
+      let(:event_id) { "any" }
       let(:http_request) { subject }
     end
 
     context "with a logged in user" do
       before :each do
-        login_user
+        login_user(user)
         subject
       end
 
-      it "renders the index template" do
-        expect(response).to render_template :index
+      context "when looking at meal for an event the user owns" do
+        it "renders the index template" do
+          expect(response).to render_template :index
+        end
+
+        it "finds the correct event" do
+          expect(assigns(:event)).to eq event
+        end
+
+        it "finds all meals for the event" do
+          expect(assigns(:meals)).to match_array [meal, meal2]
+        end
       end
 
-      it "finds the correct event" do
-        expect(assigns(:event)).to eq event
-      end
+      context "when trying to see meals from other user's events" do
+        subject { get :index, event_id: event2.id }
 
-      it "finds all meals for the event" do  #TODO make this a it_behaves_like for all methods
-        expect(assigns(:meals)).to match_array [meal, meal2]
+        it "doesn't find meals from events of other users" do
+          expect(assigns(:meal)).to be_nil
+        end
+
+        it "redirects to the events page" do
+          expect(response).to redirect_to events_path
+        end
       end
     end
   end
@@ -43,7 +61,7 @@ describe MealsController do
 
     context "with a logged in user" do
       before  :each do
-        login_user
+        login_user(user)
         subject
       end
 
@@ -66,7 +84,7 @@ describe MealsController do
 
     context "with a logged in user" do
       before :each do
-        login_user
+        login_user(user)
         subject
       end
 
@@ -83,7 +101,6 @@ describe MealsController do
   end
 
   describe "POST create" do
-    let(:event) { create :event }
     subject     { post :create, event_id: event.id, meal: meal_params }
 
     it_behaves_like "an_unauthenticated_user" do
@@ -92,7 +109,7 @@ describe MealsController do
     end
 
     context "with a logged in user" do
-      before { login_user }
+      before { login_user(user) }
 
       context "with valid params" do
         let(:meal_params) { { category: "Breakfast"} }
@@ -145,7 +162,7 @@ describe MealsController do
 
     context "with a logged in user" do
       before  :each do
-        login_user
+        login_user(user)
         subject
       end
 
@@ -180,13 +197,13 @@ describe MealsController do
 
     it_behaves_like "an_unauthenticated_user" do
       let(:params)  { { category: "Snack" } }
-      let(:meal_id) { 1 }
+      let(:meal_id) { "any" }
       let(:http_request) { subject }
     end
 
     context "with a logged in user" do
       before  :each do
-        login_user
+        login_user(user)
         subject
       end
 
@@ -205,7 +222,7 @@ describe MealsController do
           let(:params)  { { category: "Hammer Time" } }
 
           it "does not update the meal" do
-            expect(meal.reload.category).to eq "Breakfast"
+            expect(meal.reload.category).to eq "Lunch"
           end
         end
       end
@@ -222,24 +239,24 @@ describe MealsController do
   end
 
   describe "DELETE Destroy" do
-    let!(:meal_3) { create :meal }
-    let!(:event_3) { meal_3.event }
-    subject { delete :destroy, event_id: event_3.id, id: meal_3_id }
+    let!(:meal4) { create :meal, event: event4 }
+    let!(:event4) { create :event, user: user }
+    subject { delete :destroy, event_id: event4.id, id: meal4_id }
 
     it_behaves_like "an_unauthenticated_user" do
-      let(:meal_3_id) { 3 }
+      let(:meal4_id) { "any" }
       let(:http_request) { subject }
     end
 
     context "with a logged in user" do
-      before { login_user }
+      before { login_user(user) }
 
       context "when meal is found in the database" do
-        let(:meal_3_id) { meal_3.id }
+        let(:meal4_id) { meal4.id }
 
         it "finds the correct meal" do
           subject
-          expect(assigns(:meal)).to eq meal_3
+          expect(assigns(:meal)).to eq meal4
         end
 
         it "deletes the meal from the database" do
@@ -248,12 +265,12 @@ describe MealsController do
 
         it "redirects to the event_meals index page" do
           subject
-          expect(response).to redirect_to event_meals_path(event_3)
+          expect(response).to redirect_to event_meals_path(event4)
         end
       end
 
       context "when meal is not found in the database" do
-        let(:meal_3_id) { "Not a real ID" }
+        let(:meal4_id) { "Not a real ID" }
 
         it "doesn't find a meal" do
           subject
@@ -266,7 +283,7 @@ describe MealsController do
 
         it "redirects to the event_meals page" do
           subject
-          expect(response).to redirect_to event_meals_path(event_3)
+          expect(response).to redirect_to event_meals_path(event4)
         end
       end
     end

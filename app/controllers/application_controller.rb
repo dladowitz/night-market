@@ -5,6 +5,17 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user  #makes available in view
 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:danger] = "Access Denied. All your bases are belong to us."
+    redirect_to home_path
+  end
+
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    flash[:danger] = "That's not a thing in the database"
+    redirect_to home_path
+  end
+
+
   def current_user
     User.find session[:user_id] if session[:user_id]
   end

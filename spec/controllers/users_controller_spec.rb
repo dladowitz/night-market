@@ -20,17 +20,21 @@ describe UsersController do
         it "finds all users" do
           expect(assigns[:users]).to match_array [user, user1, user2, admin]
         end
+
+        it "renders the index template" do
+          expect(response).to render_template :index
+        end
       end
 
       context "with a non-admin user" do
         before  { login_user(user) && subject }
 
         it "finds no users users" do
-          expect(assigns[:users]).to be_nil
+          expect(assigns[:users]).to be_empty
         end
 
-        it "redirects to show page" do
-          expect(response).to redirect_to user_path(user)
+        it "redirects to hoe page" do
+          expect(response).to redirect_to home_path
         end
       end
     end
@@ -87,12 +91,12 @@ describe UsersController do
     subject { get :show, id: user_id }
 
     it_behaves_like "an_unauthenticated_user" do
-      let(:user_id) { "any" }
+      let(:user_id) { user.id }
       let(:http_request) { subject }
     end
 
     context "with a logged in user" do
-      before  { login_user && subject }
+      before  { login_user(user) && subject }
 
       context "when the user is found in the database" do
         let(:user_id) { user.id }
@@ -114,7 +118,7 @@ describe UsersController do
         end
 
         it "redirects to the index page" do
-          expect(response).to redirect_to users_path
+          expect(response).to redirect_to home_path
         end
       end
     end

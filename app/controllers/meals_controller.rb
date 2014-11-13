@@ -48,6 +48,8 @@ class MealsController < ApplicationController
 
   def load_event
     @event = Event.find params[:event_id]
+
+    authorize_event(@event)
   end
 
   def load_meal
@@ -56,6 +58,13 @@ class MealsController < ApplicationController
     unless @meal
       flash[:danger] = "Easy friend. That's not a meal I've ever heard of."
       redirect_to event_meals_path(@event)
+    end
+  end
+
+  def authorize_event(event) #TODO consolidate with same method in events_controller
+    unless event.user == current_user
+      flash[:danger] = "Wow tiger. That's not your event."
+      redirect_to events_path
     end
   end
 

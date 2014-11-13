@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  root to: "events#index"
+  root to: "static_pages#home"
 
   # verb     /url            "controller#action"       :path_name       notes
+  get       :home,       to: "static_pages#home",  as: :home
   get       :signout,    to: "sessions#destroy",   as: :signout         #used to signout via a url
   get       :signin,     to: "sessions#new",       as: :signin
 

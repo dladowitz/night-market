@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-  before_action :require_user,  only: :show
-  before_action :require_admin, only: :index
+  # before_action :require_user,  only: [:index, :show]
+  # before_action :require_admin, only: :index
+
+  load_and_authorize_resource
 
   def index
-    @users = User.all
   end
 
   def new
@@ -21,8 +22,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_id params[:id]
-
     unless @user
       redirect_to users_path
     end
