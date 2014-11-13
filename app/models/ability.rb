@@ -7,14 +7,18 @@ class Ability
 
     if current_user.admin?
       can :manage, User
+      can :manage, Event
     else
+      # Users
       can [:new, :create],  User
       can :show, User do |user_record|
         current_user.id == user_record.id
       end
+
+      # Events
+      can [:show, :index], Event
+
     end
-
-
 
 
     # Define abilities for the passed in user here. For example:

@@ -1,9 +1,18 @@
 class EventsController < ApplicationController
-  before_action :require_user
-  before_action :load_event,      only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource except: :index
 
+  # before_action :require_user
+  # before_action :load_event,      only: [:show, :edit, :update, :destroy]
+
+  # For some reason load_resource is returns nothing. So need to load and authorize this way.
   def index
-    @events = current_user.events
+    authorize! :index, Event
+
+    if current_user.admin?
+      @events = Event.all
+    else
+      @events = current_user.events
+    end
   end
 
   def new
