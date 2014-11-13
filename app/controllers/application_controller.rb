@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user  #makes available in view
 
+
+  #TODO move these out to a module
   rescue_from CanCan::AccessDenied do |exception|
     flash[:danger] = "Access Denied. All your bases are belong to us."
     redirect_to home_path
@@ -23,7 +25,7 @@ class ApplicationController < ActionController::Base
   def require_user
     unless current_user
       flash[:danger] = "You must be logged in to do that."
-      redirect_to signin_path
+      redirect_to home_path
     end
   end
 

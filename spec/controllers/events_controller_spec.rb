@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe EventsController do
   let(:user1)  { create :user }
-  let(:user2)  { create :user }
   let(:event1) { create :event, user_id: user1.id }
+  let(:user2)  { create :user }
   let(:event2) { create :event, user_id: user2.id }
 
   describe "GET index" do
@@ -144,11 +144,11 @@ describe EventsController do
           let(:event_id) { event2.id }
 
           it "does not show other users events" do
-            expect(response).to redirect_to events_path
+            expect(response).to redirect_to home_path
           end
 
           it "sets the flash" do
-            expect(flash[:danger]).to eq "Wow tiger. That's not your event."
+            expect(flash[:danger]).to eq "Access Denied. All your bases are belong to us."
           end
         end
       end
@@ -161,11 +161,11 @@ describe EventsController do
         end
 
         it "redirects to the index page" do
-          expect(response).to redirect_to events_path
+          expect(response).to redirect_to home_path
         end
 
         it "sets a flash message" do
-          expect(flash[:danger]).to eq "Easy tiger, that's not an event I've ever heard of."
+          expect(flash[:danger]).to eq "That's not a thing in the database"
         end
       end
     end
@@ -180,7 +180,6 @@ describe EventsController do
 
   describe "GET edit" do
     subject { get :edit, id: event_id }
-
 
     context "with a logged in user" do
       before :each do
@@ -208,11 +207,11 @@ describe EventsController do
         end
 
         it "redirects to the index page" do
-          expect(response).to redirect_to events_path
+          expect(response).to redirect_to home_path
         end
 
         it "sets a flash message" do
-          expect(flash[:danger]).to eq "Easy tiger, that's not an event I've ever heard of."
+          expect(flash[:danger]).to eq "That's not a thing in the database"
         end
       end
     end
@@ -281,12 +280,12 @@ describe EventsController do
 
         it "redirect to the index page" do
           subject
-          expect(response).to redirect_to events_path
+          expect(response).to redirect_to home_path
         end
 
         it "set a flash message" do
           subject
-          expect(flash[:danger]).to eq "Easy tiger, that's not an event I've ever heard of."
+          expect(flash[:danger]).to eq "That's not a thing in the database"
         end
       end
     end
@@ -323,12 +322,12 @@ describe EventsController do
 
         it "redirects to the index page" do
           subject
-          expect(response).to redirect_to events_path
+          expect(response).to redirect_to home_path
         end
 
         it "sets a flash message" do
           subject
-          expect(flash[:danger]).to eq "Easy tiger, that's not an event I've ever heard of."
+          expect(flash[:danger]).to eq "That's not a thing in the database"
         end
       end
     end

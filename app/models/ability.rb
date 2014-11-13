@@ -16,8 +16,10 @@ class Ability
       end
 
       # Events
-      can [:show, :index], Event
-
+      can [:index, :new, :create], Event
+      can [:show, :edit, :update, :destroy], Event do |event|
+        event.user == current_user
+      end
     end
 
 
