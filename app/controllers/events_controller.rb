@@ -2,8 +2,6 @@ class EventsController < ApplicationController
   before_action :require_user
 
   load_and_authorize_resource except: :index
-  # before_action :load_event,      only: [:show, :edit, :update, :destroy]
-
 
   def index
     # For some reason load_resource is returning nothing. So need to load and authorize this way.
@@ -57,22 +55,4 @@ class EventsController < ApplicationController
     params.require(:event).permit(:name, :guests, :location, :start_date, :end_date,
                                   :vegetarian, :vegan, :gluten_free, :dairy_free )
   end
-
-  # def load_event
-  #   @event = Event.find_by_id params[:id]
-  #
-  #   unless @event
-  #     flash[:danger] = "Easy tiger, that's not an event I've ever heard of."
-  #     redirect_to events_path and return
-  #   end
-  #
-  #   authorize_event(@event)
-  # end
-  #
-  # def authorize_event(event)
-  #   unless event.user == current_user
-  #     flash[:danger] = "Wow tiger. That's not your event."
-  #     redirect_to events_path
-  #   end
-  # end
 end

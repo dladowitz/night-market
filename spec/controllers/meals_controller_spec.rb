@@ -2,19 +2,19 @@ require 'rails_helper'
 
 describe MealsController do
   let(:user)   { create :user }
-  let(:user2)  { create :user }
+  let(:event)  { create :event, user: user }
   let(:meal)   { event.meals.create category: "Lunch"}
   let(:meal2)  { event.meals.create category: "Dinner" }
-  let(:meal3)  { event2.meals.create category: "Dinner" }
-  let(:event)  { create :event, user: user }
+
+  let(:user2)  { create :user }
   let(:event2) { create :event, user: user2 }
+  let(:meal3)  { event2.meals.create category: "Dinner" }
 
   describe "GET index" do
-    subject { get :index, event_id: event.id }
 
     it_behaves_like "an_unauthenticated_user" do
       let(:event_id) { "any" }
-      let(:http_request) { subject }
+      let(:http_request) { get :index, event_id: "any" }
     end
 
     context "with a logged in user" do
@@ -24,6 +24,8 @@ describe MealsController do
       end
 
       context "when looking at meal for an event the user owns" do
+        subject { get :index, event_id: event.id }
+
         it "renders the index template" do
           expect(response).to render_template :index
         end
@@ -44,8 +46,8 @@ describe MealsController do
           expect(assigns(:meal)).to be_nil
         end
 
-        it "redirects to the events page" do
-          expect(response).to redirect_to events_path
+        it "redirects to the home page" do
+          expect(response).to redirect_to home_path
         end
       end
     end
@@ -185,8 +187,8 @@ describe MealsController do
           expect(assigns(:meal)).to be_nil
         end
 
-        it "redirects to the event_meals index page" do
-          expect(response).to redirect_to event_meals_path(event)
+        it "redirects to the home page" do
+          expect(response).to redirect_to home_path
         end
       end
     end
@@ -281,9 +283,9 @@ describe MealsController do
           expect{ subject }.to_not change{ Meal.count }
         end
 
-        it "redirects to the event_meals page" do
+        it "redirects to the home page" do
           subject
-          expect(response).to redirect_to event_meals_path(event4)
+          expect(response).to redirect_to home_path
         end
       end
     end

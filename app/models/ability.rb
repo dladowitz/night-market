@@ -8,6 +8,7 @@ class Ability
     if current_user.admin?
       can :manage, User
       can :manage, Event
+      can :manage, Meal
     else
       # Users
       can [:new, :create],  User
@@ -20,6 +21,9 @@ class Ability
       can [:show, :edit, :update, :destroy], Event do |event|
         event.user == current_user
       end
+
+      # Meals
+      can :manage, Meal
     end
 
 

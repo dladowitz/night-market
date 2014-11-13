@@ -1,15 +1,12 @@
 class MealsController < ApplicationController
   before_action :require_user
-  before_action :load_event
-  before_action :load_meal, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :event
+  load_and_authorize_resource :meal, through: :event
 
   def index
-    @meals = @event.meals
   end
 
   def new
-    #TODO build this from @event and add spec to test
-    @meal = Meal.new
   end
 
   def create
@@ -45,28 +42,6 @@ class MealsController < ApplicationController
   end
 
   private
-
-  def load_event
-    @event = Event.find params[:event_id]
-
-    authorize_event(@event)
-  end
-
-  def load_meal
-    @meal = Meal.find_by_id params[:id]
-
-    unless @meal
-      flash[:danger] = "Easy friend. That's not a meal I've ever heard of."
-      redirect_to event_meals_path(@event)
-    end
-  end
-
-  def authorize_event(event) #TODO consolidate with same method in events_controller
-    unless event.user == current_user
-      flash[:danger] = "Wow tiger. That's not your event."
-      redirect_to events_path
-    end
-  end
 
   def meal_params
     params.require(:meal).permit(:category, :guests, :start, :ignore_warnings)

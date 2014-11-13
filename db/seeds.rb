@@ -14,11 +14,12 @@ users = User.create([
 events = Event.create([
   { user_id: 1, name: "Startup Weekend San Francisco", location: "San Francisco, CA", guests: 100, budget: 6000, start_date: 1.day.from_now, end_date: 3.days.from_now, vegetarian: true, gluten_free: true },
   { user_id: 1, name: "Startup Weekend London",        location: "London, England",   guests: 99,  budget: 6000, start_date: 1.day.from_now, end_date: 3.days.from_now, vegan: true },
-  { user_id: 2, name: "Startup Weekend Santa Fe",      location: "Santa Fe, NM",      guests: 100, budget: 6000, start_date: 1.day.from_now, end_date: 3.days.from_now, vegetarian: true, gluten_free: true }
+  { user_id: 2, name: "Startup Weekend Albuquerque",      location: "Albuquerque, NM",      guests: 100, budget: 6000, start_date: 1.day.from_now, end_date: 3.days.from_now, vegetarian: true, gluten_free: true }
 ])
 
 sf_event =     Event.first
 london_event = Event.second
+albuquerque  = Event.third
 
 meals = Meal.create([
   { event: sf_event, category: "Dinner",    guests: 100, start: sf_event.start_date },
@@ -36,6 +37,14 @@ meals = Meal.create([
   { event: london_event, category: "Breakfast", guests: 100, start: london_event.start_date + 32.hours },
   { event: london_event, category: "Lunch",     guests: 100, start: london_event.start_date + 16.hours },
   { event: london_event, category: "Dinner",    guests: 100, start: london_event.start_date + 40.hours },
+
+  { event: albuquerque, category: "Dinner",    guests: 100, start: albuquerque.start_date },
+  { event: albuquerque, category: "Breakfast", guests: 100, start: albuquerque.start_date + 8.hours },
+  { event: albuquerque, category: "Lunch",     guests: 100, start: albuquerque.start_date + 12.hours },
+  { event: albuquerque, category: "Dinner",    guests: 100, start: albuquerque.start_date + 16.hours },
+  { event: albuquerque, category: "Breakfast", guests: 100, start: albuquerque.start_date + 32.hours },
+  { event: albuquerque, category: "Lunch",     guests: 100, start: albuquerque.start_date + 16.hours },
+  { event: albuquerque, category: "Dinner",    guests: 100, start: albuquerque.start_date + 40.hours },
 ])
 
 sf_dinner_1    = sf_event.meals.first
