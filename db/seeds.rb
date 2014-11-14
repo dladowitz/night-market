@@ -49,6 +49,7 @@ meals = Meal.create([
 
 sf_dinner_1    = sf_event.meals.first
 sf_breakfast_1 = sf_event.meals[1]
+albuquerque_breakfast_1 = albuquerque.meals.first
 
 dishes = Dish.create([
   { meal:sf_dinner_1, name: "Sausage Pizza", vendor: "Patxis Pizza", needs_ordering: true,  ordered: false, servings: 75,  category: "Main",   transport_method: "Delivery", transport_time: sf_dinner_1.start - 30.minutes},
@@ -61,6 +62,11 @@ dishes = Dish.create([
   { meal:sf_breakfast_1, name: "Yogurt",   vendor: "Safeway",      needs_ordering: false, ordered: nil,   servings: 75,  category: "Side2",  vegetarian: true, transport_method: "Pickup", transport_time: sf_dinner_1.start - 60.minutes},
   { meal:sf_breakfast_1, name: "Fruit",    vendor: "Safeway",      needs_ordering: false, ordered: false, servings: 100, category: "Side3",  vegetarian: true, vegan: true, gluten_free: true, transport_method: "Pickup", transport_time: sf_dinner_1.start - 60.minutes},
   { meal:sf_breakfast_1, name: "Muffins",  vendor: "Panera",       needs_ordering: true,  ordered: true,  servings: 75,  category: "Side2",  vegetarian: true, vegan: true, transport_method: "Delivery" },
+
+  { meal:albuquerque_breakfast_1, name: "Pastries", vendor: "Panera Bread", needs_ordering: true,  ordered: false, servings: 100, category: "Side1",  vegetarian: true, transport_method: "Delivery", transport_time: sf_dinner_1.start},
+  { meal:albuquerque_breakfast_1, name: "Yogurt",   vendor: "Safeway",      needs_ordering: false, ordered: nil,   servings: 75,  category: "Side2",  vegetarian: true, transport_method: "Pickup", transport_time: sf_dinner_1.start - 60.minutes},
+  { meal:albuquerque_breakfast_1, name: "Fruit",    vendor: "Safeway",      needs_ordering: false, ordered: false, servings: 100, category: "Side3",  vegetarian: true, vegan: true, gluten_free: true, transport_method: "Pickup", transport_time: sf_dinner_1.start - 60.minutes},
+  { meal:albuquerque_breakfast_1, name: "Muffins",  vendor: "Panera",       needs_ordering: true,  ordered: true,  servings: 75,  category: "Side2",  vegetarian: true, vegan: true, transport_method: "Delivery" },
 ])
 
 

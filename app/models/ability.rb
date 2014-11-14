@@ -9,6 +9,7 @@ class Ability
       can :manage, User
       can :manage, Event
       can :manage, Meal
+      can :manage, Dish
     else
       # Users
       can [:new, :create],  User
@@ -23,8 +24,16 @@ class Ability
       end
 
       # Meals
-      can :manage, Meal
+      can :manage, Meal # Dont have to worry about permissions. Already handled on events.
+
+      # Dishes
+      can :manage, Dish # Dont have to worry about permissions. Already handled on events.
     end
+
+
+
+
+
 
 
     # Define abilities for the passed in user here. For example:
