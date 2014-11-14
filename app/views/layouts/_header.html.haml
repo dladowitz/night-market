@@ -1,0 +1,47 @@
+#navbar.navbar.navbar-default
+  :javascript
+    try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+
+  #navbar-container.navbar-container
+
+    / #section:basics/sidebar.mobile.toggle
+    %button#menu-toggler.navbar-toggle.menu-toggler.pull-left{:type => "button"}
+      %span.sr-only Toggle sidebar
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+
+    .navbar-header.pull-left
+
+      / #section:basics/navbar.layout.brand
+      %a.navbar-brand{:href => "/"}
+        %small
+          %i.fa.fa-leaf
+          Night Market - Food Management
+
+    / #section:basics/navbar.dropdown
+    .navbar-buttons.navbar-header.pull-right{:role => "navigation"}
+      %ul.nav.ace-nav
+
+        %li.light-blue
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %img.nav-user-photo{:alt => "Jason's Photo", :src => "../assets/avatars/user.jpg"}/
+            %span.user-info
+              %small Welcome,
+              Jason
+            %i.ace-icon.fa.fa-caret-down
+          %ul.user-menu.dropdown-menu-right.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-close
+            %li
+              %a{:href => "#"}
+                %i.ace-icon.fa.fa-cog
+                Settings
+            %li
+              %a{:href => "profile.html"}
+                %i.ace-icon.fa.fa-user
+                Profile
+            %li.divider
+            %li
+              %a{:href => "#"}
+                %i.ace-icon.fa.fa-power-off
+                Logout
+    / /section:basics/navbar.dropdown

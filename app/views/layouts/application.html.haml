@@ -5,23 +5,33 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body
-    .container
-      .col-xs-4.col-xs-offset-8.title-bar
-        - if current_user
-          Welcome
-          = link_to current_user.first_name, user_path(current_user)
-          |
-          = link_to "Events", events_path
-          |
-          = link_to "Log Out", signout_path
+  %body.no-skin
+    = render "layouts/header"
 
-          -if current_user.admin
+    .main-container#main-container
+      :javascript
+        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+
+      = render "layouts/sidebar"
+
+      .main-content
+        = render "layouts/flash"
+        .col-xs-4.col-xs-offset-8.title-bar
+          - if current_user
+            Welcome
+            = link_to current_user.first_name, user_path(current_user)
             |
-            = link_to "Users", users_path
-        - else
-          Welcome Guest
-          = link_to "Sign In", signin_path
+            = link_to "Events", events_path
+            |
+            = link_to "Log Out", signout_path
 
-      = render "layouts/flash"
-      = yield
+            -if current_user.admin
+              |
+              = link_to "Users", users_path
+          - else
+            Welcome Guest
+            = link_to "Sign In", signin_path
+
+        = yield
+
+

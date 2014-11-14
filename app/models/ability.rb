@@ -6,10 +6,7 @@ class Ability
     current_user ||= User.new #guest user
 
     if current_user.admin?
-      can :manage, User
-      can :manage, Event
-      can :manage, Meal
-      can :manage, Dish
+      can :manage, :all
     else
       # Users
       can [:new, :create],  User

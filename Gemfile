@@ -3,10 +3,10 @@ ruby '2.1.2'
 gem 'rails', '4.1.6'
 
 gem 'bcrypt'
-gem 'bootstrap-sass', '~> 3.2.0'
+# gem 'bootstrap-sass', '~> 3.2.0' bootstrap is being imported through a theme folder
 gem 'cancancan', '~> 1.9'
 gem 'coffee-rails', '~> 4.0.0'
-# gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'

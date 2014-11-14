@@ -41,7 +41,7 @@ class Dish < ActiveRecord::Base
     return true if order_warning
     # create methods for anything that causes a warning
     # iterate over those methods
-    # 1. needs ordering and not ordered
+
     # 2. no transport time
     # 3. servings not enough for meal
     # 4. no vegi or gluten free if event requires
