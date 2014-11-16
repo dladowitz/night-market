@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  layout "guest"
+
   before_action :set_user, only: :create
 
   def new

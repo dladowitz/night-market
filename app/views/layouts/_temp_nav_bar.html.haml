@@ -1,0 +1,15 @@
+.col-xs-4.col-xs-offset-8.title-bar
+  - if current_user
+    Welcome
+    = link_to current_user.first_name, user_path(current_user)
+    |
+    = link_to "Events", events_path
+    |
+    = link_to "Log Out", signout_path
+
+    -if current_user.admin
+      |
+      = link_to "Users", users_path
+  - else
+    Welcome Guest
+    = link_to "Sign In", signin_path
