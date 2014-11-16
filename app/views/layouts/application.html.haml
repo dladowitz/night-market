@@ -15,10 +15,11 @@
       = render "layouts/sidebar"
 
       .main-content
-        = render "layouts/flash"
-        = render "layouts/temp_nav_bar"
+        = render "layouts/breadcrumbs"
+        .page-content
+          = render "layouts/flash"
+          = render "layouts/temp_nav_bar"
 
-
-        = yield
+          = yield
 
 
