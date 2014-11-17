@@ -31,19 +31,30 @@
               = current_user ? current_user.first_name : "Guest"
             %i.ace-icon.fa.fa-caret-down
           %ul.user-menu.dropdown-menu-right.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-close
-            %li
-              %a{:href => "#"}
-                %i.ace-icon.fa.fa-cog
-                Settings
-            %li
-              %a{:href => "profile.html"}
-                %i.ace-icon.fa.fa-user
-                Profile
-            %li.divider
-            %li
-              %a{:href => "/signout"}
-                %i.ace-icon.fa.fa-power-off
-                Logout
+            - if current_user
+              %li
+                %a{:href => "#"}
+                  %i.ace-icon.fa.fa-cog
+                  Settings
+              %li
+                %a{:href => user_path(current_user)}
+                  %i.ace-icon.fa.fa-user
+                  Profile
+              %li.divider
+              %li
+                %a{:href => signout_path}
+                  %i.ace-icon.fa.fa-power-off
+                  Logout
+            - else
+              %li
+                %a{:href => signin_path}
+                  %i.ace-icon.fa.fa-user
+                  Sign In
+              %li
+                %a{:href => signup_path}
+                  %i.ace-icon.fa.fa-user
+                  Sign Up
+
     / /section:basics/navbar.dropdown
 
 

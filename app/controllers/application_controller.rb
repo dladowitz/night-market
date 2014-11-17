@@ -29,6 +29,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def login_user(user)
+    session[:user_id] = user.id
+  end
+
   def require_admin
     if current_user && current_user.admin?
       return true

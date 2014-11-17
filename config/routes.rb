@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get       :home,       to: "static_pages#home",  as: :home
   get       :signout,    to: "sessions#destroy",   as: :signout         #used to signout via a url
   get       :signin,     to: "sessions#new",       as: :signin
+  get       :signup,     to: "users#new",          as: :signup
 
   resources :users,    only: [:index, :new, :create, :show]
   resources :sessions, only: [:create]
