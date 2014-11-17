@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :require_user,  only: [:index, :show]
-  # before_action :require_admin, only: :index
+  before_action :require_user,  only: [:index, :show]
 
   load_and_authorize_resource
 

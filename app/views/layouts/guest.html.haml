@@ -13,9 +13,7 @@
         try{ace.settings.check('main-container' , 'fixed')}catch(e){}
 
       .main-content
-        = render "layouts/flash"
-        = render "layouts/temp_nav_bar"
+        .page-content
+          = render "layouts/flash"
 
-        = yield
-
-
+          = yield

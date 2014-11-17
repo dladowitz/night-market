@@ -24,11 +24,11 @@
       %ul.nav.ace-nav
 
         %li.light-blue
-          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-            %img.nav-user-photo{:alt => "Jason's Photo", :src => "../assets/avatars/user.jpg"}/
+          %a.dropdown-toggle{ :href => "#", data: {toggle:"dropdown"} }
+            = image_tag "user2.jpg", class: "nav-user-photo", alt: "User Photo"
             %span.user-info
               %small Welcome,
-              Jason
+              = current_user ? current_user.first_name : "Guest"
             %i.ace-icon.fa.fa-caret-down
           %ul.user-menu.dropdown-menu-right.dropdown-menu.dropdown-yellow.dropdown-caret.dropdown-close
             %li
@@ -41,7 +41,18 @@
                 Profile
             %li.divider
             %li
-              %a{:href => "#"}
+              %a{:href => "/signout"}
                 %i.ace-icon.fa.fa-power-off
                 Logout
     / /section:basics/navbar.dropdown
+
+
+
+
+
+
+
+
+
+
+

@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   def require_user
     unless current_user
       flash[:danger] = "You must be logged in to do that."
-      redirect_to home_path
+      redirect_to signin_path
     end
   end
 
