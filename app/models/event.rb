@@ -28,4 +28,13 @@ class Event < ActiveRecord::Base
 
   belongs_to :user
   has_many :meals
+
+  def overbudget?
+    current_spend > budget
+  end
+
+  def current_spend
+    # Placeholder for specs. Need to add logic
+    budget + 100
+  end
 end

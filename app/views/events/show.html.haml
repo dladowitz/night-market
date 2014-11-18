@@ -1,50 +1,22 @@
 %h1
-  Event:
   = @event.name
-%ul
-  %li
-    %strong Location
-    = @event.location
-  %li
-    %strong Guests
-    = @event.guests
-  %li
-    %strong Budget
-    = number_to_currency(@event.budget, precision: 0)
-  %li
-    %strong Start Date
-    = "#{@event.start_date.strftime("%b")} #{@event.start_date.strftime("%-d").to_i.ordinalize}, #{@event.start_date.strftime("%l:%M %p")}"
-  %li
-    %strong End Date
-    = "#{@event.end_date.strftime("%b")} #{@event.end_date.strftime("%-d").to_i.ordinalize}, #{@event.end_date.strftime("%l:%M %p")}"
 
-  %li
-    %strong Options
-    %ul
-      %li
-        Vegetarian:
-        - if @event.vegetarian
-          %span.text-success YES
-        - else
-          %span.text-danger NO
-      %li
-        Vegan:
-        - if @event.vegan
-          %span.text-success YES
-        - else
-          %span.text-danger NO
-      %li
-        Gluten-Free:
-        - if @event.gluten_free
-          %span.text-success YES
-        - else
-          %span.text-danger NO
-      %li
-        Dairy-Free:
-        - if @event.dairy_free
-          %span.text-success YES
-        - else
-          %span.text-danger NO
+.row
+  .col-xs-8.widget-container-col
+    .widget-box
+      .widget-header
+        %h5.widget-title
+          Status
+      .widget-body
+        .widget-main
+          %h3
+            Current Spending:
+            - if @event.overbudget?
+              %span.text-danger $#{@event.current_spend}
+              %small.text-danger ($#{@event.current_spend - @event.budget} over budget)
+            - else
+              $#{@event.current_spend}
+
 
 = link_to "Meals", event_meals_path(@event), class: "btn btn-primary"
 = link_to "Edit", edit_event_path(@event), class: "btn btn-warning"
