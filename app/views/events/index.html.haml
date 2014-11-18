@@ -1,23 +1,43 @@
-%h1 Events
+%h1 Your Events
 
-= link_to "New", new_event_path, class: "btn btn-success"
-- if @events
-  - @events.each do |event|
-    %h3= link_to event.name, event_path(event)
-    %ul
-      %li
-        %strong Location
-        = event.location
-      %li
-        %strong Num of Guests
-        = event.guests
-      %li
-        %strong Budget
-        = number_to_currency(event.budget, precision: 0)
-      %li
-        %strong Start
-        = "#{event.start_date.strftime("%b")} #{event.start_date.strftime("%-d").to_i.ordinalize}, #{event.start_date.strftime("%l:%M %p")}"
-      %li
-        %strong End
-        = "#{event.end_date.strftime("%b")} #{event.end_date.strftime("%-d").to_i.ordinalize}, #{event.end_date.strftime("%l:%M %p")}"
+.row
+  - if @events
+    - @events.each do |event|
+      .col-xs-12.col-sm-4.widget-container-col
+        .widget-box
+          .widget-header
+            %h5.widget-title
+              = link_to event.name, event_path(event)
+          .widget-body
+            .widget-main
+              %table
+                %tbody
+                  %t4
+                    %td.col-md-5
+                      %strong Location
+                    %td.col-md-7
+                      = event.location
+                  %tr
+                    %td.col-md-5
+                      %strong Guests
+                    %td.col-md-7
+                      = event.guests
+                  %tr
+                    %td.col-md-5
+                      %strong Budget
+                    %td.col-md-7
+                      = number_to_currency(event.budget, precision: 0)
+                  %tr
+                    %td.col-md-5
+                      %strong Start Date
+                    %td.col-md-7
+                      = "#{event.start_date.strftime("%b")} #{event.start_date.strftime("%-d").to_i.ordinalize}, #{event.start_date.strftime("%l:%M %p")}"
+                  %tr
+                    %td.col-md-5
+                      %strong End Date
+                    %td.col-md-7
+                      = "#{event.end_date.strftime("%b")} #{event.end_date.strftime("%-d").to_i.ordinalize}, #{event.end_date.strftime("%l:%M %p")}"
 
+
+%hr
+= link_to "Create a New Event", new_event_path, class: "btn btn-success"
