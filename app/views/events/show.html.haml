@@ -1,23 +1,59 @@
-%h1
+%h1.mb30
   = @event.name
+  = link_to "Meals", event_meals_path(@event), class: "btn btn-primary"
+  = link_to "Edit", edit_event_path(@event), class: "btn btn-warning"
+  = link_to "Delete", event_path(@event), method: :delete, class: "btn btn-danger", data: { confirm: "Are you, like, for sure?" }
+
 
 .row
   .col-xs-8.widget-container-col
     .widget-box
       .widget-header
-        %h5.widget-title
+        %h2.widget-title
           Status
       .widget-body
         .widget-main
-          %h3
-            Current Spending:
-            - if @event.overbudget?
-              %span.text-danger $#{@event.current_spend}
-              %small.text-danger ($#{@event.current_spend - @event.budget} over budget)
-            - else
-              $#{@event.current_spend}
+          .row.mb20
+            .col-xs-8.col-xs-offset-2
+              %h3
+                Current Spending:
+                = link_to "$#{@event.current_spend}", "#"
+                - if @event.overbudget?
+                  %small.alert-danger $(#{@event.current_spend - @event.budget} over budget)
+          .row
+            .col-xs-6
+              .widget-box
+                .widget-header
+                  %h4.widget-title
+                    Unfinished Meals
+                .widget-body
+                  .widget-main
+                    %ul
+                      %li
+                        %strong Sat Lunch
+                        %ul
+                          %li.text-danger
+                            = link_to "Glutent-Free: Missing", "#", class: "inherit-color"
+                          %li.text-danger
+                            = link_to "Desert: Not Ordered", "#", class: "inherit-color"
+                      %li
+                        %strong Sat Dinner
+                        %ul
+                          %li.text-danger
+                            = link_to "Side2: Not Enough", "#", class: "inherit-color"
+                          %li.text-danger
+                            = link_to "Main: No Pickup Time", "#", class: "inherit-color"
 
+            .col-xs-6
+              .widget-box
+                .widget-header
+                  %h4.widget-title
+                    Missing Supplies
+                .widget-body
+                  .widget-main
+                    %ul
+                      %li.text-danger
+                        = link_to "Napkins: Not Purchased", "#", class: "inherit-color"
+                      %li.text-danger
+                        = link_to "Spoons: Not Purchases", "#", class: "inherit-color"
 
-= link_to "Meals", event_meals_path(@event), class: "btn btn-primary"
-= link_to "Edit", edit_event_path(@event), class: "btn btn-warning"
-= link_to "Delete", event_path(@event), method: :delete, class: "btn btn-danger"
