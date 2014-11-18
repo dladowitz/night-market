@@ -13,7 +13,6 @@
 #  gluten_free :boolean
 #  vegetarian  :boolean
 #  vegan       :boolean
-#  dairy_free  :boolean
 #  created_at  :datetime
 #  updated_at  :datetime
 #

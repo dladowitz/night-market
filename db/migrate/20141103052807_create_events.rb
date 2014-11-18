@@ -11,7 +11,6 @@ class CreateEvents < ActiveRecord::Migration
       t.boolean  :gluten_free
       t.boolean  :vegetarian
       t.boolean  :vegan
-      t.boolean  :dairy_free
 
       t.timestamps
     end

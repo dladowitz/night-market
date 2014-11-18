@@ -7,7 +7,7 @@
 
 .row
   .col-xs-8.widget-container-col
-    .widget-box
+    .widget-box.mb30
       .widget-header
         %h2.widget-title
           Status
@@ -20,6 +20,7 @@
                 = link_to "$#{@event.current_spend}", "#"
                 - if @event.overbudget?
                   %small.alert-danger $(#{@event.current_spend - @event.budget} over budget)
+
           .row
             .col-xs-6
               .widget-box
@@ -57,3 +58,50 @@
                       %li.text-danger
                         = link_to "Spoons: Not Purchases", "#", class: "inherit-color"
 
+    .widget-box
+      .widget-header
+        %h2.widget-title
+          Details
+      .widget-body
+        .widget-main
+          = form_for @event, html: {class: "form-horizontal", role: "form"} do |f|
+            .form-group
+              = f.label :name, "Event Name", class: "col-xs-3 control-label fsize-19"
+              .col-xs-9
+                = f.text_field :name, class: "form-control input-xlarge"
+            .form-group
+              = f.label :location, class: "col-xs-3 control-label"
+              .col-xs-9
+                = f.text_field :location, class: "form-control input-large"
+            .form-group
+              = f.label :guests, "Number of Guests", class: "col-xs-3 control-label"
+              .col-xs-9
+                = f.number_field :guests, class: "form-control input-mini"
+            .form-group
+              = f.label :budget, "Budget ($$)",  class: "col-xs-3 control-label"
+              .col-xs-9
+                = f.number_field :budget, class: "form-control input-small"
+            .form-group
+              = f.label :start_date, class: "col-xs-3 control-label"
+              .col-xs-9
+                = f.datetime_select :start_date, class: "form-control"
+            .form-group
+              = f.label :end_date, class: "col-xs-3 control-label"
+              .col-xs-9
+                = f.datetime_select :end_date, class: "form-control"
+            .form-group
+              .control-label.col-xs-3 Options
+              .col-xs-9
+                %ul.list-inline.fsize-20
+                  %li
+                    = f.label :vegetarian
+                    = f.check_box :vegetarian
+                  %li
+                    = f.label :vegan
+                    = f.check_box :vegan
+                  %li
+                    = f.label :gluten_free
+                    = f.check_box :gluten_free
+            .form-group
+              .col-xs-10.col-xs-offset-3
+                = f.submit class: "btn btn-warning"

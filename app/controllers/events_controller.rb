@@ -53,6 +53,6 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:name, :guests, :budget, :location, :start_date, :end_date,
-                                  :vegetarian, :vegan, :gluten_free, :dairy_free )
+                                  :vegetarian, :vegan, :gluten_free)
   end
 end

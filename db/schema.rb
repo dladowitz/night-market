@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 20141109155436) do
     t.boolean  "gluten_free"
     t.boolean  "vegetarian"
     t.boolean  "vegan"
-    t.boolean  "dairy_free"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
