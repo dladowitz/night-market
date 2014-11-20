@@ -1,0 +1,11 @@
+%h1.mb30 Choose an event to view meals for
+
+.row
+  .col-xs-6
+    %table.table
+      %tbody
+        - @events.each do |event|
+          %tr.fsize-20
+            %td= link_to event.name, event_meals_url(event)
+            %td= "#{event.start_date.strftime("%a, %b")} #{event.start_date.strftime("%-d").to_i.ordinalize}" #TODO Stop the insanity, needs decorator or helper.
+

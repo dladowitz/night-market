@@ -1,9 +1,13 @@
 class MealsController < ApplicationController
   before_action :require_user
-  load_and_authorize_resource :event
-  load_and_authorize_resource :meal, through: :event
+  load_and_authorize_resource :event, except: :event_select
+  load_and_authorize_resource :meal, through: :event, except: :event_select
 
   def index
+  end
+
+  def event_select
+    @events = current_user.events
   end
 
   def new

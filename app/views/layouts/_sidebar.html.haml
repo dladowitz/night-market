@@ -10,12 +10,12 @@
       %b.arrow
     - if current_user.admin?
       %li
-        %a{:href => users_path}
+        %a{href: users_path}
           %i.menu-icon.fa.fa-desktop
           %span.menu-text Users
         %b.arrow
     %li
-      %a{:href => "gallery.html"}
+      %a{href: meals_event_select_path}
         %i.menu-icon.fa.fa-tag
         %span.menu-text Meals
       %b.arrow
@@ -40,10 +40,10 @@
         %span.menu-text Vendors
       %b.arrow
     %li
-      %a{:href => "gallery.html"}
+      %a{href: "gallery.html"}
         %i.menu-icon.fa.fa-list
         %span.menu-text Recommendations
       %b.arrow
 
     .sidebar-toggle.sidebar-collapse#sidebar-collapse
-      %i{class:"ace-icon fa fa-angle-double-left", data: {icon1: "ace-icon fa fa-angle-double-left"}, data: {icon2: "ace-icon fa fa-angle-double-right"}}
+      %i{class: "ace-icon fa fa-angle-double-left", data: {icon1: "ace-icon fa fa-angle-double-left"}, data: {icon2: "ace-icon fa fa-angle-double-right"}}

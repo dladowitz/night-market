@@ -22,7 +22,7 @@ class EventsController < ApplicationController
 
      if @event.save
        flash[:success] = "Nice one. Event created successfully."
-       redirect_to events_path
+       redirect_to event_path(@event)
      else
        flash[:danger] = "Oh Frak, that didn't work."
        render :new

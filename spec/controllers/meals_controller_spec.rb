@@ -53,6 +53,33 @@ describe MealsController do
     end
   end
 
+  describe "GET event_select" do
+    subject { get :event_select }
+
+    # it_behaves_like "an_unauthenticated_user" do
+    #   let(:event_id) { 1 }
+    #   let(:http_request) { subject }
+    # end
+
+    context "with a logged in user" do
+      before  :each do
+        login_user(user)
+        @event2 = create :event, user: user
+        @event3 = create :event, user: user
+        subject
+      end
+
+      it "renders the event_select template" do
+        expect(response).to render_template :event_select
+      end
+
+      it "returns all events the user is authorized for" do
+        expect(assigns(:events)).to match_array [@event2, @event3]
+      end
+    end
+
+  end
+
   describe "GET new" do
     subject { get :new, event_id: event.id }
 

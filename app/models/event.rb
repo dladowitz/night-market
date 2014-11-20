@@ -7,8 +7,8 @@
 #  guests      :integer          not null
 #  user_id     :integer
 #  location    :string(255)
-#  start_date  :datetime
-#  end_date    :datetime
+#  start_date  :date
+#  end_date    :date
 #  budget      :integer
 #  gluten_free :boolean
 #  vegetarian  :boolean

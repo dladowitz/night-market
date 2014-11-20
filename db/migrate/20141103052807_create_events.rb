@@ -5,8 +5,8 @@ class CreateEvents < ActiveRecord::Migration
       t.integer  :guests,         null: false
       t.integer  :user_id
       t.string   :location
-      t.datetime :start_date
-      t.datetime :end_date
+      t.date     :start_date
+      t.date     :end_date
       t.integer  :budget
       t.boolean  :gluten_free
       t.boolean  :vegetarian

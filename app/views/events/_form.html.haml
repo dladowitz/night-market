@@ -1,37 +1,54 @@
 -# TODO surface model errors on fields
 
 
-= form_for @event do |f|
- = f.label :name
- = f.text_field :name
- = f.label :location
- = f.text_field :location
- = f.label :guests
- = f.number_field :guests
- = f.label :budget
- = f.number_field :budget
- = f.label :start_date
- = f.datetime_select :start_date
- = f.label :end_date
- = f.datetime_select :end_date
- = f.label :vegetarian
- = f.radio_button :vegetarian, "0"
- = f.label :vegetarian, "No"
- = f.radio_button :vegetarian, "1"
- = f.label :vegetarian, "YES"
- = f.label :vegan
- = f.radio_button :vegan, "0"
- = f.label :vegan, "No"
- = f.radio_button :vegan, "1"
- = f.label :vegan, "YES"
- = f.label :gluten_free
- = f.radio_button :gluten_free, "0"
- = f.label :gluten_free, "No"
- = f.radio_button :gluten_free, "1"
- = f.label :gluten_free, "YES"
- = f.label :dairy_free
- = f.radio_button :dairy_free, "0"
- = f.label :dairy_free, "No"
- = f.radio_button :dairy_free, "1"
- = f.label :dairy_free, "YES"
- = f.submit
+.widget-box
+  .widget-header
+    %h2.widget-title
+      %i.fa.fa-search
+      Details
+  .widget-body
+    .widget-main
+      = form_for @event, html: {class: "form-horizontal", role: "form"} do |f|
+        .form-group
+          = f.label :name, "Event Name", class: "col-xs-3 control-label fsize-19"
+          .col-xs-9
+            = f.text_field :name, class: "form-control input-xlarge"
+        .form-group
+          = f.label :location, class: "col-xs-3 control-label"
+          .col-xs-9
+            = f.text_field :location, class: "form-control input-large"
+        .form-group
+          = f.label :guests, "Number of Guests", class: "col-xs-3 control-label"
+          .col-xs-9
+            = f.number_field :guests, class: "form-control input-mini"
+        .form-group
+          = f.label :budget, "Budget ($$)",  class: "col-xs-3 control-label"
+          .col-xs-9
+            = f.number_field :budget, class: "form-control input-small"
+
+        .form-group
+          = f.label :date, class: "col-xs-3 control-label"
+          .col-xs-9
+            %ul.list-inline
+              %li.pull-right
+              = f.text_field :start_date, type: "date", class: "input-medium"
+              = f.label :start_date, "Start"
+              = f.text_field :end_date, type: "date", class: "input-medium ml40"
+              = f.label :end_date, "End"
+
+        .form-group
+          .control-label.col-xs-3 Options
+          .col-xs-9
+            %ul.list-inline.fsize-20
+              %li
+                = f.label :vegetarian
+                = f.check_box :vegetarian
+              %li
+                = f.label :vegan
+                = f.check_box :vegan
+              %li
+                = f.label :gluten_free
+                = f.check_box :gluten_free
+        .form-group
+          .col-xs-10.col-xs-offset-3
+            = f.submit class: "btn btn-warning"
