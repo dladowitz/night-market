@@ -1,22 +1,26 @@
-%h1
+%h1.mb30
   Meals for
   = link_to @event.name, event_path(@event)
 
-%table.table
-  %tr
-    %th Meal
-    %th Date
-    %th Fully Planned?
-    %th Ignore Warnings?
+.row
+  .col-xs-7
+    %table.table.table-hover
 
-  - @event.meals.each do |meal|
-    %tr{ class: ("danger" if meal.show_warning?) }
-      %td= link_to meal.category, event_meal_path(@event, meal)
-      %td= "#{meal.start.strftime("%a, %b")} #{meal.start.strftime("%-d").to_i.ordinalize}" #TODO Stop the insanity, needs decorator or helper.
-      %td= "YES" #meal.has_warnings?
-      %td
-        = form_for [@event, meal] do |f|
-          = f.check_box :ignore_warnings
-          = f.submit "update", class: "btn btn-sm btn-warning"
-%hr
-%p= link_to "New Meal", new_event_meal_path, class: "btn btn-success"
+      %tr.fsize-15
+        %th.col-xs-1 Meal
+        %th.center.col-xs-2 Date
+        %th.center.col-xs-2 Fully Planned?
+        %th.center.col-xs-2 Ignore Warnings?
+
+      - @event.meals.each do |meal|
+        %tr.fsize-15{ class: ("danger" if meal.show_warning?) }
+          %td= link_to meal.category, event_meal_path(@event, meal)
+          %td.center= "#{meal.start.strftime("%a, %b")} #{meal.start.strftime("%-d").to_i.ordinalize}" #TODO Stop the insanity, needs decorator or helper.
+          %td.center= "YES" #meal.has_warnings?
+          %td.center
+            = form_for [@event, meal] do |f|
+              = f.check_box :ignore_warnings
+              = f.submit "update", class: "btn btn-xs btn-warning ml10"
+
+    %hr
+    %p= link_to "New Meal", new_event_meal_path, class: "btn btn-success"

@@ -33,7 +33,7 @@ class MealsController < ApplicationController
 
   def update
     if @meal.update meal_params
-      redirect_to event_meal_path(@event, @meal)
+      redirect_to event_meals_path(@event)
     else
       flash[:danger] = "Oh Frak, that didn't work."
       render :edit
