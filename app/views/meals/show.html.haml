@@ -33,41 +33,42 @@
                 = f.number_field :cost, class: "width-20 ml10"
             = f.submit class: "btn btn-warning btn-sm"
 
+    .widget-box.mb30
+      .widget-header
+        .widget-title
+          %span.fsize-20
+            %i.fa.fa-calendar
+          %span.fsize-25
+            Date
+      .widget-body
+        .widget-main
+          = form_for [@event, @meal], html: {class: "horizontal-form", role: "form" } do |f|
+            .col-sm-4
+              .form-group
+                #datetimepicker1.input-group.date
+                  %input.form-control#meal_start{:type => "text", name: "meal[start]", value: @meal.bootrap_datetime_format }
+                  %span.input-group-addon
+                    %span.fa.fa-calendar
+
+            = f.submit class: "btn btn-warning btn-sm"
 
     .widget-box.mb30
       .widget-header
         .widget-title
           %span.fsize-20
-            %i.fa.fa-search
+            %i.fa.fa-user
           %span.fsize-25
-            Details
+            Guests
       .widget-body
         .widget-main
-          = form_for [@event, @meal], html: {class: "form-inline", role: "form" } do |f|
+          = form_for [@event, @meal], html: { class: "form-inline", role: "form" } do |f|
             .checkbox
               %label.fsize-20
                 Guests
                 = f.number_field :guests, class: "width-20 ml10"
-            .checkbox
-              %label.fsize-20
-                Date
-                -#= f.text_field :start, type: "date", class: "input-medium"
-            .checkbox
-              %label.fsize-20
-                Time
-                -#= f.text_field :start, type: "date", class: "input-medium"
-            = f.submit class: "btn btn-warning btn-sm"
+                .form-group
 
-%ul
-  %li
-    Guests:
-    = @meal.guests
-  %li
-    Start:
-    = @meal.start
-  %li
-    Ignore Warnings
-    = @meal.ignore_warnings ? "YES" : "NO"
+            = f.submit class: "btn btn-warning btn-sm"
 
 = link_to "All Meals", event_meals_path(@event), class: "btn btn-info"
 = link_to "Dishes", event_meal_dishes_path(@event, @meal), class: "btn btn-info"
@@ -75,3 +76,16 @@
 = link_to "Edit", edit_event_meal_path(@event, @meal), class: "btn btn-warning"
 = link_to "Delete", event_meal_path(@event, @meal), method: :delete, class: "btn btn-danger", data: { confirm: "Are you, like, for sure?" }
 
+
+
+:javascript
+  $(function () {
+    $('#datetimepicker1').datetimepicker({
+      icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up: "fa fa-arrow-up",
+        down: "fa fa-arrow-down"
+      }
+    });
+  });

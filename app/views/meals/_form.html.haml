@@ -7,7 +7,7 @@
   = f.number_field :guests, value: @event.guests
   .col-sm-3
     .form-group
-      #datetimepicker2.input-group.date
+      #datetimepicker1.input-group.date
         %input.form-control#meal_start{:type => "text", name: "meal[start]", value: @meal.bootrap_datetime_format }
         %span.input-group-addon
           %span.fa.fa-calendar
@@ -19,14 +19,6 @@
 :javascript
   $(function () {
     $('#datetimepicker1').datetimepicker({
-      icons: {
-        time: "fa fa-clock-o",
-        date: "fa fa-calendar",
-        up: "fa fa-arrow-up",
-        down: "fa fa-arrow-down"
-      }
-    });
-    $('#datetimepicker2').datetimepicker({
       icons: {
         time: "fa fa-clock-o",
         date: "fa fa-calendar",
