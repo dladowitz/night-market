@@ -2,7 +2,7 @@ class MealsController < ApplicationController
   before_action :require_user
   load_and_authorize_resource :event, except: :event_select
   load_and_authorize_resource :meal, through: :event, except: :event_select
-  before_action :decorate_meals
+  before_action :decorate_meals, only: [:new, :edit, :show]
 
   def index
   end

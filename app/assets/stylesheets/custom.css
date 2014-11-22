@@ -1,3 +1,9 @@
+/*Misc*/
+.no-lines {
+  border-top: none !important;
+}
+
+
 /*Margings */
 .mb5 {
   margin-bottom: 5px;

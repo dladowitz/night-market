@@ -41,6 +41,29 @@ class Meal < ActiveRecord::Base
     end
   end
 
+  def missing_options
+    #TODO refactor
+
+    event_options = []
+    event_options << "Gluten-Free" if event.gluten_free
+    event_options << "Vegetarian"  if event.gluten_free
+    event_options << "Vegan"       if event.vegan
+
+    meal_options =  []
+    dishes.each do |dish|
+      meal_options << "Gluten-Free" if dish.gluten_free
+      meal_options << "Vegetarian"  if dish.vegetarian
+      meal_options << "Vegan"       if dish.vegan
+    end
+
+    meal_options.uniq!
+
+    missing_options = []
+
+    event_options.each { |option| missing_options << option unless meal_options.include?(option) }
+    missing_options
+  end
+
   private
 
   def valid_category?

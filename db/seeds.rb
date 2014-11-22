@@ -22,30 +22,29 @@ london_event = Event.second
 albuquerque  = Event.third
 
 meals = Meal.create([
-  { event: sf_event, category: "Dinner",    guests: 100, start: DateTime.now + 1.month },
-  # { event: sf_event, category: "Dinner",    guests: 100, time: "2014-01-01 17:00:00 -0800", date: sf_event.start_date },
-  # { event: sf_event, category: "Breakfast", guests: 100, time: "2014-01-01 08:00:00 -0800", date: sf_event.start_date + 1.day },
-  # { event: sf_event, category: "Lunch",     guests: 100, time: "2014-01-01 12:00:00 -0800", date: sf_event.start_date + 1.day },
-  # { event: sf_event, category: "Dinner",    guests: 100, time: "2014-01-01 17:00:00 -0800", date: sf_event.start_date + 1.day },
-  # { event: sf_event, category: "Breakfast", guests: 100, time: "2014-01-01 08:00:00 -0800", date: sf_event.start_date + 2.days },
-  # { event: sf_event, category: "Lunch",     guests: 100, time: "2014-01-01 12:00:00 -0800", date: sf_event.start_date + 2.days },
-  # { event: sf_event, category: "Dinner",    guests: 100, time: "2014-01-01 17:00:00 -0800", date: sf_event.start_date + 2.days },
-  #
-  # { event: london_event, category: "Dinner",    guests: 100, time: "2014-01-01 17:00:00 -0800", date: london_event.start_date },
-  # { event: london_event, category: "Breakfast", guests: 100, time: "2014-01-01 08:00:00 -0800", date: london_event.start_date + 1.days },
-  # { event: london_event, category: "Lunch",     guests: 100, time: "2014-01-01 12:00:00 -0800", date: london_event.start_date + 1.days },
-  # { event: london_event, category: "Dinner",    guests: 100, time: "2014-01-01 17:00:00 -0800", date: london_event.start_date + 1.days },
-  # { event: london_event, category: "Breakfast", guests: 100, time: "2014-01-01 08:00:00 -0800", date: london_event.start_date + 2.days },
-  # { event: london_event, category: "Lunch",     guests: 100, time: "2014-01-01 12:00:00 -0800", date: london_event.start_date + 2.days },
-  # { event: london_event, category: "Dinner",    guests: 100, time: "2014-01-01 17:00:00 -0800", date: london_event.start_date + 2.days },
-  #
-  # { event: albuquerque, category: "Dinner",    guests: 100, time: "2014-01-01 17:00:00 -0800", date: albuquerque.start_date },
-  # { event: albuquerque, category: "Breakfast", guests: 100, time: "2014-01-01 08:00:00 -0800", date: albuquerque.start_date + 1.days },
-  # { event: albuquerque, category: "Lunch",     guests: 100, time: "2014-01-01 12:00:00 -0800", date: albuquerque.start_date + 1.days },
-  # { event: albuquerque, category: "Dinner",    guests: 100, time: "2014-01-01 17:00:00 -0800", date: albuquerque.start_date + 1.days },
-  # { event: albuquerque, category: "Breakfast", guests: 100, time: "2014-01-01 08:00:00 -0800", date: albuquerque.start_date + 2.days },
-  # { event: albuquerque, category: "Lunch",     guests: 100, time: "2014-01-01 12:00:00 -0800", date: albuquerque.start_date + 2.days },
-  # { event: albuquerque, category: "Dinner",    guests: 100, time: "2014-01-01 17:00:00 -0800", date: albuquerque.start_date + 2.days },
+  { event: sf_event, category: "Dinner",    guests: 100, start: "2015-11-20T:18:00-08:00" },
+  { event: sf_event, category: "Breakfast", guests: 100, start: "2015-11-21T:09:00-08:00" },
+  { event: sf_event, category: "Lunch",     guests: 100, start: "2015-11-21T:12:00-08:00" },
+  { event: sf_event, category: "Dinner",    guests: 100, start: "2015-11-21T:18:00-08:00" },
+  { event: sf_event, category: "Breakfast", guests: 100, start: "2015-11-22T:09:00-08:00" },
+  { event: sf_event, category: "Lunch",     guests: 100, start: "2015-11-22T:11:00-08:00" },
+  { event: sf_event, category: "Dinner",    guests: 100, start: "2015-11-22T:15:00-08:00" },
+
+  { event: london_event, category: "Dinner",    guests: 100, start: "2015-11-20T:18:00-08:00" },
+  { event: london_event, category: "Breakfast", guests: 100, start: "2015-11-21T:09:00-08:00" },
+  { event: london_event, category: "Lunch",     guests: 100, start: "2015-11-21T:12:00-08:00" },
+  { event: london_event, category: "Dinner",    guests: 100, start: "2015-11-22T:18:00-08:00" },
+  { event: london_event, category: "Breakfast", guests: 100, start: "2015-11-22T:09:00-08:00" },
+  { event: london_event, category: "Lunch",     guests: 100, start: "2015-11-22T:12:00-08:00" },
+  { event: london_event, category: "Dinner",    guests: 100, start: "2015-11-20T:17:00-08:00" },
+
+  { event: albuquerque, category: "Dinner",    guests: 100, start: "2015-11-20T:18:00-08:00" },
+  { event: albuquerque, category: "Breakfast", guests: 100, start: "2015-11-21T:09:00-08:00" },
+  { event: albuquerque, category: "Lunch",     guests: 100, start: "2015-11-21T:12:00-08:00" },
+  { event: albuquerque, category: "Dinner",    guests: 100, start: "2015-11-22T:18:00-08:00" },
+  { event: albuquerque, category: "Breakfast", guests: 100, start: "2015-11-22T:09:00-08:00" },
+  { event: albuquerque, category: "Lunch",     guests: 100, start: "2015-11-22T:12:00-08:00" },
+  { event: albuquerque, category: "Dinner",    guests: 100, start: "2015-11-20T:17:00-08:00" },
 ])
 
 sf_dinner_1    = sf_event.meals.first

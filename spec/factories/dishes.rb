@@ -11,7 +11,6 @@ FactoryGirl.define do
     vegetarian  true
     vegan       false
     gluten_free false
-    dairy_free  false
     needs_ice   false
     transport_method "Pickup"
     transport_time 4.days.from_now

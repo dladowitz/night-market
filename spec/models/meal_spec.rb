@@ -76,4 +76,27 @@ describe Meal do
       end
     end
   end
+
+  describe "#missing_options" do
+    subject { meal2.missing_options }
+    let!(:event2) { create :event, gluten_free: true, vegetarian: true, vegan: true }
+    let!(:meal2)  { create :meal, event: event2 }
+
+    context "when the meal is missing options" do
+      before { create :dish, meal: meal2 }
+
+      it "returns missing options" do
+        expect(subject).to match_array ["Gluten-Free", "Vegan"]
+      end
+    end
+
+    context "when the meal is not missing options" do
+      before { create :dish, meal: meal2, gluten_free: true, vegetarian: true, vegan: true }
+
+      it "returns an empty array" do
+        expect(subject).to match_array []
+
+      end
+    end
+  end
 end

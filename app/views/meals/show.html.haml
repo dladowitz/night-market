@@ -4,8 +4,8 @@
   = link_to @event.name, event_path(@event)
 
 .row
-  .col-xs-8.widget-container-col
-    .widget-box.mb20
+  .col-sm-8
+    .widget-box.transparent
       .widget-header
         .widget-title
           %span.fsize-20
@@ -14,65 +14,105 @@
             Status
       .widget-body
         .widget-main
-          %li Thing One
-          %li Thing Two
+          %table.table.table-hover
+            %thead
+              %tr
+                %th.no-lines
+                %th.no-lines Amount
+                %th.no-lines Ordered
+                %th.no-lines Transport
+            %tbody
+              - @meal.dishes.each do |dish|
+                %tr
+                  %td.no-lines= dish.category
+                  %td.no-lines= dish.servings
+                  %td.no-lines= dish.ordered ? "Yes" : "No"
+                  %td.no-lines= dish.transport_method#
 
-    .widget-box.mb20
+  .col-sm-4
+    .widget-box.mb20.transparent
       .widget-header
         .widget-title
           %span.fsize-20
-            %i.fa.fa-dollar
+            %i.fa.fa-bar-chart
           %span.fsize-25
-            Costs
+            Options
       .widget-body
         .widget-main
-          = form_for [@event, @meal], html: { class: "form-inline", role: "form" } do |f|
-            .checkbox
-              %label.fsize-20
-                Total cost for this meal
-                = f.number_field :cost, class: "width-20 ml10"
-            = f.submit class: "btn btn-warning btn-sm"
+          %table.table
+            %thead
+              %tr
+                %th Missing Options
+                %th Ignore
+            %tbody
+              - @meal.missing_options.each do |option|
+                %tr
+                  %td= option
+                  %td No
 
-    .widget-box.mb30
-      .widget-header
-        .widget-title
-          %span.fsize-20
-            %i.fa.fa-calendar
-          %span.fsize-25
-            Date
-      .widget-body
-        .widget-main
-          = form_for [@event, @meal], html: {class: "horizontal-form", role: "form" } do |f|
-            .col-sm-4
+
+.row
+  .col-sm-12
+    .col-sm-4
+      .widget-box.mb20.transparent
+        .widget-header
+          .widget-title
+            %span.fsize-20
+              %i.fa.fa-dollar
+            %span.fsize-25
+              Costs
+        .widget-body
+          .widget-main
+            = form_for [@event, @meal], html: { class: "horizontal-form", role: "form" } do |f|
+              .form-group
+                =f.label :cost, "Current Cost ($)", class: "control-label col-sm-5"
+                .col-sm-7
+                  = f.number_field :cost, class: "form-control input-mini"
+              .form-group
+                .col-sm-5
+                  = f.submit class: "btn btn-warning btn-sm"
+    .col-sm-4
+      .widget-box.mb30.transparent
+        .widget-header
+          .widget-title
+            %span.fsize-20
+              %i.fa.fa-user
+            %span.fsize-25
+              Guests
+        .widget-body
+          .widget-main
+            = form_for [@event, @meal], html: { class: "horizontal-form", role: "form" } do |f|
+              .form-group
+                =f.label :guests, "Number of Guests", class: "control-label col-sm-5"
+                .col-sm-7
+                  = f.number_field :guests, class: "form-control input-mini"
+              .form-group
+                .col-sm-5
+                  = f.submit class: "btn btn-warning btn-sm"
+    .col-sm-4
+      .widget-box.mb30.transparent
+        .widget-header
+          .widget-title
+            %span.fsize-20
+              %i.fa.fa-calendar
+            %span.fsize-25
+              Date
+        .widget-body
+          .widget-main
+            = form_for [@event, @meal], html: { role: "form" } do |f|
               .form-group
                 #datetimepicker1.input-group.date
                   %input.form-control#meal_start{:type => "text", name: "meal[start]", value: @meal.bootrap_datetime_format }
                   %span.input-group-addon
                     %span.fa.fa-calendar
+              .form-group
+                = f.submit class: "btn btn-warning btn-sm"
 
-            = f.submit class: "btn btn-warning btn-sm"
 
-    .widget-box.mb30
-      .widget-header
-        .widget-title
-          %span.fsize-20
-            %i.fa.fa-user
-          %span.fsize-25
-            Guests
-      .widget-body
-        .widget-main
-          = form_for [@event, @meal], html: { class: "form-inline", role: "form" } do |f|
-            .checkbox
-              %label.fsize-20
-                Guests
-                = f.number_field :guests, class: "width-20 ml10"
-                .form-group
 
-            = f.submit class: "btn btn-warning btn-sm"
 
 = link_to "All Meals", event_meals_path(@event), class: "btn btn-info"
 = link_to "Dishes", event_meal_dishes_path(@event, @meal), class: "btn btn-info"
-= link_to "Event", event_path(@event), class: "btn btn-primary"
 = link_to "Edit", edit_event_meal_path(@event, @meal), class: "btn btn-warning"
 = link_to "Delete", event_meal_path(@event, @meal), method: :delete, class: "btn btn-danger", data: { confirm: "Are you, like, for sure?" }
 
