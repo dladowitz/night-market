@@ -1,7 +1,13 @@
-%h1
+-#TODO add ability to change category field
+
+%h1.mb30
   = @meal.category
   for
   = link_to @event.name, event_path(@event)
+
+  = link_to "Dishes", event_meal_dishes_path(@event, @meal), class: "btn btn-info"
+  = link_to "Meals", event_meals_path(@event), class: "btn btn-primary"
+  = link_to "Delete", event_meal_path(@event, @meal), method: :delete, class: "btn btn-danger", data: { confirm: "Are you, like, for sure?" }
 
 .row
   .col-sm-8
@@ -46,7 +52,7 @@
                 %th Ignore
             %tbody
               - @meal.missing_options.each do |option|
-                %tr
+                %tr.text-danger
                   %td= option
                   %td No
 
@@ -108,16 +114,7 @@
               .form-group
                 = f.submit class: "btn btn-warning btn-sm"
 
-
-
-
-= link_to "All Meals", event_meals_path(@event), class: "btn btn-info"
-= link_to "Dishes", event_meal_dishes_path(@event, @meal), class: "btn btn-info"
-= link_to "Edit", edit_event_meal_path(@event, @meal), class: "btn btn-warning"
-= link_to "Delete", event_meal_path(@event, @meal), method: :delete, class: "btn btn-danger", data: { confirm: "Are you, like, for sure?" }
-
-
-
+-#todo consolidate this with _form
 :javascript
   $(function () {
     $('#datetimepicker1').datetimepicker({
