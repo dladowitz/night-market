@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require ace
 //= require ace-elements
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .

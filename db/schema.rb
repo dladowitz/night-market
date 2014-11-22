@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20141109155436) do
   create_table "meals", force: true do |t|
     t.string   "category",        null: false
     t.integer  "event_id",        null: false
+    t.integer  "cost"
     t.integer  "guests"
     t.datetime "start"
     t.boolean  "ignore_warnings"

@@ -4,17 +4,18 @@ gem 'rails', '4.1.6'
 
 gem 'bcrypt'
 # gem 'bootstrap-sass', '~> 3.2.0' bootstrap is being imported through a theme folder
+gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 gem 'cancancan', '~> 1.9'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'draper', '~> 1.3'
 gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
+gem 'momentjs-rails', '>= 2.8.1'
 gem 'sass-rails', '~> 4.0.3'
-
 # gem 'validates_timeliness', '~> 3.0' #TODO Move back to official version on Rails 4.2. Currently throwing deprecation warnings in rspec.
 gem 'validates_timeliness', github: 'razum2um/validates_timeliness', ref: 'b195081f6aeead619430ad38b0f0dfe4d4981252'
-
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 

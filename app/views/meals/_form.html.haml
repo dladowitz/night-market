@@ -1,14 +1,38 @@
 -# TODO surface model errors on fields
 
-
 = form_for [@event, @meal] do |f|
   = f.label :category
   = f.select :category, [["Breakfast", "Breakfast"], ["Lunch", "Lunch"], ["Dinner", "Dinner"], ["Snack", "Snack"]]
   = f.label :guests
   = f.number_field :guests, value: @event.guests
-  = f.label :start
-  = f.datetime_select :start
+  .col-sm-3
+    .form-group
+      #datetimepicker2.input-group.date
+        %input.form-control#meal_start{:type => "text", name: "meal[start]", value: @meal.bootrap_datetime_format }
+        %span.input-group-addon
+          %span.fa.fa-calendar
+
   = f.label :ignore_warnings
   = f.check_box :ignore_warnings
   = f.submit
+
+:javascript
+  $(function () {
+    $('#datetimepicker1').datetimepicker({
+      icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up: "fa fa-arrow-up",
+        down: "fa fa-arrow-down"
+      }
+    });
+    $('#datetimepicker2').datetimepicker({
+      icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up: "fa fa-arrow-up",
+        down: "fa fa-arrow-down"
+      }
+    });
+  });
 

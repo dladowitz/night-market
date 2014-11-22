@@ -2,6 +2,62 @@
   = @meal.category
   for
   = link_to @event.name, event_path(@event)
+
+.row
+  .col-xs-8.widget-container-col
+    .widget-box.mb20
+      .widget-header
+        .widget-title
+          %span.fsize-20
+            %i.fa.fa-bar-chart
+          %span.fsize-25
+            Status
+      .widget-body
+        .widget-main
+          %li Thing One
+          %li Thing Two
+
+    .widget-box.mb20
+      .widget-header
+        .widget-title
+          %span.fsize-20
+            %i.fa.fa-dollar
+          %span.fsize-25
+            Costs
+      .widget-body
+        .widget-main
+          = form_for [@event, @meal], html: { class: "form-inline", role: "form" } do |f|
+            .checkbox
+              %label.fsize-20
+                Total cost for this meal
+                = f.number_field :cost, class: "width-20 ml10"
+            = f.submit class: "btn btn-warning btn-sm"
+
+
+    .widget-box.mb30
+      .widget-header
+        .widget-title
+          %span.fsize-20
+            %i.fa.fa-search
+          %span.fsize-25
+            Details
+      .widget-body
+        .widget-main
+          = form_for [@event, @meal], html: {class: "form-inline", role: "form" } do |f|
+            .checkbox
+              %label.fsize-20
+                Guests
+                = f.number_field :guests, class: "width-20 ml10"
+            .checkbox
+              %label.fsize-20
+                Date
+                -#= f.text_field :start, type: "date", class: "input-medium"
+            .checkbox
+              %label.fsize-20
+                Time
+                -#= f.text_field :start, type: "date", class: "input-medium"
+            = f.submit class: "btn btn-warning btn-sm"
+
 %ul
   %li
     Guests:

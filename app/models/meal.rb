@@ -5,18 +5,19 @@
 #  id              :integer          not null, primary key
 #  category        :string(255)      not null
 #  event_id        :integer          not null
+#  cost            :integer
 #  guests          :integer
 #  start           :datetime
+#  ignore_warnings :boolean
 #  created_at      :datetime
 #  updated_at      :datetime
-#  ignore_warnings :boolean
 #
 
 class Meal < ActiveRecord::Base
   validates             :category, presence: true
   validates             :event_id, presence: true,     numericality: true
   validates             :guests,   numericality: true, allow_nil: true
-  validates_datetime    :start,    allow_nil:    true
+  # validates_datetime    :start,    allow_nil:    true
   validate              :valid_category?
 
   belongs_to :event
