@@ -50,6 +50,30 @@ class Dish < ActiveRecord::Base
     return false
   end
 
+  def order_status
+    if needs_ordering
+      ordered ? "Already Ordered" : "Needs to be Ordered"
+    else
+      "Doesn't Require Ordering"
+    end
+  end
+
+  def transport_warning
+    if transport_method == "Delivery"
+      transport_time.present? ? false : true
+    else
+      false
+    end
+  end
+
+  def servings_warning
+    same_category_dishes = self.meal.dishes.where(category: category)
+
+    servings_in_category = same_category_dishes.inject(0) { |sum, dish| sum + dish.servings }
+
+    servings_in_category < meal.guests ? true : false
+  end
+
   private
 
   def order_warning

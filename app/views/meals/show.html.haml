@@ -1,4 +1,5 @@
 -#TODO add ability to change category field
+-#TODO clean up all this presentation logic. No really sure how. Helpers and Decorators shouldn't have a bunch of html in them
 
 %h1.mb30
   = @meal.category
@@ -8,6 +9,8 @@
   = link_to "Dishes", event_meal_dishes_path(@event, @meal), class: "btn btn-info"
   = link_to "Meals", event_meals_path(@event), class: "btn btn-primary"
   = link_to "Delete", event_meal_path(@event, @meal), method: :delete, class: "btn btn-danger", data: { confirm: "Are you, like, for sure?" }
+
+
 
 .row
   .col-sm-12
@@ -24,29 +27,35 @@
             %table.table.table-hover
               %thead
                 %tr
-                  %th.no-lines
-                  %th.no-lines Amount
-                  %th.no-lines Needs Ordering
-                  %th.no-lines Ordered
-                  %th.no-lines Transport
+                  %th.no-lines Type
+                  %th.no-lines Servings
+                  %th.no-lines Transport Method
+                  %th.no-lines Order Status
               %tbody
                 - @meal.dishes.each do |dish|
                   %tr
                     %td.no-lines= dish.category
-                    %td.no-lines= dish.servings
-                    %td.no-lines= dish.needs_ordering ? "Yes" : "No"
 
-                    - if dish.needs_ordering
-                      - if dish.ordered
-                        %td.no-lines Yes
-                      -else
-                        %td.no-lines
-                          %span.text-danger.fa.fa-warning
-                          %span.text-danger No
+                    - if dish.servings_warning
+                      %td.text-danger.no-lines
+                        %span.fa.fa-warning
+                        %span= dish.servings
                     -else
-                      %td.no-lines N/A
+                      %td.no-lines
+                        %strong= dish.servings
+                    %td.no-lines
+                      - if dish.transport_warning
+                        %span.text-danger.fa.fa-warning
+                        %span.text-danger= dish.transport_method
+                      -else
+                        = dish.transport_method
 
-                    %td.no-lines= dish.transport_method
+                    - if dish.order_status == "Needs to be Ordered"
+                      %td.no-lines.text-danger
+                        %span.fa.fa-warning
+                        %span= dish.order_status
+                    -else
+                      %td.no-lines= dish.order_status
 
     .col-sm-4#missing-options
       .widget-box.mb20.transparent
@@ -67,7 +76,7 @@
                 - @meal.missing_options.each do |option|
                   %tr.text-danger
                     %td
-                      %span.text-danger.fa.fa-warning
+                      %span.fa.fa-warning
                       %span= option
                     %td No
 

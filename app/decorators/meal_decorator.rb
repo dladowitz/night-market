@@ -14,4 +14,5 @@ class MealDecorator < Draper::Decorator
     datetime = object.start ? object.start : DateTime.now
     datetime.strftime("%m/%d/%Y %l:%M %p")
   end
+
 end
