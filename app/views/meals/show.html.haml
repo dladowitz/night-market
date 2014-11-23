@@ -10,51 +10,66 @@
   = link_to "Delete", event_meal_path(@event, @meal), method: :delete, class: "btn btn-danger", data: { confirm: "Are you, like, for sure?" }
 
 .row
-  .col-sm-8
-    .widget-box.transparent
-      .widget-header
-        .widget-title
-          %span.fsize-20
-            %i.fa.fa-bar-chart
-          %span.fsize-25
-            Status
-      .widget-body
-        .widget-main
-          %table.table.table-hover
-            %thead
-              %tr
-                %th.no-lines
-                %th.no-lines Amount
-                %th.no-lines Ordered
-                %th.no-lines Transport
-            %tbody
-              - @meal.dishes.each do |dish|
+  .col-sm-12
+    .col-sm-8#status
+      .widget-box.transparent
+        .widget-header
+          .widget-title
+            %span.fsize-20
+              %i.fa.fa-bar-chart
+            %span.fsize-25
+              Status
+        .widget-body
+          .widget-main
+            %table.table.table-hover
+              %thead
                 %tr
-                  %td.no-lines= dish.category
-                  %td.no-lines= dish.servings
-                  %td.no-lines= dish.ordered ? "Yes" : "No"
-                  %td.no-lines= dish.transport_method#
+                  %th.no-lines
+                  %th.no-lines Amount
+                  %th.no-lines Needs Ordering
+                  %th.no-lines Ordered
+                  %th.no-lines Transport
+              %tbody
+                - @meal.dishes.each do |dish|
+                  %tr
+                    %td.no-lines= dish.category
+                    %td.no-lines= dish.servings
+                    %td.no-lines= dish.needs_ordering ? "Yes" : "No"
 
-  .col-sm-4
-    .widget-box.mb20.transparent
-      .widget-header
-        .widget-title
-          %span.fsize-20
-            %i.fa.fa-bar-chart
-          %span.fsize-25
-            Options
-      .widget-body
-        .widget-main
-          %table.table
-            %thead
-              %tr
-                %th Missing Options
-                %th Ignore
-            %tbody
-              - @meal.missing_options.each do |option|
-                %tr.text-danger
-                  %td= option
-                  %td No
+                    - if dish.needs_ordering
+                      - if dish.ordered
+                        %td.no-lines Yes
+                      -else
+                        %td.no-lines
+                          %span.text-danger.fa.fa-warning
+                          %span.text-danger No
+                    -else
+                      %td.no-lines N/A
+
+                    %td.no-lines= dish.transport_method
+
+    .col-sm-4#missing-options
+      .widget-box.mb20.transparent
+        .widget-header
+          .widget-title
+            %span.fsize-20
+              %i.fa.fa-bar-chart
+            %span.fsize-25
+              Options
+        .widget-body
+          .widget-main
+            %table.table
+              %thead
+                %tr
+                  %th Missing Options
+                  %th Ignore
+              %tbody
+                - @meal.missing_options.each do |option|
+                  %tr.text-danger
+                    %td
+                      %span.text-danger.fa.fa-warning
+                      %span= option
+                    %td No
 
 
 .row
