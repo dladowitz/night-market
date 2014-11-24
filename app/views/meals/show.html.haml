@@ -11,7 +11,7 @@
   = link_to "Meals", event_meals_path(@event), class: "btn btn-primary"
   = link_to "Delete", event_meal_path(@event, @meal), method: :delete, class: "btn btn-danger", data: { confirm: "Are you, like, for sure?" }
 
-.row
+.row#status
   .col-sm-12
     .col-sm-8#status
       .widget-box.transparent
@@ -73,61 +73,33 @@
                       %span.fa.fa-warning{ title: "What are the #{option} folks gonna eat?", data: {toggle: "tooltip"}}
                     %td No
 
-
-.row
-  .col-sm-12
-    .col-sm-4
-      .widget-box.mb20.transparent
-        .widget-header
-          .widget-title
-            %span.fsize-20
-              %i.fa.fa-dollar
-            %span.fsize-25
-              Costs
-        .widget-body
-          .widget-main
-            = form_for [@event, @meal], html: { class: "horizontal-form", role: "form" } do |f|
-              .form-group
-                =f.label :cost, "Total Meal Cost", class: "control-label col-sm-5"
-                .col-sm-7
-                  = f.number_field :cost, class: "form-control input-small", placeholder: "$#{@meal.cost}", value: nil
-              .form-group
-                .col-sm-5
-                  = f.submit class: "btn btn-warning btn-sm"
-    .col-sm-4
-      .widget-box.mb30.transparent
-        .widget-header
-          .widget-title
-            %span.fsize-20
-              %i.fa.fa-user
-            %span.fsize-25
-              Guests
-        .widget-body
-          .widget-main
-            = form_for [@event, @meal], html: { class: "horizontal-form", role: "form" } do |f|
-              .form-group
-                =f.label :guests, "Number of Guests", class: "control-label col-sm-5"
-                .col-sm-7
-                  = f.number_field :guests, class: "form-control input-mini"
-              .form-group
-                .col-sm-5
-                  = f.submit class: "btn btn-warning btn-sm"
-    .col-sm-4
-      .widget-box.mb30.transparent
-        .widget-header
-          .widget-title
-            %span.fsize-20
-              %i.fa.fa-calendar
-            %span.fsize-25
-              Date
-        .widget-body
-          .widget-main
-            = form_for [@event, @meal], html: { role: "form" } do |f|
-              .form-group
-                #datetimepicker1.input-group.date
+.row#details
+  .col-sm-9
+    .widget-box.transparent
+      .widget-header
+        .widget-title
+          %span.fsize-20
+            %i.fa.fa-search
+          %span.fsize-25
+            Details
+      .widget-body
+        .widget-main
+          = form_for [@event, @meal], html: {class: "form-horizontal", role: "form"} do |f|
+            .form-group
+              = f.label :date, class: "control-label col-sm-2"
+              .col-sm-7
+                #datetimepicker1.input-group.date.width-40
                   %input.form-control#meal_start{:type => "text", name: "meal[start]", value: @meal.bootrap_datetime_format }
                   %span.input-group-addon
-                    %span.fa.fa-calendar
-              .form-group
-                = f.submit class: "btn btn-warning btn-sm"
-
+                    %i.fa.fa-calendar
+            .form-group
+              = f.label :guests, class: "control-label col-sm-2"
+              .col-sm-7
+                = f.number_field :guests, class: "form-control input-mini"
+            .form-group
+              = f.label :ignore_warnings, class: "control-label col-sm-2", title: "Check to disable meal warnings such as 'not enough servings' or 'missing delivery time'", data: {toggle: "tooltip"}
+              .col-sm-7
+                = f.check_box :ignore_warnings, class: "form-control"
+            .form-group
+              .col-sm-3.col-sm-offset-2
+                = f.submit "update", class: "btn btn-warning"
