@@ -38,12 +38,12 @@ class Dish < ActiveRecord::Base
   VALID_TRANSPORT_METHODS = ["Delivery", "Pickup"]
 
   def has_warnings?
-    return true if order_warning
+    return true if order_warning?
+    return true if servings_warning?
+    return true if transport_warning?
     # create methods for anything that causes a warning
     # iterate over those methods
 
-    # 2. no transport time
-    # 3. servings not enough for meal
     # 4. no vegi or gluten free if event requires
     # 5. no ice for soda
 
@@ -51,14 +51,24 @@ class Dish < ActiveRecord::Base
   end
 
   def order_status
-    if needs_ordering
-      ordered ? "Already Ordered" : "Needs to be Ordered"
+    if needs_ordering && !ordered
+      "Needs to be Ordered"
+    elsif needs_ordering
+      "Already Ordered"
     else
       "Doesn't Require Ordering"
     end
   end
 
-  def transport_warning
+  def order_warning?
+    if needs_ordering && !ordered
+      true
+    else
+      false
+    end
+  end
+
+  def transport_warning?
     if transport_method == "Delivery"
       transport_time.present? ? false : true
     else
@@ -66,7 +76,7 @@ class Dish < ActiveRecord::Base
     end
   end
 
-  def servings_warning
+  def servings_warning?
     same_category_dishes = self.meal.dishes.where(category: category)
 
     servings_in_category = same_category_dishes.inject(0) { |sum, dish| sum + dish.servings }
@@ -75,11 +85,6 @@ class Dish < ActiveRecord::Base
   end
 
   private
-
-  def order_warning
-    return true if needs_ordering && !ordered
-    return false
-  end
 
   def valid_category?
     unless VALID_CATEGORIES.include? category

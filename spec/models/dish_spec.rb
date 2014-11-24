@@ -84,8 +84,38 @@ describe Dish do
     end
   end
 
+  describe "#order_warning" do
+    subject { dish.order_warning? }
+
+    context "dish needs to be ordered ahead of time" do
+      context "dish has been ordered" do
+        let(:dish) { create :dish, needs_ordering: true, ordered: true}
+
+        it "returns false" do
+          expect(subject).to be false
+        end
+      end
+
+      context "dish has not been ordered" do
+        let(:dish) { create :dish, needs_ordering: true, ordered: false}
+
+        it "returns true" do
+          expect(subject).to be true
+        end
+      end
+    end
+
+    context "dish does not needs to be ordered ahead of time" do
+      let(:dish) { create :dish, needs_ordering: false, ordered: nil}
+
+      it "returns false" do
+        expect(subject).to be false
+      end
+    end
+  end
+
   describe "#transport_warning" do
-    subject { dish.transport_warning }
+    subject { dish.transport_warning? }
 
     context "Delivery" do
       context "when delivery time is set" do
@@ -115,7 +145,7 @@ describe Dish do
   end
 
   describe "#servings_warning" do
-    subject { dish1.servings_warning }
+    subject { dish1.servings_warning? }
     let(:meal)  { create :meal }
 
     context "when servings don't equal guest count" do

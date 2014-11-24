@@ -5,7 +5,7 @@ FactoryGirl.define do
     association :meal
     name        "Cheese Pizza"
     vendor      "Patxi's Pizza"
-    servings    50
+    servings    100
     category    "Main"
     ordered     false
     vegetarian  true

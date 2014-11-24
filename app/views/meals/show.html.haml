@@ -1,5 +1,6 @@
+-#TODO MAJOR - clean up all this presentation logic. No really sure how.
+-#Helpers and Decorators shouldn't have a bunch of html in them. So how should this be handled?
 -#TODO add ability to change category field
--#TODO clean up all this presentation logic. No really sure how. Helpers and Decorators shouldn't have a bunch of html in them
 
 %h1.mb30
   = @meal.category
@@ -9,8 +10,6 @@
   = link_to "Dishes", event_meal_dishes_path(@event, @meal), class: "btn btn-info"
   = link_to "Meals", event_meals_path(@event), class: "btn btn-primary"
   = link_to "Delete", event_meal_path(@event, @meal), method: :delete, class: "btn btn-danger", data: { confirm: "Are you, like, for sure?" }
-
-
 
 .row
   .col-sm-12
@@ -32,30 +31,24 @@
                   %th.no-lines Transport Method
                   %th.no-lines Order Status
               %tbody
-                - @meal.dishes.each do |dish|
+                - @meal.dishes.decorate.each do |dish|
                   %tr
                     %td.no-lines= dish.category
 
-                    - if dish.servings_warning
-                      %td.text-danger.no-lines
-                        %span.fa.fa-warning
-                        %span= dish.servings
-                    -else
-                      %td.no-lines
-                        %strong= dish.servings
-                    %td.no-lines
-                      - if dish.transport_warning
-                        %span.text-danger.fa.fa-warning
-                        %span.text-danger= dish.transport_method
-                      -else
-                        = dish.transport_method
+                    %td.no-lines{ class: ("text-danger" if dish.show_warning?(:servings)) }
+                      %span= dish.servings
+                      - if dish.show_warning?(:servings)
+                        %span.fa.fa-warning{ title: "Servings don't equal guest count", data: {toggle: "tooltip"}}
 
-                    - if dish.order_status == "Needs to be Ordered"
-                      %td.no-lines.text-danger
-                        %span.fa.fa-warning
-                        %span= dish.order_status
-                    -else
-                      %td.no-lines= dish.order_status
+                    %td.no-lines{ class: ("text-danger" if dish.show_warning?(:transport))}
+                      = dish.transport_method
+                      - if dish.show_warning?(:transport)
+                        %span.text-danger.fa.fa-warning{ title: "Delivery time is not set", data: {toggle: "tooltip"}}
+
+                    %td.no-lines{class: ("text-danger" if dish.show_warning?(:order))}
+                      = dish.order_status
+                      - if dish.show_warning?(:order)
+                        %span.fa.fa-warning{ title: "Dish requires pre-ordering", data: {toggle: "tooltip"}}
 
     .col-sm-4#missing-options
       .widget-box.mb20.transparent
@@ -76,8 +69,8 @@
                 - @meal.missing_options.each do |option|
                   %tr.text-danger
                     %td
-                      %span.fa.fa-warning
                       %span= option
+                      %span.fa.fa-warning{ title: "What are the #{option} folks gonna eat?", data: {toggle: "tooltip"}}
                     %td No
 
 
@@ -95,9 +88,9 @@
           .widget-main
             = form_for [@event, @meal], html: { class: "horizontal-form", role: "form" } do |f|
               .form-group
-                =f.label :cost, "Current Cost ($)", class: "control-label col-sm-5"
+                =f.label :cost, "Total Meal Cost", class: "control-label col-sm-5"
                 .col-sm-7
-                  = f.number_field :cost, class: "form-control input-mini"
+                  = f.number_field :cost, class: "form-control input-small", placeholder: "$#{@meal.cost}", value: nil
               .form-group
                 .col-sm-5
                   = f.submit class: "btn btn-warning btn-sm"
@@ -138,15 +131,3 @@
               .form-group
                 = f.submit class: "btn btn-warning btn-sm"
 
--#todo consolidate this with _form
-:javascript
-  $(function () {
-    $('#datetimepicker1').datetimepicker({
-      icons: {
-        time: "fa fa-clock-o",
-        date: "fa fa-calendar",
-        up: "fa fa-arrow-up",
-        down: "fa fa-arrow-down"
-      }
-    });
-  });

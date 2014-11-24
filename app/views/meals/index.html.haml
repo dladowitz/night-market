@@ -3,20 +3,20 @@
   = link_to @event.name, event_path(@event)
 
 .row
-  .col-xs-7
+  .col-xs-12
     %table.table.table-hover
 
       %tr.fsize-15
         %th.col-xs-1 Meal
         %th.center.col-xs-2 Date
-        %th.center.col-xs-2 Fully Planned?
+        %th.center.col-xs-2 Warnings?
         %th.center.col-xs-2 Ignore Warnings?
 
       - @event.meals.each do |meal|
         %tr.fsize-15{ class: ("danger" if meal.show_warning?) }
           %td= link_to meal.category, event_meal_path(@event, meal)
-          -#%td.center= "#{meal.start.strftime("%a, %b")} #{meal.start.strftime("%-d").to_i.ordinalize}" #TODO Stop the insanity, needs decorator or helper.
-          %td.center= "YES" #meal.has_warnings?
+          %td.center= "#{meal.start.strftime("%a, %b")} #{meal.start.strftime("%-d").to_i.ordinalize}" #TODO Stop the insanity, needs decorator or helper.
+          %td.center= meal.has_warnings? ? "Yes" : "No"
           %td.center
             = form_for [@event, meal] do |f|
               = f.check_box :ignore_warnings
