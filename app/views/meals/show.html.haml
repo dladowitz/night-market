@@ -63,16 +63,35 @@
             %table.table
               %thead
                 %tr
-                  %th Missing Options
-                  %th Ignore
+                  %th Options
+                  %th Requested?
+                  %th Planned?
               %tbody
-                - @meal.missing_options.each do |option|
-                  %tr.text-danger
-                    %td
-                      %span= option
-                      %span.fa.fa-warning{ title: "What are the #{option} folks gonna eat?", data: {toggle: "tooltip"}}
-                    %td No
+                %tr{ class: ("text-danger" if @meal.show_warning?(:gluten_free)) }
+                  %td.no-lines
+                    Gluten-Free
+                    - if @meal.show_warning?(:gluten_free)
+                      %span.fa.fa-warning{ title: "What are the gluten-free people gonna eat?", data: {toggle: "tooltip"}}
+                  %td.no-lines= @event.gluten_free? ? "Yes" : "No"
+                  %td.no-lines= @meal.show_warning?(:gluten_free) ? "No" : "Yes"
 
+                %tr{ class: ("text-danger" if @meal.show_warning?(:vegetarian)) }
+                  %td.no-lines
+                    Vegetarian
+                    - if @meal.show_warning?(:vegetarian)
+                      %span.fa.fa-warning{ title: "What are the vegetarian people gonna eat?", data: {toggle: "tooltip"}}
+
+                  %td.no-lines= @event.vegetarian? ? "Yes" : "No"
+                  %td.no-lines= @meal.show_warning?(:vegetarian) ? "No" : "Yes"
+
+                %tr{ class: ("text-danger" if @meal.show_warning?(:vegan)) }
+                  %td.no-lines
+                    Vegan
+                    - if @meal.show_warning?(:vegan)
+                      %span.fa.fa-warning{ title: "What are the vegan people gonna eat?", data: {toggle: "tooltip"}}
+
+                  %td.no-lines= @event.vegan? ? "Yes" : "No"
+                  %td.no-lines= @meal.show_warning?(:vegan) ? "No" : "Yes"
 .row#details
   .col-sm-9
     .widget-box.transparent
@@ -97,7 +116,7 @@
               .col-sm-7
                 = f.number_field :guests, class: "form-control input-mini"
             .form-group
-              = f.label :ignore_warnings, class: "control-label col-sm-2", title: "Check to disable meal warnings such as 'not enough servings' or 'missing delivery time'", data: {toggle: "tooltip"}
+              = f.label :ignore_warnings, class: "control-label col-sm-2", title: "Check to disable meal warnings suc 'not enough servings' or 'missing delivery time'", data: {toggle: "tooltip"}
               .col-sm-7
                 = f.check_box :ignore_warnings, class: "form-control"
             .form-group
