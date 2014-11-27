@@ -4,8 +4,10 @@
 .widget-box
   .widget-header
     .widget-title
-      %i.fa.fa-search
-      Details
+      %span.fsize-20
+        %i.fa.fa-search
+      %span.fsize-25
+        Details
   .widget-body
     .widget-main
       = form_for @event, html: {class: "form-horizontal", role: "form"} do |f|

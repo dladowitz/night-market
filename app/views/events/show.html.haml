@@ -10,21 +10,19 @@
       .widget-header
         %span.fsize-20
           %i.fa.fa-bar-chart
-            %span.fsize-25 Status
+        %span.fsize-25 Status
+        %span.fsize-25.col-sm-offset-1
+          Current Spending:
+          = link_to "$#{@event.current_spend}", "#"
+          -if @event.overbudget?
+            %span.text-danger.fa.fa-warning.fsize-15
+            %span.fsize-15.alert-danger $(#{@event.current_spend - @event.budget} over budget)
+
       .widget-body
         .widget-main
-          .row.mb20
-            .col-xs-8.col-xs-offset-2
-              %h3
-                %i.text-danger.fa.fa-warning.fsize-15
-                Current Spending:
-                = link_to "$#{@event.current_spend}", "#"
-                - if @event.overbudget?
-                  %small.alert-danger $(#{@event.current_spend - @event.budget} over budget)
-
           .row
             .col-xs-6
-              .widget-box
+              .widget-box.transparent
                 .widget-header
                   %h4.widget-title
                     %i.fa.fa-warning.text-danger
@@ -32,23 +30,19 @@
                 .widget-body
                   .widget-main
                     %ul
-                      %li
-                        %strong Sat Lunch
-                        %ul
-                          %li.text-danger
-                            = link_to "Glutent-Free: Missing", "#", class: "inherit-color"
-                          %li.text-danger
-                            = link_to "Desert: Not Ordered", "#", class: "inherit-color"
-                      %li
-                        %strong Sat Dinner
-                        %ul
-                          %li.text-danger
-                            = link_to "Side2: Not Enough", "#", class: "inherit-color"
-                          %li.text-danger
-                            = link_to "Main: No Pickup Time", "#", class: "inherit-color"
+                      - @event.meals.decorate.each do |meal|
+                        -if meal.warnings.present?
+                          %li.mb10
+                            %strong= link_to meal.category, event_meal_path(@event, meal)
+                            = ":"
+                            = meal.short_start_date
+
+                            %ul
+                              - meal.warnings.each do |warning|
+                                %li.text-danger= "#{warning[:warning_type]} : #{warning[:message]}"
 
             .col-xs-6
-              .widget-box
+              .widget-box.transparent
                 .widget-header
                   %h4.widget-title
                     %i.fa.fa-warning.text-danger

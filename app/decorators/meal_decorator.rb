@@ -15,4 +15,8 @@ class MealDecorator < Draper::Decorator
     datetime.strftime("%m/%d/%Y %l:%M %p")
   end
 
+  def short_start_date
+    "#{meal.start.strftime("%a, %b")} #{meal.start.strftime("%-d").to_i.ordinalize}"
+  end
+
 end

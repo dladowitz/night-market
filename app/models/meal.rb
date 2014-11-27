@@ -24,8 +24,26 @@ class Meal < ActiveRecord::Base
   has_many   :dishes
 
   VALID_CATEGORIES = ["Breakfast", "Lunch", "Dinner", "Snack"]
+  VALID_OPTION_TYPES = [:gluten_free, :vegetarian, :vegan, nil]
 
-  def has_warnings?
+  # array of warnings on a meal. warning_type:message
+  def warnings
+    warnings = missing_options
+  end
+
+  def show_warning?(option_type = nil)
+    raise "Invalid Warning Type" unless VALID_OPTION_TYPES.include?(option_type)
+
+    return false if ignore_warnings?
+
+    if option_type
+      option_warning?(option_type)
+    else
+      dish_warnings? ? true : false
+    end
+  end
+
+  def dish_warnings?
     dishes.each do |dish|
       return true if dish.has_warnings?
     end
@@ -33,58 +51,10 @@ class Meal < ActiveRecord::Base
     return false
   end
 
-  def show_warning?(warning_type = nil)
-    return false if ignore_warnings?
-
-    if warning_type
-      option_warning?(warning_type)
-    else
-      has_warnings? ? true : false
-    end
-
-    # case warning_type
-    # when :gluten_free
-    #   gluten_free_warning?
-    # when :vegetarian
-    #   vegetarian_warning?
-    # when :vegan
-    #   vegan_warning?
-    # when nil
-    #   has_warnings? ? true : false
-    # end
-  end
-
-  # def missing_options
-  #   #TODO refactor
-  #
-  #   event_options = []
-  #   event_options << "Gluten-Free" if event.gluten_free
-  #   event_options << "Vegetarian"  if event.gluten_free
-  #   event_options << "Vegan"       if event.vegan
-  #
-  #   meal_options =  []
-  #   dishes.each do |dish|
-  #     meal_options << "Gluten-Free" if dish.gluten_free
-  #     meal_options << "Vegetarian"  if dish.vegetarian
-  #     meal_options << "Vegan"       if dish.vegan
-  #   end
-  #
-  #   meal_options.uniq!
-  #
-  #   missing_options = []
-  #
-  #   event_options.each { |option| missing_options << option unless meal_options.include?(option) }
-  #   missing_options
-  # end
-
   private
 
-  # def gluten_free_warning?
-  #   self.event.gluten_free? && !dishes_include_option?(:gluten_free)
-  # end
-
   def option_warning?(option_type)
-    # checks if event require option type and none of the dishes include this type
+    # checks if event requires option type and none of the dishes include this type
     self.event.send(option_type) && !dishes_include_option?(option_type)
   end
 
@@ -94,6 +64,29 @@ class Meal < ActiveRecord::Base
     end
 
     false
+  end
+
+  def missing_options
+    #TODO Refactor
+
+    event_options = []
+    event_options << "Gluten-Free" if event.gluten_free
+    event_options << "Vegetarian"  if event.gluten_free
+    event_options << "Vegan"       if event.vegan
+
+    meal_options =  []
+    dishes.each do |dish|
+      meal_options << "Gluten-Free" if dish.gluten_free
+      meal_options << "Vegetarian"  if dish.vegetarian
+      meal_options << "Vegan"       if dish.vegan
+    end
+
+    meal_options.uniq!
+
+    missing_options = []
+
+    event_options.each { |option| missing_options << { warning_type: option, message: "Missing Option"} unless meal_options.include?(option) }
+    missing_options
   end
 
   def valid_category?

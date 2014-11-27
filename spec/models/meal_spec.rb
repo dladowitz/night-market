@@ -37,8 +37,8 @@ describe Meal do
     expect(meal).to_not be_valid
   end
 
-  describe "#has_warnings?" do
-    subject { meal.has_warnings? }
+  describe "#dish_warnings?" do
+    subject { meal.dish_warnings? }
 
     context "when dishes have warnings" do
       it "raises warnings on the meal" do

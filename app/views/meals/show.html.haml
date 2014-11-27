@@ -33,12 +33,13 @@
               %tbody
                 - @meal.dishes.decorate.each do |dish|
                   %tr
-                    %td.no-lines= dish.category
+                    %td.no-lines
+                      %strong= dish.category
 
                     %td.no-lines{ class: ("text-danger" if dish.show_warning?(:servings)) }
                       %span= dish.servings
                       - if dish.show_warning?(:servings)
-                        %span.fa.fa-warning{ title: "Servings don't equal guest count", data: {toggle: "tooltip"}}
+                        %span.fa.fa-warning{ title: "Servings don't equal guest count. People are gonna be hungry yo", data: {toggle: "tooltip"}}
 
                     %td.no-lines{ class: ("text-danger" if dish.show_warning?(:transport))}
                       = dish.transport_method
@@ -64,31 +65,31 @@
               %thead
                 %tr
                   %th Options
-                  %th Requested?
+                  %th Required?
                   %th Planned?
               %tbody
                 %tr{ class: ("text-danger" if @meal.show_warning?(:gluten_free)) }
                   %td.no-lines
-                    Gluten-Free
+                    %strong Gluten-Free
                     - if @meal.show_warning?(:gluten_free)
-                      %span.fa.fa-warning{ title: "What are the gluten-free people gonna eat?", data: {toggle: "tooltip"}}
+                      %span.fa.fa-warning{ title: "Event requires Gluten-Free food, but you don't see to have any dishes planned", data: {toggle: "tooltip"}}
                   %td.no-lines= @event.gluten_free? ? "Yes" : "No"
                   %td.no-lines= @meal.show_warning?(:gluten_free) ? "No" : "Yes"
 
                 %tr{ class: ("text-danger" if @meal.show_warning?(:vegetarian)) }
                   %td.no-lines
-                    Vegetarian
+                    %strong Vegetarian
                     - if @meal.show_warning?(:vegetarian)
-                      %span.fa.fa-warning{ title: "What are the vegetarian people gonna eat?", data: {toggle: "tooltip"}}
+                      %span.fa.fa-warning{ title: "Event requires Vegetarian food, but you don't see to have any dishes planned", data: {toggle: "tooltip"}}
 
                   %td.no-lines= @event.vegetarian? ? "Yes" : "No"
                   %td.no-lines= @meal.show_warning?(:vegetarian) ? "No" : "Yes"
 
                 %tr{ class: ("text-danger" if @meal.show_warning?(:vegan)) }
                   %td.no-lines
-                    Vegan
+                    %strong Vegan
                     - if @meal.show_warning?(:vegan)
-                      %span.fa.fa-warning{ title: "What are the vegan people gonna eat?", data: {toggle: "tooltip"}}
+                      %span.fa.fa-warning{ title: "Event requires Vegan food, but you don't see to have any dishes planned", data: {toggle: "tooltip"}}
 
                   %td.no-lines= @event.vegan? ? "Yes" : "No"
                   %td.no-lines= @meal.show_warning?(:vegan) ? "No" : "Yes"
