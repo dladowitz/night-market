@@ -169,7 +169,7 @@ describe Dish do
 
   describe "#warning_messages" do
     skip "it works" do
-      
+
     end
   end
 end

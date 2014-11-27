@@ -113,32 +113,46 @@ describe Meal do
     end
   end
 
-  describe "#missing_options" do
-    subject { meal2.missing_options }
-    let!(:event2) { create :event, gluten_free: true, vegetarian: true, vegan: true }
-    let!(:meal2)  { create :meal, event: event2 }
-
-    context "when the meal is missing options" do
-      before { create :dish, meal: meal2 }
-
-      it "returns missing options" do
-        expect(subject).to match_array ["Gluten-Free", "Vegan"]
-      end
-    end
-
-    context "when the meal is not missing options" do
-      before { create :dish, meal: meal2, gluten_free: true, vegetarian: true, vegan: true }
-
-      it "returns an empty array" do
-        expect(subject).to match_array []
-
-      end
-    end
-  end
+  # describe "#missing_options" do
+  #   subject { meal2.missing_options }
+  #   let!(:event2) { create :event, gluten_free: true, vegetarian: true, vegan: true }
+  #   let!(:meal2)  { create :meal, event: event2 }
+  #
+  #   context "when the meal is missing options" do
+  #     before { create :dish, meal: meal2 }
+  #
+  #     it "returns missing options" do
+  #       expect(subject).to match_array ["Gluten-Free", "Vegan"]
+  #     end
+  #   end
+  #
+  #   context "when the meal is not missing options" do
+  #     before { create :dish, meal: meal2, gluten_free: true, vegetarian: true, vegan: true }
+  #
+  #     it "returns an empty array" do
+  #       expect(subject).to match_array []
+  #
+  #     end
+  #   end
+  # end
 
   describe "warning_messages" do
-    skip "works" do
+    subject { meal.warning_messages }
 
+    context "when there are dish warnings" do
+      before { dish.update transport_method: "Delivery", transport_time: nil }
+
+      it "has correct warnings" do
+        expect(subject).to eq [{warning_type: dish.name, message: "No Delivery Time Set"}]
+      end
+    end
+
+    context "when there are option warnings" do
+      before { meal.event.update gluten_free: true }
+
+      it "has correct warnings" do
+        expect(subject).to eq [{warning_type: "Gluten-Free", message: "Missing Option"}]
+      end
     end
   end
 end

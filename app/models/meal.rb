@@ -29,7 +29,7 @@ class Meal < ActiveRecord::Base
   # array of warnings on a meal. warning_type:message
   def warning_messages
     messages = []
-    messages << option_warnings
+    messages << option_warning_messages
     messages << dish_warning_messages
 
     messages.flatten
@@ -82,9 +82,8 @@ class Meal < ActiveRecord::Base
     dish_messages.flatten
   end
 
-  def option_warnings
+  def option_warning_messages
     #TODO Refactor
-
     event_options = []
     event_options << "Gluten-Free" if event.gluten_free
     event_options << "Vegetarian"  if event.gluten_free
