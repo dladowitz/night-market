@@ -31,14 +31,14 @@
                   .widget-main
                     %ul
                       - @event.meals.decorate.each do |meal|
-                        -if meal.warnings.present?
+                        -if meal.warning_messages.present?
                           %li.mb10
                             %strong= link_to meal.category, event_meal_path(@event, meal)
                             = ":"
                             = meal.short_start_date
 
                             %ul
-                              - meal.warnings.each do |warning|
+                              - meal.warning_messages.each do |warning|
                                 %li.text-danger= "#{warning[:warning_type]} : #{warning[:message]}"
 
             .col-xs-6

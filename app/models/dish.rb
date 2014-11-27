@@ -8,18 +8,17 @@
 #  vendor           :string(255)
 #  servings         :integer
 #  category         :string(255)
+#  needs_ordering   :boolean
 #  ordered          :boolean
 #  vegetarian       :boolean
 #  vegan            :boolean
 #  gluten_free      :boolean
-#  dairy_free       :boolean
 #  needs_ice        :boolean
+#  ignore_warnings  :boolean
 #  transport_method :string(255)
 #  transport_time   :datetime
 #  created_at       :datetime
 #  updated_at       :datetime
-#  needs_ordering   :boolean
-#  ignore_warnings  :boolean
 #
 
 class Dish < ActiveRecord::Base
@@ -36,6 +35,16 @@ class Dish < ActiveRecord::Base
 
   VALID_CATEGORIES =        ["Main", "Desert", "Drinks", "Side1", "Side2", "Side3"]
   VALID_TRANSPORT_METHODS = ["Delivery", "Pickup"]
+
+  def warning_messages
+    warning_messages = []
+
+    warning_messages << { warning_type: name, message: order_status } if order_warning?
+    warning_messages << { warning_type: name, message: "No Delivery Time Set" } if transport_warning?
+    warning_messages << { warning_type: name, message: "Not Enough Servings" } if servings_warning?
+
+    return warning_messages
+  end
 
   def has_warnings?
     return true if order_warning?

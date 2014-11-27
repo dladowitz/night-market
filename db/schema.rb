@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20141109155436) do
     t.boolean  "vegetarian"
     t.boolean  "vegan"
     t.boolean  "gluten_free"
-    t.boolean  "dairy_free"
     t.boolean  "needs_ice"
     t.boolean  "ignore_warnings"
     t.string   "transport_method"

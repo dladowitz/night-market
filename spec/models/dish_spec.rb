@@ -166,4 +166,10 @@ describe Dish do
       end
     end
   end
+
+  describe "#warning_messages" do
+    skip "it works" do
+      
+    end
+  end
 end

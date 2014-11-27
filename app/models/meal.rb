@@ -27,8 +27,12 @@ class Meal < ActiveRecord::Base
   VALID_OPTION_TYPES = [:gluten_free, :vegetarian, :vegan, nil]
 
   # array of warnings on a meal. warning_type:message
-  def warnings
-    warnings = missing_options
+  def warning_messages
+    messages = []
+    messages << option_warnings
+    messages << dish_warning_messages
+
+    messages.flatten
   end
 
   def show_warning?(option_type = nil)
@@ -43,6 +47,7 @@ class Meal < ActiveRecord::Base
     end
   end
 
+  #TODO change to has_dish_warnings?
   def dish_warnings?
     dishes.each do |dish|
       return true if dish.has_warnings?
@@ -53,6 +58,7 @@ class Meal < ActiveRecord::Base
 
   private
 
+  # TODO change to has_option_warning?
   def option_warning?(option_type)
     # checks if event requires option type and none of the dishes include this type
     self.event.send(option_type) && !dishes_include_option?(option_type)
@@ -66,7 +72,17 @@ class Meal < ActiveRecord::Base
     false
   end
 
-  def missing_options
+  def dish_warning_messages
+    dish_messages = []
+
+    dishes.each do |dish|
+      dish_messages << dish.warning_messages
+    end
+
+    dish_messages.flatten
+  end
+
+  def option_warnings
     #TODO Refactor
 
     event_options = []
