@@ -58,7 +58,11 @@ class MealsController < ApplicationController
   end
 
   def meal_params_with_datetime_conversion
-    meal_params.merge(start: bootstrap_datetime_to_rb_datetime(meal_params[:start]))
+    if meal_params[:start]
+      meal_params.merge(start: bootstrap_datetime_to_rb_datetime(meal_params[:start]))
+    else
+      meal_params
+    end
   end
 
   #bootstrap ruby doesn't like datetimepicker's ordering of day and month. Not the most efficient
