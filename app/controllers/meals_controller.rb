@@ -1,7 +1,7 @@
 class MealsController < ApplicationController
   before_action :require_user
   load_and_authorize_resource :event, except: :event_select
-  load_and_authorize_resource :meal, through: :event, except: :event_select
+  load_and_authorize_resource :meal, through: :event, except: [:event_select, :create]
   before_action :decorate_meals, only: [:new, :edit, :show]
 
   def index
@@ -15,8 +15,7 @@ class MealsController < ApplicationController
   end
 
   def create
-    @meal = @event.meals.build meal_params
-
+    @meal = @event.meals.build meal_params_with_datetime_conversion
     if @meal.save
       flash[:success] = "Hi Five. Meal created successfully."
       redirect_to event_meal_path(@event, @meal)
@@ -33,7 +32,9 @@ class MealsController < ApplicationController
   end
 
   def update
-    if @meal.update meal_params
+    @meal.update_attributes meal_params_with_datetime_conversion
+
+    if @meal.save
       redirect_to event_meal_path(@event, @meal)
     else
       flash[:danger] = "Oh Frak, that didn't work."
@@ -54,5 +55,14 @@ class MealsController < ApplicationController
 
   def decorate_meals
     @meal = @meal.decorate
+  end
+
+  def meal_params_with_datetime_conversion
+    meal_params.merge(start: bootstrap_datetime_to_rb_datetime(meal_params[:start]))
+  end
+
+  #bootstrap ruby doesn't like datetimepicker's ordering of day and month. Not the most efficient
+  def bootstrap_datetime_to_rb_datetime(boostrap_dt_string)
+    DateTime.strptime(boostrap_dt_string, "%m/%d/%Y %l:%M %p").to_s
   end
 end

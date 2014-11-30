@@ -50,10 +50,10 @@ meals = Meal.create([
 sf_dinner_1    = sf_event.meals.first
 sf_breakfast_1 = sf_event.meals[1]
 sf_lunch_1     = sf_event.meals[2]
-sf_dinner_1    = sf_event.meals[3]
+sf_dinner_2    = sf_event.meals[3]
 sf_breakfast_2 = sf_event.meals[4]
 sf_lunch_2     = sf_event.meals[5]
-sf_dinner_2    = sf_event.meals[6]
+sf_dinner_3    = sf_event.meals[6]
 
 albuquerque_breakfast_1 = albuquerque.meals.first
 
@@ -70,10 +70,10 @@ dishes = Dish.create([
   { meal:sf_breakfast_1, name: "Muffins",  vendor: "Panera",       needs_ordering: true,  ordered: true,  servings: 75,  category: "Side2",  vegetarian: true, vegan: true, transport_method: "Delivery" },
 
   { meal:sf_lunch_1,     name: "Muffins",  vendor: "Panera",       needs_ordering: true,  ordered: true,  servings: 100,  category: "Side2",  gluten_free: true, vegetarian: true, vegan: true, transport_method: "Pickup" },
-  { meal:sf_dinner_1,    name: "Muffins",  vendor: "Panera",       needs_ordering: true,  ordered: true,  servings: 100,  category: "Side2",  gluten_free: true, vegetarian: true, vegan: true, transport_method: "Pickup" },
+  { meal:sf_dinner_2,    name: "Muffins",  vendor: "Panera",       needs_ordering: true,  ordered: true,  servings: 100,  category: "Side2",  gluten_free: true, vegetarian: true, vegan: true, transport_method: "Pickup" },
   { meal:sf_breakfast_2, name: "Muffins",  vendor: "Panera",       needs_ordering: true,  ordered: true,  servings: 100,  category: "Side2",  gluten_free: true, vegetarian: true, vegan: true, transport_method: "Pickup" },
   { meal:sf_lunch_2,     name: "Muffins",  vendor: "Panera",       needs_ordering: true,  ordered: true,  servings: 75,   category: "Side2",  gluten_free: true, vegetarian: true, vegan: true, transport_method: "Pickup" },
-  { meal:sf_dinner_2,    name: "Muffins",  vendor: "Panera",       needs_ordering: true,  ordered: true,  servings: 100,  category: "Side2",  gluten_free: true, vegetarian: true, vegan: true, transport_method: "Pickup" },
+  { meal:sf_dinner_3,    name: "Muffins",  vendor: "Panera",       needs_ordering: true,  ordered: true,  servings: 100,  category: "Side2",  gluten_free: true, vegetarian: true, vegan: true, transport_method: "Pickup" },
 
   { meal:albuquerque_breakfast_1, name: "Pastries", vendor: "Panera Bread", needs_ordering: true,  ordered: false, servings: 100, category: "Side1",  vegetarian: true, transport_method: "Delivery", transport_time: sf_dinner_1.start},
   { meal:albuquerque_breakfast_1, name: "Yogurt",   vendor: "Safeway",      needs_ordering: false, ordered: nil,   servings: 75,  category: "Side2",  vegetarian: true, transport_method: "Pickup", transport_time: sf_dinner_1.start - 60.minutes},

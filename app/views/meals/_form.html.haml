@@ -17,3 +17,19 @@
   = f.submit
 
 
+-#doesn't load properly when moved to custom.js
+:javascript
+  $(function () {
+    $('#datetimepicker1').datetimepicker({
+      icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up: "fa fa-arrow-up",
+        down: "fa fa-arrow-down"
+      }
+    });
+  });
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  });

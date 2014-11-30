@@ -109,7 +109,7 @@
               = f.label :date, class: "control-label col-sm-2"
               .col-sm-7
                 #datetimepicker1.input-group.date.width-40
-                  %input.form-control#meal_start{:type => "text", name: "meal[start]", value: @meal.bootrap_datetime_format }
+                  %input.form-control#meal_start{:type => "text", name: "meal[start]", value: @meal.bootrap_datetime_format}
                   %span.input-group-addon
                     %i.fa.fa-calendar
             .form-group
@@ -123,3 +123,20 @@
             .form-group
               .col-sm-3.col-sm-offset-2
                 = f.submit "update", class: "btn btn-warning"
+
+-#doesn't load properly when moved to custom.js
+:javascript
+  $(function () {
+    $('#datetimepicker1').datetimepicker({
+      icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up: "fa fa-arrow-up",
+        down: "fa fa-arrow-down"
+      }
+    });
+  });
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  });

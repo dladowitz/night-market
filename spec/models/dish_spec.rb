@@ -168,8 +168,24 @@ describe Dish do
   end
 
   describe "#warning_messages" do
-    skip "it works" do
+    subject    { dish.warning_messages }
+    let(:meal) { create :meal }
 
+
+    context "when the dish has an order warning" do
+      let(:dish) { create :dish, meal: meal, needs_ordering: true, ordered: false}
+
+      it "returns true" do
+        expect(subject).to eq [{warning_type: "#{dish.name}", message: "Needs to be Ordered"}]
+      end
+    end
+
+    context "when the dish has no order, serving or transport warnings" do
+      let(:dish) { create :dish, meal: meal, needs_ordering: false}
+
+      it "returns false" do
+        expect(subject).to be_empty
+      end
     end
   end
 end

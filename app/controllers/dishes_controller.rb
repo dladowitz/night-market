@@ -3,7 +3,7 @@ class DishesController < ApplicationController
 
   load_and_authorize_resource :event
   load_and_authorize_resource :meal, through: :event
-  load_and_authorize_resource :dish, through: :meal
+  load_and_authorize_resource :dish, through: :meal, except: :create
 
   # before_action :set_event_and_meal
   # before_action :set_dish, only: [:show, :edit, :update, :destroy]  # before_action is the new name for before_filters
