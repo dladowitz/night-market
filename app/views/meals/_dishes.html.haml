@@ -32,7 +32,6 @@
                       = f.label :category, class: "control-label col-sm-2"
                       .col-sm-5
                         = f.select :category, [["Main", "Main"], [ "Desert", "Desert"], ["Side1", "Side1"], ["Side2", "Side2"], ["Side3", "Side3"]]
-
                     .form-group
                       = f.label "Options", class: "control-label col-sm-2"
                       .col-xs-10
@@ -46,7 +45,13 @@
                           %li
                             = f.check_box :gluten_free
                             = f.label :gluten_free
-
+                    .form-group
+                      = f.label "Needs Ordering?", class: "control-label col-sm-5 t-align-left"
+                      .col-xs-7
+                        = f.radio_button :needs_ordering, "1", checked: dish.needs_ordering?
+                        = f.label "Yes", class: "mr10"
+                        = f.radio_button :needs_ordering, "0", checked: !dish.needs_ordering?
+                        = f.label "No"
 
                     .form-group
                       .col-sm-2.col-sm-offset-9
