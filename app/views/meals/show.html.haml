@@ -124,8 +124,14 @@
               .col-sm-3.col-sm-offset-2
                 = f.submit "update", class: "btn btn-warning"
 
--#doesn't load properly when moved to custom.js
+= render "dishes"
+
+
+
+
+
 :javascript
+  //doesn't load properly when moved to custom.js
   $(function () {
     $('#datetimepicker1').datetimepicker({
       icons: {
@@ -140,3 +146,5 @@
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   });
+
+

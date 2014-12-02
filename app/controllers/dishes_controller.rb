@@ -35,7 +35,7 @@ class DishesController < ApplicationController
   def update
     if @dish.update(dish_params)
       flash[:success] = 'Dish was successfully updated.'
-      redirect_to event_meal_dish_path(@event, @meal, @dish)
+      redirect_to event_meal_path(@event, @meal)
     else
       flash[:success] = 'Dish was not updated.'
       render :edit
