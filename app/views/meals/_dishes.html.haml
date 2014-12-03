@@ -34,7 +34,7 @@
                         = f.select :category, [["Main", "Main"], [ "Desert", "Desert"], ["Side1", "Side1"], ["Side2", "Side2"], ["Side3", "Side3"]]
                     .form-group
                       = f.label "Options", class: "control-label col-sm-2"
-                      .col-xs-10
+                      .col-sm-10
                         %ul.list-inline
                           %li
                             = f.check_box :vegetarian
@@ -48,11 +48,21 @@
                     .form-group
                       = f.label "Needs Ordering?", class: "control-label col-sm-5 t-align-left"
                       .col-xs-7
-                        = f.radio_button :needs_ordering, "1", checked: dish.needs_ordering?
+                        = f.radio_button :needs_ordering, "1", checked: dish.needs_ordering?, id: "ordering-needed"
                         = f.label "Yes", class: "mr10"
-                        = f.radio_button :needs_ordering, "0", checked: !dish.needs_ordering?
+                        = f.radio_button :needs_ordering, "0", checked: !dish.needs_ordering?, id: "ordering-unneeded"
                         = f.label "No"
+                    .form-group#ordered_buttons
+                      .col-sm-10.col-sm-offset-2
+                        .btn-group{ data: {toggle: "buttons"}, html: {role: "group"} }
+                          %label.btn.btn-success.pr20.pl20{ class: ("active" if dish.ordered?) }
+                            = f.radio_button :ordered, "1", checked: dish.ordered?
+                            Ordered
+                          %label.btn.btn-danger{ class: ("active" if !dish.ordered?) }
+                            = f.radio_button :ordered, "0", checked: !dish.ordered?
+                            Un-Ordered
 
                     .form-group
                       .col-sm-2.col-sm-offset-9
                         = f.submit "Save", class: "btn btn-warning btn-sm"
+
