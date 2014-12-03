@@ -149,12 +149,17 @@
 
   console.log ("hello world");
 
-  $( ".ordering-needed" ).click(function() {
-    $(this).parent().parent().next().show();
-  });
-  $( ".ordering-unneeded" ).click(function() {
-    $(this).parent().parent().next().hide();
+  $( ".ordering-needs" ).click(function() {
+    $(this).parent().next().slideToggle(1000);
   });
 
+  $(".ordered").click(function(){
+    $(this).addClass("btn-success");
+    $(this).siblings().first().removeClass("btn-danger")
+  });
 
+  $(".un-ordered").click(function(){
+    $(this).addClass("btn-danger");
+    $(this).siblings().first().removeClass("btn-success")
+  });
 
