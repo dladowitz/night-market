@@ -149,9 +149,12 @@
 
   console.log ("hello world");
 
-  //$( "#ordering-needed" ).click(function() {
-  //  alert( "Handler for .click() called." );
-  //});
+  $( ".ordering-needed" ).click(function() {
+    $(this).parent().parent().next().show();
+  });
+  $( ".ordering-unneeded" ).click(function() {
+    $(this).parent().parent().next().hide();
+  });
 
 
 

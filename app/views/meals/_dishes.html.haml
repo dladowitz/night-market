@@ -48,18 +48,18 @@
                     .form-group
                       = f.label "Needs Ordering?", class: "control-label col-sm-5 t-align-left"
                       .col-xs-7
-                        = f.radio_button :needs_ordering, "1", checked: dish.needs_ordering?, id: "ordering-needed"
+                        = f.radio_button :needs_ordering, "1", checked: dish.needs_ordering?, class: "ordering-needed"
                         = f.label "Yes", class: "mr10"
-                        = f.radio_button :needs_ordering, "0", checked: !dish.needs_ordering?, id: "ordering-unneeded"
+                        = f.radio_button :needs_ordering, "0", checked: !dish.needs_ordering?, class: "ordering-unneeded"
                         = f.label "No"
-                    .form-group#ordered_buttons
+                    .form-group.ordered-buttons{class: ("display-none" if !dish.needs_ordering?)}
                       .col-sm-10.col-sm-offset-2
                         .btn-group{ data: {toggle: "buttons"}, html: {role: "group"} }
                           %label.btn.btn-success.pr20.pl20{ class: ("active" if dish.ordered?) }
-                            = f.radio_button :ordered, "1", checked: dish.ordered?
+                            = f.radio_button :ordered, "1"
                             Ordered
                           %label.btn.btn-danger{ class: ("active" if !dish.ordered?) }
-                            = f.radio_button :ordered, "0", checked: !dish.ordered?
+                            = f.radio_button :ordered, "0"
                             Un-Ordered
 
                     .form-group
