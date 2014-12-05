@@ -7,9 +7,17 @@
   for
   = link_to @event.name, event_path(@event)
 
-  = link_to "Dishes", event_meal_dishes_path(@event, @meal), class: "btn btn-info"
-  = link_to "Meals", event_meals_path(@event), class: "btn btn-primary"
-  = link_to "Delete", event_meal_path(@event, @meal), method: :delete, class: "btn btn-danger", data: { confirm: "Are you, like, for sure?" }
+  = link_to event_meal_dishes_path(@event, @meal), class: "btn btn-info" do
+    %i.fa.fa-cutlery.bigger-150.mr5
+    Dishes
+
+  = link_to event_meals_path(@event), class: "btn btn-primary" do
+    %i.fa.fa-spoon.bigger-150.mr5
+    Meals
+
+  = link_to event_meal_path(@event, @meal), method: :delete, class: "btn btn-danger", data: { confirm: "Are you, like, for sure?" } do
+    %i.fa.fa-trash-o.bigger-150.mr5
+    Delete
 
 .row#status
   .col-sm-12
@@ -122,7 +130,9 @@
                 = f.check_box :ignore_warnings, class: "form-control"
             .form-group
               .col-sm-3.col-sm-offset-2
-                = f.submit "update", class: "btn btn-warning"
+                = button_tag class: "btn btn-sm btn-warning" do
+                  %i.fa.fa-floppy-o.bigger-150.mr5
+                  Update
 
 
 = render "dishes"
@@ -146,21 +156,5 @@
 
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
-  });
-
-  console.log ("hello world");
-
-  $( ".ordering-needs" ).click(function() {
-    $(this).parent().next().slideToggle(1000);
-  });
-
-  $(".ordered").click(function(){
-    $(this).addClass("btn-success");
-    $(this).siblings().first().removeClass("btn-danger")
-  });
-
-  $(".un-ordered").click(function(){
-    $(this).addClass("btn-danger");
-    $(this).siblings().first().removeClass("btn-success")
   });
 

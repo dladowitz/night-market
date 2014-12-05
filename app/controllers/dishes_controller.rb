@@ -45,7 +45,7 @@ class DishesController < ApplicationController
   def destroy
     @dish.destroy
     flash[:success] = "Dish was successfully destroyed."
-    redirect_to event_meal_dishes_path(@event, @meal)
+    redirect_to event_meal_path(@event, @meal)
   end
 
   private

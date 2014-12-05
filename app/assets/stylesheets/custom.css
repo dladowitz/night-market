@@ -70,6 +70,10 @@
   margin-top: 10px;
 }
 
+.mt15 {
+  margin-top: 15px;
+}
+
 .mt20 {
   margin-top: 20px;
 }
@@ -96,6 +100,10 @@
 
 .ml10 {
   margin-left: 10px;
+}
+
+.ml12 {
+  margin-left: 12px;
 }
 
 .ml15 {
