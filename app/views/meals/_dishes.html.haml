@@ -82,15 +82,11 @@
                             = f.label :transport_time, "Time", class: "control-label col-sm-2 t-align-left ml10"
                             .col-xs-8
                               -#= f.datetime_field :transport_time
-                              #datetimepicker2.input-group.date
-                                %input.form-control#dish_transport_time{:type => "text", name: "dish[transport_time]"}
+                              .datetimepicker.input-group.date
+                                %input.form-control#dish_transport_time{:type => "text", name: "dish[transport_time]", value: bootstrap_datetime_format(dish.transport_time) }
                                 %span.input-group-addon
                                   %i.fa.fa-calendar
 
-                            -##datetimepicker1.input-group.date.width-40
-                            -#  %input.form-control#meal_start{:type => "text", name: "meal[start]", value: @meal.bootrap_datetime_format}
-                            -#  %span.input-group-addon
-                            -#    %i.fa.fa-calendar
 
                       .widget-toolbox.padding-10.clearfix
                         = button_tag class: "btn btn-sm btn-warning" do
@@ -104,18 +100,6 @@
 
 
 :javascript
-  $('#datetimepicker2').click(function() {
-    console.log("Clicking")
-  });
-
-  $('#datetimepicker2').datetimepicker({
-    icons: {
-      time: "fa fa-clock-o",
-      date: "fa fa-calendar",
-      up: "fa fa-arrow-up",
-      down: "fa fa-arrow-down"
-    }
-  });
 
   //shows ordered/unordered buttons
   $( ".ordering-needed" ).click(function() {

@@ -10,10 +10,10 @@ class MealDecorator < Draper::Decorator
   #     end
   #   end
 
-  def bootrap_datetime_format
-    datetime = object.start ? object.start : DateTime.now
-    datetime.strftime("%m/%d/%Y %l:%M %p")
-  end
+  # def bootrap_datetime_format
+  #   datetime = object.start ? object.start : DateTime.now
+  #   datetime.strftime("%m/%d/%Y %l:%M %p")
+  # end
 
   def short_start_date
     "#{meal.start.strftime("%a, %b")} #{meal.start.strftime("%-d").to_i.ordinalize}"

@@ -116,8 +116,8 @@
             .form-group
               = f.label :date, class: "control-label col-sm-2"
               .col-sm-7
-                #datetimepicker1.input-group.date.width-40
-                  %input.form-control#meal_start{:type => "text", name: "meal[start]", value: @meal.bootrap_datetime_format}
+                .datetimepicker.input-group.date.width-40
+                  %input.form-control#meal_start{:type => "text", name: "meal[start]", value: bootstrap_datetime_format(@meal.start) }
                   %span.input-group-addon
                     %i.fa.fa-calendar
             .form-group
@@ -144,7 +144,7 @@
 
 :javascript
   $(function () {
-    $('#datetimepicker1').datetimepicker({
+    $('.datetimepicker').datetimepicker({
       icons: {
         time: "fa fa-clock-o",
         date: "fa fa-calendar",
