@@ -179,8 +179,8 @@ RSpec.describe DishesController, :type => :controller do
     end
   end
 
-  describe "PUT update" do
-    subject { put :update, event_id: event.id, meal_id: meal.id, id: dish.id, dish: new_attributes}
+  describe "PATCH update" do
+    subject { patch :update, event_id: event.id, meal_id: meal.id, id: dish.id, dish: new_attributes}
 
     it_behaves_like "an_unauthenticated_user" do
       let(:new_attributes) { "any" }
@@ -202,7 +202,7 @@ RSpec.describe DishesController, :type => :controller do
         end
 
         it "redirects to the dish" do
-          expect(response).to redirect_to event_meal_dish_path(event, meal, dish)
+          expect(response).to redirect_to event_meal_path(event, meal)
         end
       end
 
@@ -240,7 +240,7 @@ RSpec.describe DishesController, :type => :controller do
 
         it "redirects to the dishes list" do
           subject
-          expect(response).to redirect_to event_meal_dishes_path(event, meal)
+          expect(response).to redirect_to event_meal_path(event, meal)
         end
       end
 
