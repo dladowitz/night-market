@@ -27,6 +27,14 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  # Enable Rails's static asset server
+  config.serve_static_assets = true
+
+  # Rails looks at public/assets for precompiled assests and folders. Default for dev is true
+  # When set to false: If it's empty rails does not fallback to app/assets directory.
+  # When set to true:  If it’s empty, it falls back to the app/assets directory and compiles on the fly.
+  config.assets.compile = true
+
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
