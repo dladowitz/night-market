@@ -8,7 +8,7 @@
   .col-sm-3
     .form-group
       #datetimepicker1.input-group.date
-        %input.form-control#meal_start{:type => "text", name: "meal[start]", value: @meal.bootrap_datetime_format }
+        %input.form-control#meal_start{:type => "text", name: "meal[start]", value: @meal.decorate.bootstrap_datetime_format }
         %span.input-group-addon
           %span.fa.fa-calendar
 
