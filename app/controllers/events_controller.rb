@@ -18,6 +18,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    puts "<<<<<<<<<<<<<<<<<the current user is: #{current_user.first_name}"
      @event = current_user.events.new(event_params)
 
      if @event.save
