@@ -2649,6 +2649,7 @@
     background-color: transparent;
   }
 }
+/*This seems to be invalid css and scss*/
 /*@media only screen and (max-width: 991px) and only screen and (max-width: 991px) {*/
   /*.skin-3 .sidebar.responsive-min.responsive .nav-list > li.active > a:after,*/
   /*.skin-3 .sidebar.responsive-min.responsive .nav-list > li.active > a:before {*/
