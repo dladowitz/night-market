@@ -2225,16 +2225,17 @@
 }
 }
 
-@media (max-width: 991px) and only screen and (min-width: 992px) {
-.rtl .sidebar.responsive-min .nav-list li.hover > .submenu {
-	margin-left: auto;
-	margin-right: 0;
-}
-.rtl .sidebar.responsive-min .nav-list > li > .submenu li.hover > .submenu > li > a,.rtl .sidebar.responsive-min .nav-list > li > .submenu li > .submenu > li.hover > .submenu > li > a {
-	margin-left: auto !important;
-	margin-right: 0 !important;
-}
-}
+/*This seems to be invalid css and scss*/
+/*@media (max-width: 991px) and only screen and (min-width: 992px) {*/
+/*.rtl .sidebar.responsive-min .nav-list li.hover > .submenu {*/
+	/*margin-left: auto;*/
+	/*margin-right: 0;*/
+/*}*/
+/*.rtl .sidebar.responsive-min .nav-list > li > .submenu li.hover > .submenu > li > a,.rtl .sidebar.responsive-min .nav-list > li > .submenu li > .submenu > li.hover > .submenu > li > a {*/
+	/*margin-left: auto !important;*/
+	/*margin-right: 0 !important;*/
+/*}*/
+/*}*/
 
 @media (max-width: 991px) and (min-width: 992px) {
 .rtl .sidebar.responsive-min.compact .nav-list > li > a {

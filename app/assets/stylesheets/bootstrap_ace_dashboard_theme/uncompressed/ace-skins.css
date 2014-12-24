@@ -2649,12 +2649,12 @@
     background-color: transparent;
   }
 }
-@media only screen and (max-width: 991px) and only screen and (max-width: 991px) {
-  .skin-3 .sidebar.responsive-min.responsive .nav-list > li.active > a:after,
-  .skin-3 .sidebar.responsive-min.responsive .nav-list > li.active > a:before {
-    display: none;
-  }
-}
+/*@media only screen and (max-width: 991px) and only screen and (max-width: 991px) {*/
+  /*.skin-3 .sidebar.responsive-min.responsive .nav-list > li.active > a:after,*/
+  /*.skin-3 .sidebar.responsive-min.responsive .nav-list > li.active > a:before {*/
+    /*display: none;*/
+  /*}*/
+/*}*/
 .skin-3 .sidebar-shortcuts,
 .skin-3 .sidebar-shortcuts-mini {
   background-color: #dbdbdb;

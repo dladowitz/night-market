@@ -3720,15 +3720,18 @@ body.mob-safari .sidebar.sidebar-fixed {
     margin-left: 12px;
   }
 }
-@media (max-width: 991px) and only screen and (min-width: 992px) {
-  .sidebar.responsive-min .nav-list li.hover > .submenu {
-    margin-left: 0;
-  }
-  .sidebar.responsive-min .nav-list > li > .submenu li.hover > .submenu > li > a,
-  .sidebar.responsive-min .nav-list > li > .submenu li > .submenu > li.hover > .submenu > li > a {
-    margin-left: 0 !important;
-  }
-}
+
+/*This seems to be invalid css and scss*/
+/*@media (max-width: 991px) and only screen and (min-width: 992px) {*/
+  /*.sidebar.responsive-min .nav-list li.hover > .submenu {*/
+    /*margin-left: 0;*/
+  /*}*/
+  /*.sidebar.responsive-min .nav-list > li > .submenu li.hover > .submenu > li > a,*/
+  /*.sidebar.responsive-min .nav-list > li > .submenu li > .submenu > li.hover > .submenu > li > a {*/
+    /*margin-left: 0 !important;*/
+  /*}*/
+/*}*/
+
 @media (max-width: 991px) and (min-width: 992px) {
   .sidebar.responsive-min.compact .nav-list > li > a {
     height: 39px;
