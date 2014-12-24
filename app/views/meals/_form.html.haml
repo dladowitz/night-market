@@ -1,20 +1,33 @@
 -# TODO surface model errors on fields
 
-= form_for [@event, @meal] do |f|
-  = f.label :category
-  = f.select :category, [["Breakfast", "Breakfast"], ["Lunch", "Lunch"], ["Dinner", "Dinner"], ["Snack", "Snack"]]
-  = f.label :guests
-  = f.number_field :guests, value: @event.guests
-  .col-sm-3
-    .form-group
-      #datetimepicker1.input-group.date
-        %input.form-control#meal_start{:type => "text", name: "meal[start]", value: @meal.decorate.bootstrap_datetime_format }
-        %span.input-group-addon
-          %span.fa.fa-calendar
-
-  = f.label :ignore_warnings
-  = f.check_box :ignore_warnings
-  = f.submit
+.widget-box.transparent
+  .widget-body
+    .widget-main
+      = form_for [@event, @meal], html: {class: "form-horizontal", role: "form"} do |f|
+        .form-group
+          = f.label :category, class: "control-label col-sm-2"
+          .col-sm-10
+            = f.select :category, [["Breakfast", "Breakfast"], ["Lunch", "Lunch"], ["Dinner", "Dinner"], ["Snack", "Snack"]], class: "form-control"
+        .form-group
+          = f.label :guests, class: "control-label col-sm-2"
+          .col-sm-10
+            = f.number_field :guests, value: @event.guests, class: "form-control input-mini"
+        .form-group
+          = f.label :start, "Date", class: "control-label col-sm-2"
+          .col-sm-10
+            #datetimepicker1.input-group.date.control-label.input-large
+              %input.form-control#meal_start{:type => "text", name: "meal[start]", value: @meal.decorate.bootstrap_datetime_format }
+              %span.input-group-addon
+                %span.fa.fa-calendar
+        .form-group
+          = f.label :ignore_warnings, class: "control-label col-sm-2"
+          .col-sm-10
+            = f.check_box :ignore_warnings, class: "form-control"
+        .form-group
+          .col-sm-11.col-sm-offset-2
+            = button_tag class: "btn btn-sm btn-success" do
+              %i.fa.fa-floppy-o.bigger-150.mr5
+              Save
 
 
 -#doesn't load properly when moved to custom.js
