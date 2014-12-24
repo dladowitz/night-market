@@ -11,40 +11,28 @@
  * file per style scope.
  *
  *= require_self
+ //= require bootstrap_ace_dashboard_theme/uncompressed/bootstrap
+ //= require bootstrap_ace_dashboard_theme/uncompressed/chosen
+ //= require bootstrap_ace_dashboard_theme/uncompressed/jquery-ui
+ //= require bootstrap_ace_dashboard_theme/uncompressed/jquery-ui.custom
+ //= require bootstrap_ace_dashboard_theme/uncompressed/ace
+ //= require bootstrap_ace_dashboard_theme/uncompressed/ace-part2
+ //= require bootstrap_ace_dashboard_theme/uncompressed/ace-skins
+ //= require bootstrap_ace_dashboard_theme/uncompressed/ace-rtl
+ //= require bootstrap_ace_dashboard_theme/uncompressed/ace-ie
+ //= require custom
  */
 
-@import "bootstrap_ace_dashboard_theme/uncompressed/bootstrap.css";
+// Not sure about bootstrap-sprockets
+//@import "bootstrap-sprockets";
+
+//Bootstrap imported through ace theme folder instead of gem.
+//@import "bootstrap";
+
+//Doesn't work when called from folder. Needs to call gem'
 @import "font-awesome";
-@import "bootstrap_ace_dashboard_theme/uncompressed/chosen.css";
-@import "bootstrap_ace_dashboard_theme/uncompressed/jquery-ui.css";
-@import "bootstrap_ace_dashboard_theme/uncompressed/jquery-ui.custom.css";
-@import "bootstrap_ace_dashboard_theme/uncompressed/ace.css";
-@import "bootstrap_ace_dashboard_theme/uncompressed/ace-part2.css";
-@import "bootstrap_ace_dashboard_theme/uncompressed/ace-skins.css";
-@import "bootstrap_ace_dashboard_theme/uncompressed/ace-rtl.css";
-@import "bootstrap_ace_dashboard_theme/uncompressed/ace-ie.css";
-@import "custom.css";
+/*@import "bootstrap_ace_dashboard_theme/uncompressed/font-awesome.css";*/
+
 @import "bootstrap-datetimepicker";
 
-
-
-
-
-//Old manifest
-/*//Bootstrap imported through ace them folder. Not sure about bootstrap-sprockets*/
-/*//@import "bootstrap-sprockets";*/
-/*//@import "bootstrap";**/
-/*@import "bootstrap_ace_dashboard_theme/uncompressed/bootstrap.css";*/
-/*//@import "font-awesome";*/
-/*@import "bootstrap_ace_dashboard_theme/uncompressed/font-awesome.css";*/
-/*@import "bootstrap_ace_dashboard_theme/uncompressed/chosen.css";*/
-/*@import "bootstrap_ace_dashboard_theme/uncompressed/jquery-ui.css";*/
-/*@import "bootstrap_ace_dashboard_theme/uncompressed/jquery-ui.custom.css";*/
-/*@import "bootstrap_ace_dashboard_theme/uncompressed/ace.css";*/
-/*@import "bootstrap_ace_dashboard_theme/uncompressed/ace-part2.css";*/
-/*@import "bootstrap_ace_dashboard_theme/uncompressed/ace-skins.css";*/
-/*@import "bootstrap_ace_dashboard_theme/uncompressed/ace-rtl.css";*/
-/*@import "bootstrap_ace_dashboard_theme/uncompressed/ace-ie.css";*/
-/*@import "custom.css";*/
-/*@import 'bootstrap-datetimepicker';*/
 

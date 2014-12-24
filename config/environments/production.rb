@@ -32,7 +32,7 @@ Rails.application.configure do
   # Rails looks at public/assets for precompiled assests and folders. Default for prod is false.
   # When set to False: If it's empty rails does not fallback to app/assets directory.
   # When set to True:  If it’s empty, it falls back to the app/assets directory and compiles on the fly.
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Generate digests for assets URLs.
   config.assets.digest = true
