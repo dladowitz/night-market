@@ -16,7 +16,7 @@ class DishesController < ApplicationController
   end
 
   def create
-    @dish = @meal.dishes.build dish_params
+    @dish = @meal.dishes.build dish_params_with_datetime_conversion
 
     if @dish.save
       flash[:success] = "Dish was successfully created."
@@ -66,4 +66,12 @@ class DishesController < ApplicationController
     def dish_params
       params.require(:dish).permit(:name, :vendor, :servings, :category, :ordered, :needs_ordering, :vegetarian, :vegan, :gluten_free, :dairy_free, :needs_ice, :transport_method, :transport_time)
     end
+
+  def dish_params_with_datetime_conversion
+    if dish_params[:transport_time]
+      dish_params.merge(transport_time: bootstrap_datetime_to_rb_datetime(dish_params[:transport_time]))
+    else
+      dish_params
+    end
+  end
 end

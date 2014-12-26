@@ -43,4 +43,9 @@ class ApplicationController < ActionController::Base
       require_user
     end
   end
+
+  #bootstrap ruby doesn't like datetimepicker's ordering of day and month. Not the most efficient
+  def bootstrap_datetime_to_rb_datetime(boostrap_dt_string)
+    DateTime.strptime(boostrap_dt_string, "%m/%d/%Y %l:%M %p").to_s
+  end
 end

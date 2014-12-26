@@ -64,9 +64,8 @@
               .form-group
                 = f.label :transport_time, "Time", class: "control-label col-sm-2 t-align-left ml10"
                 .col-xs-8
-                  -#= f.datetime_field :transport_time
-                  .datetimepicker.input-group.date
-                    %input.form-control#dish_transport_time{:type => "text", name: "dish[transport_time]", value: bootstrap_datetime_format(@dish.transport_time) }
+                  #datetimepicker2.input-group.date
+                    %input.form-control#dish_transport_time{:type => "text", name: "dish[transport_time]" }
                     %span.input-group-addon
                       %i.fa.fa-calendar
 
@@ -76,3 +75,15 @@
                   %i.fa.fa-floppy-o.bigger-150.mr5
                   Create
 
+-#doesn't load properly when moved to custom.js
+:javascript
+  $(function () {
+    $('#datetimepicker2').datetimepicker({
+      icons: {
+        time: "fa fa-clock-o",
+        date: "fa fa-calendar",
+        up: "fa fa-arrow-up",
+        down: "fa fa-arrow-down"
+      }
+    });
+  });
