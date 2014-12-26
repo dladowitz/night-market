@@ -65,7 +65,7 @@
                 = f.label :transport_time, "Time", class: "control-label col-sm-2 t-align-left ml10"
                 .col-xs-8
                   #datetimepicker2.input-group.date
-                    %input.form-control#dish_transport_time{:type => "text", name: "dish[transport_time]" }
+                    %input.form-control#dish_transport_time{:type => "text", name: "dish[transport_time]", value: bootstrap_datetime_format(@dish.transport_time) }
                     %span.input-group-addon
                       %i.fa.fa-calendar
 

@@ -20,7 +20,7 @@ class DishesController < ApplicationController
 
     if @dish.save
       flash[:success] = "Dish was successfully created."
-      redirect_to event_meal_dish_path(@event, @meal, @dish)
+      redirect_to event_meal_path(@event, @meal)
     else
        render :new
     end
@@ -49,20 +49,6 @@ class DishesController < ApplicationController
   end
 
   private
-    # def set_dish
-    #   @dish = Dish.find_by_id params[:id]
-    #
-    #   unless @dish
-    #     flash[:danger] = "Listen up pilgram. That's not a dish we've seen round these parts."
-    #     redirect_to event_meal_dishes_path(@event, @meal)
-    #   end
-    # end
-    #
-    # def set_event_and_meal
-    #   @event = Event.find params[:event_id]
-    #   @meal  = Meal.find  params[:meal_id]
-    # end
-
     def dish_params
       params.require(:dish).permit(:name, :vendor, :servings, :category, :ordered, :needs_ordering, :vegetarian, :vegan, :gluten_free, :dairy_free, :needs_ice, :transport_method, :transport_time)
     end
