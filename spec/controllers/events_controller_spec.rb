@@ -80,6 +80,14 @@ describe EventsController do
         it "should create an event belonging to the logged in user" do
           expect{ subject }.to change{ user1.events.count }.by 1
         end
+
+        context "when the 'auto_populate' checkbox is checked" do
+          subject { post :create, auto_populate: "yes", event: params}
+
+          it "should create seven meals" do
+            expect{ subject }.to change{ Meal.count }.by 7
+          end
+        end
       end
 
       context "with invalid params" do

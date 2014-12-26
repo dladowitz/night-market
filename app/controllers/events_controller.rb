@@ -21,6 +21,8 @@ class EventsController < ApplicationController
     @event = current_user.events.new(event_params)
 
      if @event.save
+       auto_populate_meals if params[:auto_populate] == "yes"
+
        flash[:success] = "Nice one. Event created successfully."
        redirect_to event_path(@event)
      else
@@ -54,5 +56,15 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:name, :guests, :budget, :location, :start_date, :end_date,
                                   :vegetarian, :vegan, :gluten_free)
+  end
+
+  def auto_populate_meals
+    @event.meals.create category: "Dinner", guests: @event.guests
+    @event.meals.create category: "Breakfast", guests: @event.guests
+    @event.meals.create category: "Lunch", guests: @event.guests
+    @event.meals.create category: "Dinner", guests: @event.guests
+    @event.meals.create category: "Breakfast", guests: @event.guests
+    @event.meals.create category: "Lunch", guests: @event.guests
+    @event.meals.create category: "Dinner", guests: @event.guests
   end
 end

@@ -52,5 +52,15 @@
                 = f.label :gluten_free
                 = f.check_box :gluten_free
         .form-group
+          .control-label.col-xs-3 Meals
+          .col-xs-9
+            %ul.list-inline.fsize-20
+              %li
+                = label_tag "auto Populate Seven Meals (fri-sun)"
+                = radio_button_tag "auto_populate", "yes", true
+              %li
+                = label_tag "Don't Add Any Meals"
+                = radio_button_tag  "auto_populate", "no", false
+        .form-group
           .col-xs-10.col-xs-offset-3
             = f.submit class: "btn btn-warning"

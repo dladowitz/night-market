@@ -16,7 +16,11 @@ class MealDecorator < Draper::Decorator
   end
 
   def short_start_date
-    "#{meal.start.strftime("%a, %b")} #{meal.start.strftime("%-d").to_i.ordinalize}"
+    if meal.start
+      "#{meal.start.strftime("%a, %b")} #{meal.start.strftime("%-d").to_i.ordinalize}"
+    else
+      "Missing Date"
+    end
   end
 
 end
