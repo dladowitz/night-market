@@ -15,7 +15,7 @@
           %span.menu-text Users
         %b.arrow
     %li
-      %a{href: meals_event_select_path}
+      %a{href: "#{@event && @event.id ? event_meals_path(@event) : meals_event_select_path }"}
         %i.menu-icon.fa.fa-tag
         %span.menu-text Meals
       %b.arrow

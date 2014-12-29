@@ -33,7 +33,7 @@ class DishesController < ApplicationController
   end
 
   def update
-    if @dish.update(dish_params)
+    if @dish.update(dish_params_with_datetime_conversion)
       flash[:success] = 'Dish was successfully updated.'
       redirect_to event_meal_path(@event, @meal)
     else

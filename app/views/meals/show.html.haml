@@ -7,28 +7,24 @@
   for
   = link_to @event.name, event_path(@event)
 
-  = link_to event_meal_dishes_path(@event, @meal), class: "btn btn-info" do
-    %i.fa.fa-cutlery.bigger-150.mr5
-    Dishes
-
   = link_to event_meals_path(@event), class: "btn btn-primary" do
     %i.fa.fa-spoon.bigger-150.mr5
-    Meals
+    View All Meals
 
   = link_to event_meal_path(@event, @meal), method: :delete, class: "btn btn-danger", data: { confirm: "Are you, like, for sure?" } do
     %i.fa.fa-trash-o.bigger-150.mr5
-    Delete
+    Delete this Meal
 
 .row#status
   .col-sm-12
-    .col-sm-8#status
+    .col-sm-5#status
       .widget-box.transparent
         .widget-header
           .widget-title
             %span.fsize-20
               %i.fa.fa-bar-chart
             %span.fsize-25
-              Status
+              Meal Status
         .widget-body
           .widget-main
             %table.table.table-hover
@@ -66,7 +62,7 @@
             %span.fsize-20
               %i.fa.fa-bar-chart
             %span.fsize-25
-              Options
+              Meal Options
         .widget-body
           .widget-main
             %table.table
@@ -101,51 +97,49 @@
 
                   %td.no-lines= @event.vegan? ? "Yes" : "No"
                   %td.no-lines= @meal.show_warning?(:vegan) ? "No" : "Yes"
-.row#details
-  .col-sm-9
-    .widget-box.transparent
-      .widget-header
-        .widget-title
-          %span.fsize-20
-            %i.fa.fa-search
-          %span.fsize-25
-            Details
-      .widget-body
-        .widget-main
-          = form_for [@event, @meal], html: {class: "form-horizontal", role: "form"} do |f|
-            .form-group
-              = f.label :date, class: "control-label col-sm-2"
-              .col-sm-7
-                .datetimepicker.input-group.date.width-40
-                  %input.form-control#meal_start{:type => "text", name: "meal[start]", value: bootstrap_datetime_format(@meal.start) }
-                  %span.input-group-addon
-                    %i.fa.fa-calendar
-            .form-group
-              = f.label :guests, class: "control-label col-sm-2"
-              .col-sm-7
-                = f.number_field :guests, class: "form-control input-mini"
-            .form-group
-              = f.label :ignore_warnings, class: "control-label col-sm-2", title: "Check to disable meal warnings suc 'not enough servings' or 'missing delivery time'", data: {toggle: "tooltip"}
-              .col-sm-7
-                = f.check_box :ignore_warnings, class: "form-control"
-            .form-group
-              .col-sm-3.col-sm-offset-2
-                = button_tag class: "btn btn-sm btn-warning" do
-                  %i.fa.fa-floppy-o.bigger-150.mr5
-                  Update
 
+    .col-sm-3#details
+      .widget-box.transparent
+        .widget-header
+          .widget-title
+            %span.fsize-20
+              %i.fa.fa-search
+            %span.fsize-25
+              Meal Details
+        .widget-body
+          .widget-main
+            = form_for [@event, @meal], html: {class: "form-horizontal", role: "form"} do |f|
+              .form-group
+                = f.label :date, class: "control-label col-sm-3"
+                .col-sm-9
+                  #datetimepicker.input-group.date
+                    %input.form-control#meal_start{:type => "text", name: "meal[start]", value: bootstrap_datetime_format(@meal.start) }
+                    %span.input-group-addon
+                      %i.fa.fa-calendar
+              .form-group
+                = f.label :guests, class: "control-label col-sm-3"
+                .col-sm-9
+                  = f.number_field :guests, class: "form-control input-mini"
+              .form-group
+                = f.label :ignore_warnings, class: "control-label col-sm-3", title: "Check to disable meal warnings suc 'not enough servings' or 'missing delivery time'", data: {toggle: "tooltip"}
+                .col-sm-9
+                  = f.check_box :ignore_warnings, class: "form-control"
+              .form-group
+                .col-sm-3.col-sm-offset-3
+                  = button_tag class: "btn btn-sm btn-warning" do
+                    %i.fa.fa-floppy-o.bigger-150.mr5
+                    Update
 
 = render "dishes"
-
-
 
 
 -#doesn't load properly when moved to custom.js
 
 :javascript
   $(function () {
-    $('.datetimepicker').datetimepicker({
+    $('#datetimepicker').datetimepicker({
       icons: {
+        sideBySide: true,
         time: "fa fa-clock-o",
         date: "fa fa-calendar",
         up: "fa fa-arrow-up",

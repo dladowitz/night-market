@@ -77,7 +77,7 @@ RSpec.describe DishesController, :type => :controller do
 
         it "redirects to the created dish" do
           subject
-          expect(response).to redirect_to event_meal_dish_path(event, meal, assigns(:dish))
+          expect(response).to redirect_to event_meal_path(event, meal)
         end
       end
 

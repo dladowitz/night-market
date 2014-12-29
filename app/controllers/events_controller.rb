@@ -24,7 +24,7 @@ class EventsController < ApplicationController
        auto_populate_meals if params[:auto_populate] == "yes"
 
        flash[:success] = "Nice one. Event created successfully."
-       redirect_to event_path(@event)
+       redirect_to event_meals_path(@event)
      else
        flash[:danger] = "Oh Frak, that didn't work."
        render :new
