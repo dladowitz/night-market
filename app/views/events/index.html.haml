@@ -1,7 +1,7 @@
 %h1 Your Events
 
-.row
-  - if @events
+- if @events.present?
+  .row
     - @events.each do |event|
       .col-xs-12.col-sm-4.widget-container-col
         .widget-box.transparent
@@ -38,7 +38,10 @@
                       %strong End Date
                     %td.col-md-7
                       = "#{event.end_date.strftime("%b")} #{event.end_date.strftime("%-d").to_i.ordinalize}, #{event.end_date.strftime("%l:%M %p")}"
+      %hr
 
+- else
+  .well.mb30
+    %H3 Looks like you don't have any events yet. Create your first one now.
 
-%hr
 = link_to "Create a New Event", new_event_path, class: "btn btn-success"

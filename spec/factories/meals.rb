@@ -7,5 +7,6 @@ FactoryGirl.define do
     guests 100
     start 4.days.from_now
     ignore_warnings false
+    cost 500
   end
 end

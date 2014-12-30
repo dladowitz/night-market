@@ -56,6 +56,14 @@ class Meal < ActiveRecord::Base
     return false
   end
 
+  def percent_of_total
+    if cost && event.budget
+      "#{ ((cost/event.budget.to_f) * 100).round }%"
+    else
+      "Cost of Meal or Event Budget Missing"
+    end
+  end
+
   private
 
   # TODO change to has_option_warning?

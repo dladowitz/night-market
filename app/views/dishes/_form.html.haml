@@ -75,12 +75,11 @@
                   %i.fa.fa-floppy-o.bigger-150.mr5
                   Create
 
--#doesn't load properly when moved to custom.js
 :javascript
   $(function () {
     $('#datetimepicker2').datetimepicker({
+      sideBySide: true,
       icons: {
-        sideBySide: true,
         time: "fa fa-clock-o",
         date: "fa fa-calendar",
         up: "fa fa-arrow-up",
@@ -88,3 +87,4 @@
       }
     });
   });
+

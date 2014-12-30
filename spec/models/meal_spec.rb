@@ -155,4 +155,25 @@ describe Meal do
       end
     end
   end
+
+  describe "percent_of_total" do
+    let(:event) { create :event, budget: 5000 }
+    subject { meal.percent_of_total }
+
+    context "with Meal cost and Event Budget" do
+      let(:meal)  { event.meals.create cost:1000 }
+
+      it "returns the correct percentage" do
+        expect(subject).to eq "20%"
+      end
+    end
+
+    context "when meal cost is missing" do
+      let(:meal)  { event.meals.create cost: nil }
+
+      it "returns an error message" do
+        expect(subject).to eq "Cost of Meal or Event Budget Missing"
+      end
+    end
+  end
 end

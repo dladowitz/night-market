@@ -110,6 +110,12 @@
           .widget-main
             = form_for [@event, @meal], html: {class: "form-horizontal", role: "form"} do |f|
               .form-group
+                = f.label :cost, "Cost $", class: "control-label col-sm-3"
+                .col-sm-6
+                  = f.number_field :cost, class: "form-control input-mini"
+                .col-sm-3
+                  Other
+              .form-group
                 = f.label :date, class: "control-label col-sm-3"
                 .col-sm-9
                   #datetimepicker.input-group.date
