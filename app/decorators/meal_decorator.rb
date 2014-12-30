@@ -23,4 +23,11 @@ class MealDecorator < Draper::Decorator
     end
   end
 
+  def percentage_of_budget
+    if meal.percent_of_budget
+      "#{meal.percent_of_budget.round}% of event budget"
+    else
+      "Missing Meal Cost or Event Budget"
+    end
+  end
 end

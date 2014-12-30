@@ -56,11 +56,9 @@ class Meal < ActiveRecord::Base
     return false
   end
 
-  def percent_of_total
+  def percent_of_budget
     if cost && event.budget
-      "#{ ((cost/event.budget.to_f) * 100).round }%"
-    else
-      "Cost of Meal or Event Budget Missing"
+      cost/event.budget.to_f * 100
     end
   end
 
