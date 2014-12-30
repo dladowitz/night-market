@@ -45,10 +45,13 @@ describe Event do
 
   describe "#current_spend" do
     let(:event) { create :event }
+    before do
+      event.meals.create cost: 2000
+      event.meals.create cost: 1000
+    end
 
     it "returns the total spending for all aspects of the event" do
-      #TODO should add up dishes and supplies. Need to implement.
-      expect(event.current_spend).to eq event.budget + 100 #Placeholder just so the method returns something
+      expect(event.current_spend).to eq 3000
     end
   end
 end

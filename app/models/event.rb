@@ -29,11 +29,15 @@ class Event < ActiveRecord::Base
   has_many :meals
 
   def overbudget?
-    current_spend > budget
+    current_spend > budget if current_spend && budget
   end
 
   def current_spend
-    # Placeholder for specs. Need to add logic
-    budget + 100
+    total = 0
+    meals.each do |meal|
+      total += meal.cost if meal.cost
+    end
+
+    total
   end
 end
