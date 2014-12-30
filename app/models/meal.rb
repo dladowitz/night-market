@@ -92,7 +92,7 @@ class Meal < ActiveRecord::Base
     #TODO Refactor
     event_options = []
     event_options << "Gluten-Free" if event.gluten_free
-    event_options << "Vegetarian"  if event.gluten_free
+    event_options << "Vegetarian"  if event.vegetarian
     event_options << "Vegan"       if event.vegan
 
     meal_options =  []

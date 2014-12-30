@@ -37,7 +37,7 @@
                         .form-group
                           = f.label :category, class: "control-label col-sm-2"
                           .col-sm-5
-                            = f.select :category, [["Main", "Main"], [ "Desert", "Desert"], ["Side1", "Side1"], ["Side2", "Side2"], ["Side3", "Side3"]]
+                            = f.select :category, [["Main", "Main"], ["Drinks", "Drinks"], [ "Desert", "Desert"], ["Side1", "Side1"], ["Side2", "Side2"], ["Side3", "Side3"]]
                         .form-group-border-box
                           .form-group
                             = f.label :transport_method, "Transport to Site", class: "control-label col-sm-5 t-align-left ml10"
@@ -53,6 +53,15 @@
                                 %input.form-control#dish_transport_time{:type => "text", name: "dish[transport_time]", value: bootstrap_datetime_format(dish.transport_time) }
                                 %span.input-group-addon
                                   %i.fa.fa-calendar
+                        - if dish.category == "Drinks"
+                          .form-group-border-box.mt15
+                            .form-group
+                              = f.label :needs_ice, "Needs Ice", class: "control-label col-sm-5 t-align-left ml10"
+                              .col-xs-6.ordering-needs
+                                = f.radio_button :needs_ice, "1", checked: dish.needs_ice?
+                                = f.label "Yes", class: "mr10"
+                                = f.radio_button :needs_ice, "0", checked: !dish.needs_ice?
+                                = f.label "No"
                         .form-group-border-box.mt15
                           .form-group
                             = f.label :needs_ordering, "Needs PreOrdering", class: "control-label col-sm-5 t-align-left ml10"
