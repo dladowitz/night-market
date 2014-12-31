@@ -59,12 +59,12 @@ class EventsController < ApplicationController
   end
 
   def auto_populate_meals
-    @event.meals.create category: "Dinner", guests: @event.guests
-    @event.meals.create category: "Breakfast", guests: @event.guests
-    @event.meals.create category: "Lunch", guests: @event.guests
-    @event.meals.create category: "Dinner", guests: @event.guests
-    @event.meals.create category: "Breakfast", guests: @event.guests
-    @event.meals.create category: "Lunch", guests: @event.guests
-    @event.meals.create category: "Dinner", guests: @event.guests
+    @event.meals.create category: "Dinner",    guests: @event.guests, start: @event.start_date.to_datetime + 18.hours
+    @event.meals.create category: "Breakfast", guests: @event.guests, start: @event.start_date.to_datetime + 1.day + 9.hours
+    @event.meals.create category: "Lunch",     guests: @event.guests, start: @event.start_date.to_datetime + 1.day + 12.hours
+    @event.meals.create category: "Dinner",    guests: @event.guests, start: @event.start_date.to_datetime + 1.day + 18.hours
+    @event.meals.create category: "Breakfast", guests: @event.guests, start: @event.start_date.to_datetime + 2.day + 9.hours
+    @event.meals.create category: "Lunch",     guests: @event.guests, start: @event.start_date.to_datetime + 2.day + 12.hours
+    @event.meals.create category: "Dinner",    guests: @event.guests, start: @event.start_date.to_datetime + 2.day + 15.hours
   end
 end
