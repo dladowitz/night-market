@@ -23,11 +23,20 @@ class MealDecorator < Draper::Decorator
     end
   end
 
-  def percentage_of_budget
+  #TODO clean this thing up. Maybe a case statement
+  def percentage_of_budget(options = nil)
     if meal.percent_of_budget
-      "#{meal.percent_of_budget.round}% of event budget"
+      if options && options[:truncate]
+        "#{meal.percent_of_budget.round}%"
+      else
+        "#{meal.percent_of_budget.round}% of event budget"
+      end
     else
-      "Missing Meal Cost or Event Budget"
+      if options && options[:truncate]
+        nil
+      else
+        "Missing Meal Cost or Event Budget"
+      end
     end
   end
 end

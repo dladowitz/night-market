@@ -27,33 +27,40 @@
               Meal Status
         .widget-body
           .widget-main
-            %table.table.table-hover
-              %thead
-                %tr
-                  %th.no-lines Type
-                  %th.no-lines Servings
-                  %th.no-lines Transport Method
-                  %th.no-lines Order Status
-              %tbody
-                - @meal.dishes.decorate.each do |dish|
+            - unless @meal.dishes.present?
+              .well
+                %h3
+                  %span This meal doesn't have any dishes yet. Add some below so people don't go hungry.
+                  %span.fsize-30
+                    %i.fa.fa-arrow-circle-down
+            - else
+              %table.table.table-hover
+                %thead
                   %tr
-                    %td.no-lines
-                      %strong= dish.category
+                    %th.no-lines Type
+                    %th.no-lines Servings
+                    %th.no-lines Transport Method
+                    %th.no-lines Order Status
+                %tbody
+                  - @meal.dishes.decorate.each do |dish|
+                    %tr
+                      %td.no-lines
+                        %strong= dish.category
 
-                    %td.no-lines{ class: ("text-danger" if dish.show_warning?(:servings)) }
-                      %span= dish.servings
-                      - if dish.show_warning?(:servings)
-                        %span.fa.fa-warning{ title: "Servings don't equal guest count. People are gonna be hungry yo", data: {toggle: "tooltip"}}
+                      %td.no-lines{ class: ("text-danger" if dish.show_warning?(:servings)) }
+                        %span= dish.servings
+                        - if dish.show_warning?(:servings)
+                          %span.fa.fa-warning{ title: "Servings don't equal guest count. People are gonna be hungry yo", data: {toggle: "tooltip"}}
 
-                    %td.no-lines{ class: ("text-danger" if dish.show_warning?(:transport))}
-                      = dish.transport_method
-                      - if dish.show_warning?(:transport)
-                        %span.text-danger.fa.fa-warning{ title: "Delivery time is not set", data: {toggle: "tooltip"}}
+                      %td.no-lines{ class: ("text-danger" if dish.show_warning?(:transport))}
+                        = dish.transport_method
+                        - if dish.show_warning?(:transport)
+                          %span.text-danger.fa.fa-warning{ title: "Delivery time is not set", data: {toggle: "tooltip"}}
 
-                    %td.no-lines{class: ("text-danger" if dish.show_warning?(:order))}
-                      = dish.order_status
-                      - if dish.show_warning?(:order)
-                        %span.fa.fa-warning{ title: "Dish requires pre-ordering", data: {toggle: "tooltip"}}
+                      %td.no-lines{class: ("text-danger" if dish.show_warning?(:order))}
+                        = dish.order_status
+                        - if dish.show_warning?(:order)
+                          %span.fa.fa-warning{ title: "Dish requires pre-ordering", data: {toggle: "tooltip"}}
 
     .col-sm-4#missing-options
       .widget-box.mb20.transparent
@@ -76,7 +83,7 @@
                   %td.no-lines
                     %strong Gluten-Free
                     - if @meal.show_warning?(:gluten_free)
-                      %span.fa.fa-warning{ title: "Event requires Gluten-Free food, but you don't see to have any dishes planned", data: {toggle: "tooltip"}}
+                      %span.fa.fa-warning{ title: "Event requires Gluten-Free food, but you don't seem to have any dishes planned", data: {toggle: "tooltip"}}
                   %td.no-lines= @event.gluten_free? ? "Yes" : "No"
                   %td.no-lines= @meal.show_warning?(:gluten_free) ? "No" : "Yes"
 
@@ -84,7 +91,7 @@
                   %td.no-lines
                     %strong Vegetarian
                     - if @meal.show_warning?(:vegetarian)
-                      %span.fa.fa-warning{ title: "Event requires Vegetarian food, but you don't see to have any dishes planned", data: {toggle: "tooltip"}}
+                      %span.fa.fa-warning{ title: "Event requires Vegetarian food, but you don't seem to have any dishes planned", data: {toggle: "tooltip"}}
 
                   %td.no-lines= @event.vegetarian? ? "Yes" : "No"
                   %td.no-lines= @meal.show_warning?(:vegetarian) ? "No" : "Yes"
@@ -93,7 +100,7 @@
                   %td.no-lines
                     %strong Vegan
                     - if @meal.show_warning?(:vegan)
-                      %span.fa.fa-warning{ title: "Event requires Vegan food, but you don't see to have any dishes planned", data: {toggle: "tooltip"}}
+                      %span.fa.fa-warning{ title: "Event requires Vegan food, but you don't seem to have any dishes planned", data: {toggle: "tooltip"}}
 
                   %td.no-lines= @event.vegan? ? "Yes" : "No"
                   %td.no-lines= @meal.show_warning?(:vegan) ? "No" : "Yes"
@@ -113,7 +120,7 @@
                 = f.label :cost, "Cost $", class: "control-label col-sm-3"
                 .col-sm-4
                   = f.number_field :cost, class: "form-control input-mini"
-                .col-sm-5.text-primary
+                .col-sm-5{ class: ("text-danger" unless @meal.percentage_of_budget.include?("%")) }
                   = @meal.percentage_of_budget
               .form-group
                 = f.label :date, class: "control-label col-sm-3"
@@ -128,10 +135,9 @@
                   = f.number_field :guests, class: "form-control input-mini"
               .form-group
                 = f.label :ignore_warnings, class: "control-label col-sm-3", title: "Check to disable meal warnings suc 'not enough servings' or 'missing delivery time'", data: {toggle: "tooltip"}
-                .col-sm-9
+                .col-sm-4
                   = f.check_box :ignore_warnings, class: "form-control"
-              .form-group
-                .col-sm-3.col-sm-offset-3
+                .col-sm-2
                   = button_tag class: "btn btn-sm btn-warning" do
                     %i.fa.fa-floppy-o.bigger-150.mr5
                     Update

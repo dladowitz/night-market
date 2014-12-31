@@ -8,15 +8,21 @@
 
       %tr.fsize-15
         %th.col-xs-1 Meal
+        %th.center.col-xs-1 Cost
+        %th.center.col-xs-1 % of Budget
+        %th.center.col-xs-1 $ per/person
         %th.center.col-xs-2 Date
         %th.center.col-xs-2 Warnings?
         %th.center.col-xs-2 Ignore Warnings?
 
       - @event.meals.decorate.each do |meal|
-        %tr.fsize-15{ class: ("danger" if meal.show_warning?) }
+        %tr.fsize-15{ class: ("danger" if meal.warning_messages.present? && !meal.ignore_warnings) }
           %td= link_to meal.category, event_meal_path(@event, meal)
+          %td.center= number_to_currency meal.cost, precision: 0
+          %td.center= meal.percentage_of_budget(truncate: true)
+          %td.center= number_to_currency(meal.cost / meal.guests) if meal.guests && meal.cost
           %td.center= meal.short_start_date
-          %td.center= meal.dish_warnings? ? "Yes" : "No"
+          %td.center= meal.warning_messages.present? ? "Yes" : "No"
           %td.center
             = form_for [@event, meal] do |f|
               = f.check_box :ignore_warnings
