@@ -31,7 +31,7 @@
                   .widget-main
                     %ul
                       - @event.meals.decorate.each do |meal|
-                        -if meal.warning_messages.present?
+                        - if meal.warning_messages.present? && !meal.ignore_warnings
                           %li.mb10
                             %strong= link_to meal.category, event_meal_path(@event, meal)
                             = ":"

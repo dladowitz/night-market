@@ -113,30 +113,7 @@ describe Meal do
     end
   end
 
-  # describe "#missing_options" do
-  #   subject { meal2.missing_options }
-  #   let!(:event2) { create :event, gluten_free: true, vegetarian: true, vegan: true }
-  #   let!(:meal2)  { create :meal, event: event2 }
-  #
-  #   context "when the meal is missing options" do
-  #     before { create :dish, meal: meal2 }
-  #
-  #     it "returns missing options" do
-  #       expect(subject).to match_array ["Gluten-Free", "Vegan"]
-  #     end
-  #   end
-  #
-  #   context "when the meal is not missing options" do
-  #     before { create :dish, meal: meal2, gluten_free: true, vegetarian: true, vegan: true }
-  #
-  #     it "returns an empty array" do
-  #       expect(subject).to match_array []
-  #
-  #     end
-  #   end
-  # end
-
-  describe "warning_messages" do
+  describe "#warning_messages" do
     subject { meal.warning_messages }
 
     context "when there are dish warnings" do
@@ -156,7 +133,7 @@ describe Meal do
     end
   end
 
-  describe "percent_of_total" do
+  describe "#percent_of_total" do
     let(:event) { create :event, budget: 5000 }
     subject { meal.percent_of_budget }
 
@@ -175,5 +152,28 @@ describe Meal do
         expect(subject).to be nil
       end
     end
+  end
+
+  describe "#dishes_include_option?" do
+    subject { meal.dishes_include_option? :gluten_free }
+
+
+    context "when the meal has a gluten-free dish" do
+      before { dish.update gluten_free: true }
+
+      it "returns true" do
+        expect(subject).to be true
+      end
+    end
+
+    context "when the meal does NOT havve a gluten-free dish" do
+      before { dish.update gluten_free: false }
+
+      it "returns false" do
+        expect(subject).to be false
+      end
+    end
+
+
   end
 end

@@ -15,7 +15,7 @@
     %i.fa.fa-trash-o.bigger-150.mr5
     Delete this Meal
 
-.row#status
+.row
   .col-sm-12
     .col-sm-5#status
       .widget-box.transparent
@@ -85,7 +85,7 @@
                     - if @meal.show_warning?(:gluten_free)
                       %span.fa.fa-warning{ title: "Event requires Gluten-Free food, but you don't seem to have any dishes planned", data: {toggle: "tooltip"}}
                   %td.no-lines= @event.gluten_free? ? "Yes" : "No"
-                  %td.no-lines= @meal.show_warning?(:gluten_free) ? "No" : "Yes"
+                  %td.no-lines= @meal.dishes_include_option?(:gluten_free) ? "Yes" : "No"
 
                 %tr{ class: ("text-danger" if @meal.show_warning?(:vegetarian)) }
                   %td.no-lines
@@ -94,7 +94,7 @@
                       %span.fa.fa-warning{ title: "Event requires Vegetarian food, but you don't seem to have any dishes planned", data: {toggle: "tooltip"}}
 
                   %td.no-lines= @event.vegetarian? ? "Yes" : "No"
-                  %td.no-lines= @meal.show_warning?(:vegetarian) ? "No" : "Yes"
+                  %td.no-lines= @meal.dishes_include_option?(:vegetarian) ? "Yes" : "No"
 
                 %tr{ class: ("text-danger" if @meal.show_warning?(:vegan)) }
                   %td.no-lines
@@ -103,7 +103,7 @@
                       %span.fa.fa-warning{ title: "Event requires Vegan food, but you don't seem to have any dishes planned", data: {toggle: "tooltip"}}
 
                   %td.no-lines= @event.vegan? ? "Yes" : "No"
-                  %td.no-lines= @meal.show_warning?(:vegan) ? "No" : "Yes"
+                  %td.no-lines= @meal.dishes_include_option?(:vegan) ? "Yes" : "No"
 
     .col-sm-3#details
       .widget-box.transparent

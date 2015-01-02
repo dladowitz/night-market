@@ -62,6 +62,14 @@ class Meal < ActiveRecord::Base
     end
   end
 
+  def dishes_include_option?(option_type)
+    self.dishes.each do |dish|
+      return true if dish.send(option_type) #calling option_type as a attribute
+    end
+
+    false
+  end
+
   private
 
   # TODO change to has_option_warning?
@@ -70,13 +78,6 @@ class Meal < ActiveRecord::Base
     self.event.send(option_type) && !dishes_include_option?(option_type)
   end
 
-  def dishes_include_option?(option_type)
-    self.dishes.each do |dish|
-      return true if dish.send(option_type) #calling option_type as a attribute
-    end
-
-    false
-  end
 
   def dish_warning_messages
     dish_messages = []
