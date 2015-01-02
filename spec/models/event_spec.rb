@@ -54,4 +54,27 @@ describe Event do
       expect(event.current_spend).to eq 3000
     end
   end
+
+  describe "#show_warnings?" do
+    subject { event.show_warnings? }
+
+    let!(:meal) { create :meal }
+    let(:event) { meal.event }
+
+    context "with a meal that has warnings" do
+      it "returns true" do
+        allow_any_instance_of(Meal).to receive(:ignore_warnings).and_return(false)
+        allow_any_instance_of(Meal).to receive(:warning_messages).and_return(["warnings_present"])
+        expect(subject).to be true
+      end
+    end
+
+    context "without a meal that has warnings" do
+      it "returns false" do
+        allow_any_instance_of(Meal).to receive(:ignore_warnings).and_return(false)
+        allow_any_instance_of(Meal).to receive(:warning_messages).and_return([])
+        expect(subject).to be false
+      end
+    end
+  end
 end

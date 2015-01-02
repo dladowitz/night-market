@@ -29,17 +29,21 @@
                     Unfinished Meals
                 .widget-body
                   .widget-main
-                    %ul
-                      - @event.meals.decorate.each do |meal|
-                        - if meal.warning_messages.present? && !meal.ignore_warnings
-                          %li.mb10
-                            %strong= link_to meal.category, event_meal_path(@event, meal)
-                            = ":"
-                            = meal.short_start_date
+                    - if @event.show_warnings?
+                      %ul
+                        - @event.meals.decorate.each do |meal|
+                          - if meal.warning_messages.present? && !meal.ignore_warnings
+                            %li.mb10
+                              %strong= link_to meal.category, event_meal_path(@event, meal)
+                              = ":"
+                              = meal.short_start_date
 
-                            %ul
-                              - meal.warning_messages.each do |warning|
-                                %li.text-danger= "#{warning[:warning_type]} : #{warning[:message]}"
+                              %ul
+                                - meal.warning_messages.each do |warning|
+                                  %li.text-danger= "#{warning[:warning_type]} : #{warning[:message]}"
+                    - else
+                      .well
+                        %h4 Looking good. No unfinished business here.
 
             .col-xs-6
               .widget-box.transparent

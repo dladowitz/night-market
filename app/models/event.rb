@@ -40,4 +40,12 @@ class Event < ActiveRecord::Base
 
     total
   end
+
+  def show_warnings?
+    meals.each do |meal|
+      return true if meal.warning_messages.present? && !meal.ignore_warnings
+    end
+
+    return false
+  end
 end
