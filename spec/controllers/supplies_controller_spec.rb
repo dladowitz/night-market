@@ -9,6 +9,10 @@ describe SuppliesController do
   describe "GET index" do
     subject { get :index, event_id: event.id }
 
+    it_behaves_like "an_unauthenticated_user" do
+      let(:http_request) { get :index, event_id: "any" }
+    end
+
     context "with a logged in user" do
       before :each do
         login_user user

@@ -19,11 +19,12 @@
         %i.menu-icon.fa.fa-tag
         %span.menu-text Meals
       %b.arrow
-    %li
-      %a{:href => event_supplies_path(@event)}
-        %i.menu-icon.fa.fa-picture-o
-        %span.menu-text Supplies
-      %b.arrow
+    -if@event && @event.id
+      %li
+        %a{:href => event_supplies_path(@event)}
+          %i.menu-icon.fa.fa-picture-o
+          %span.menu-text Supplies
+        %b.arrow
     %li
       %a{:href => "gallery.html"}
         %i.menu-icon.fa.fa-calendar

@@ -13,7 +13,6 @@ describe MealsController do
   describe "GET index" do
 
     it_behaves_like "an_unauthenticated_user" do
-      let(:event_id) { "any" }
       let(:http_request) { get :index, event_id: "any" }
     end
 
