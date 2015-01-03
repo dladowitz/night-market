@@ -20,6 +20,16 @@ class SuppliesController < ApplicationController
 
   end
 
+  def update
+    ## not updating properly
+    @supply.update_attributes supply_params
+
+    if @supply.save
+      redirect_to event_supplies_path
+    else
+      render_template :new
+    end
+  end
 
   private
 

@@ -101,4 +101,33 @@ describe SuppliesController do
       end
     end
   end
+
+  describe "PATCH update" do
+    subject { patch :update, event_id: event.id, id: supply1.id, supply: supply_params }
+
+    it_behaves_like "an_unauthenticated_user" do
+      let(:http_request) { patch :update, event_id: "Any", id: "Any" }
+    end
+
+
+    context "with a logged in user" do
+      before :each do
+        login_user user
+
+      end
+
+      context "with valid params" do
+        let(:supply_params) { { purchased: true } }
+
+        it "updates the supply item" do
+          subject
+          expect(supply1.purchased?).to be true
+        end
+      end
+
+      context "with invalid params" do
+
+      end
+    end
+  end
 end
