@@ -1,1 +1,34 @@
-This is the Supplies Index page
+%h1.mb30
+  Supplies for
+  = link_to @event.name, event_path(@event)
+
+.row
+  .col-xs-12
+    %table.table.table-hover
+
+      %tr.fsize-15
+        %th.col-xs-1 Supply Item
+        %th.center.col-xs-1 Vendor
+        %th.center.col-xs-1 Cost
+        %th.center.col-xs-2
+          Total Needed
+          .small ( + 15% buffer)
+        %th.center.col-xs-2 Messages
+        %th.center.col-xs-2 Purchased
+
+      - @event.supplies.each do |supply|
+        %tr.fsize-15{ class: ("danger" unless supply.purchased?) }
+          %td= supply.name
+          %td.center= supply.vendor
+          %td.center= number_to_currency(supply.cost, precision: 0)
+
+          -#TODO create decorator for this math
+          %td.center= ((@event.guests * @event.meals.count) + (0.15 * @event.guests * @event.meals.count)).round
+
+          %td.center= "Supply needs to be purchased" unless supply.purchased? # supply.warning_messages
+          %td.center
+            = form_for [@event, supply] do |f|
+              = f.check_box :purchased?
+              = f.submit "update", class: "btn btn-minier btn-warning ml10"
+
+    %p= link_to "Add a Supply", new_event_supply_path, class: "btn btn-success"

@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(version: 20150103011626) do
     t.integer  "event_id"
     t.boolean  "purchased"
     t.string   "vendor"
+    t.integer  "cost"
+    t.integer  "total_needed"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -37,4 +37,29 @@ describe SuppliesController do
       end
     end
   end
+
+  describe "POST create" do
+    subject { post :create, event_id: event.id, supply: supply_params }
+
+    context "with a logged in user" do
+      before :each do
+        login_user user
+      end
+      context "with valid params" do
+        let(:supply_params) { {name: "Paper Plates", cost: 10 } }
+
+        it "creates a new supply record" do
+          expect{subject}.to change{Supply.count}.by 1
+        end
+      end
+
+      context "with invalid params" do
+        let(:supply_params) { {name: nil } }
+
+        it "does not create a new supply record" do
+          expect{subject}.not_to change{Supply.count}
+        end
+      end
+    end
+  end
 end

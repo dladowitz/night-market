@@ -2,13 +2,15 @@
 #
 # Table name: supplies
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  event_id   :integer
-#  purchased  :boolean
-#  vendor     :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  event_id     :integer
+#  purchased    :boolean
+#  vendor       :string(255)
+#  cost         :integer
+#  total_needed :integer
+#  created_at   :datetime
+#  updated_at   :datetime
 #
 
 class Supply < ActiveRecord::Base
