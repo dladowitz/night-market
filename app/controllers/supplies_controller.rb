@@ -1,6 +1,7 @@
 class SuppliesController < ApplicationController
   before_action :require_user
   load_and_authorize_resource :event
+  load_and_authorize_resource :supply, through: :event
 
   def index
     @supplies = @event.supplies
@@ -15,15 +16,14 @@ class SuppliesController < ApplicationController
     end
   end
 
+  def new
+
+  end
+
 
   private
 
   def supply_params
     params.require(:supply).permit(:name, :purchased, :cost, :vendor, :total_needed)
   end
-
-  # def meal_params
-  #   params.require(:meal).permit(:category, :guests, :start, :ignore_warnings, :cost)
-  # end
-
 end

@@ -25,6 +25,9 @@ class Ability
 
       # Dishes
       can :manage, Dish # Dont have to worry about permissions. Already handled on events.
+
+      # Supplies
+      can :manage, Supply # Dont have to worry about permissions. Already handled on events.
     end
 
 
