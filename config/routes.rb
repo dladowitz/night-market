@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
 
   resources :events do
+    resources :supplies
+
     resources :meals do
       resources :dishes
     end
