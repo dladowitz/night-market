@@ -31,6 +31,16 @@ class SuppliesController < ApplicationController
     end
   end
 
+  def destroy
+    if @supply.delete
+      flash[:success] = "Supply Deleted."
+    else
+      flash[:danger] = "Supply wasn't deleted."
+    end
+
+    redirect_to event_supplies_path(@event)
+  end
+
   private
 
   def supply_params

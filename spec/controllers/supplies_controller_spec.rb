@@ -134,4 +134,28 @@ describe SuppliesController do
       end
     end
   end
+
+  describe "DELETE destroy"do
+    it_behaves_like "an_unauthenticated_user" do
+      let(:http_request) { delete :destroy, event_id: "Any", id: "Any" }
+    end
+
+    context "with a logged in user" do
+      before { login_user user }
+
+      context "when record is found in database" do
+        it "deleted the record from the DB" do
+          supply = create :supply, event: event
+          expect{ delete :destroy, id: supply.id, event_id: event.id }.to change{ Supply.count }.by -1
+        end
+
+      end
+
+      context "when record is not found in the database" do
+        it "doesn't delete anything from the DB" do
+          expect{ delete :destroy, id: "None", event_id: "None" }.not_to change{ Supply.count }
+        end
+      end
+    end
+  end
 end

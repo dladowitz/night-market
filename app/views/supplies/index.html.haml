@@ -15,6 +15,7 @@
           .small ( + 15% buffer)
         %th.center.col-xs-2 Messages
         %th.center.col-xs-2 Purchased
+        %th.center.col-xs-2 Remove
 
       - @event.supplies.each do |supply|
         %tr.fsize-15{ class: ("danger" unless supply.purchased?) }
@@ -30,5 +31,8 @@
             = form_for [@event, supply] do |f|
               = f.check_box :purchased?
               = f.submit "update", class: "btn btn-minier btn-warning ml10"
+
+          %td.center
+            = link_to "Delete", event_supply_path(@event, supply), method: :delete, data: { confirm: "Are you for sure?" }, class: "btn btn-danger btn-minier"
 
     %p= link_to "Add a Supply", new_event_supply_path, class: "btn btn-success"
