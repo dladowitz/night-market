@@ -12,9 +12,9 @@
         %th.center.col-xs-1 Cost
         %th.center.col-xs-2
           Total Needed
-          .small ( + 15% buffer)
+          .small Guests * Meals + 15% buffer
         %th.center.col-xs-2 Messages
-        %th.center.col-xs-2 Purchased
+        %th.center.col-xs-2 Purchased?
         %th.center.col-xs-2 Remove
 
       - @event.supplies.each do |supply|
@@ -26,7 +26,7 @@
           -#TODO create decorator for this math
           %td.center= ((@event.guests * @event.meals.count) + (0.15 * @event.guests * @event.meals.count)).round
 
-          %td.center= "Supply needs to be purchased" unless supply.purchased? # supply.warning_messages
+          %td.center= "Still needs to be purchased!!" unless supply.purchased? # supply.warning_messages
           %td.center
             = form_for [@event, supply] do |f|
               = f.check_box :purchased?

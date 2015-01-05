@@ -3,7 +3,14 @@ class SuppliesController < ApplicationController
   load_and_authorize_resource :event
   load_and_authorize_resource :supply, through: :event
 
+  add_breadcrumb "Home", :root_path
+  add_breadcrumb "Events", :events_path
+
   def index
+    #TODO figure out how to add param to breadcrumb paths
+    add_breadcrumb "Event",    event_path(@event)
+    add_breadcrumb "Supplies", event_supplies_path(@event)
+
     @supplies = @event.supplies
   end
 
@@ -17,6 +24,9 @@ class SuppliesController < ApplicationController
   end
 
   def new
+    add_breadcrumb "Event",    event_path(@event)
+    add_breadcrumb "Supplies", event_supplies_path(@event)
+    add_breadcrumb "Supply",   new_event_supply_path(@event)
 
   end
 

@@ -17,13 +17,13 @@
               .col-sm-10
                 = f.text_field :vendor,  class: "form-control input-medium"
             .form-group
-              = f.label :cost, class: "control-label col-sm-2"
+              = f.label :cost, "Cost ($)", class: "control-label col-sm-2"
               .col-sm-10
                 = f.number_field :cost, class: "form-control input-mini"
-            .form-group
-              = f.label :total_needed, class: "control-label col-sm-2"
-              .col-sm-10
-                = f.number_field :cost, class: "form-control input-mini"
+            -#.form-group
+            -#  = f.label :total_needed, class: "control-label col-sm-2"
+            -#  .col-sm-10
+            -#    = f.number_field :total_needed, class: "form-control input-mini"
 
             .form-group
               = f.label :purchaded, "Already Purchased?", class: "control-label col-sm-2"

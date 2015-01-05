@@ -4,10 +4,10 @@ class MealsController < ApplicationController
   load_and_authorize_resource :meal, through: :event, except: [:event_select, :create]
   before_action :decorate_meals, only: [:new, :edit, :show]
 
-  add_breadcrumb "Home", :root_path
+  add_breadcrumb "Home",   :root_path
+  add_breadcrumb "Events", :events_path
 
   def index
-    add_breadcrumb "Events", events_path
     add_breadcrumb "Event", event_path(@event)
     add_breadcrumb "Meals", event_meals_path
   end
@@ -32,7 +32,6 @@ class MealsController < ApplicationController
 
   def show
     #TODO figure out how to add all as before_action. Weird syntax errors.
-    add_breadcrumb "Events", events_path
     add_breadcrumb "Event", event_path(@event)
     add_breadcrumb "Meals", event_meals_path
     add_breadcrumb "Meal", event_meal_path(@event, @meal)
