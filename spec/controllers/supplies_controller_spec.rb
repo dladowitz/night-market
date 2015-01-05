@@ -121,12 +121,16 @@ describe SuppliesController do
 
         it "updates the supply item" do
           subject
-          expect(supply1.purchased?).to be true
+          expect(supply1.reload.purchased?).to be true
         end
       end
 
       context "with invalid params" do
+        let(:supply_params) { { name: nil } }
 
+        it "does not update the supply item" do
+          expect(supply1.reload.name).not_to be_nil
+        end
       end
     end
   end
