@@ -10,24 +10,23 @@ describe Event do
 
   it { should have_many :meals }
 
+  let(:event) { create :event }
+  let(:user)  { create :user }
+
   it "creates an Event object" do
     event = Event.new name: "Startup Weekend San Francisco", guests: 100, start_date: 1.day.from_now, end_date: 3.days.from_now
     expect(event).to be_a Event
   end
 
   it "has a valid factory" do
-    event = create :event
     expect(event).to be_a Event
   end
 
   it "saves to the datebase" do
-    user = create :user
     expect { user.events.create name: "Startup Weekend SF", guests: 100, start_date: 1.day.from_now, end_date: 3.days.from_now }.to change{Event.count}.by 1
   end
 
   describe "#overbudget?" do
-    let(:event) { create :event }
-
     context "when the event is over budget" do
       it "returns true" do
         allow(event).to receive(:current_spend).and_return(event.budget + 100)
@@ -44,7 +43,6 @@ describe Event do
   end
 
   describe "#current_spend" do
-    let(:event) { create :event }
     before do
       event.meals.create cost: 2000
       event.meals.create cost: 1000
@@ -74,6 +72,24 @@ describe Event do
         allow_any_instance_of(Meal).to receive(:ignore_warnings).and_return(false)
         allow_any_instance_of(Meal).to receive(:warning_messages).and_return([])
         expect(subject).to be false
+      end
+    end
+  end
+
+  describe "#missing_supplies" do
+    subject { event.missing_supplies }
+
+    context "when event has supplies that have not been purchased" do
+      it "returns an array of missing supplies" do
+        supply1 = create :supply, event_id: event.id
+        expect(subject).to match_array supply1
+      end
+    end
+
+    context "when all supplies for an event have been purchased" do
+      it "returns and empty array" do
+        create :supply, event_id: event.id, purchased: true
+        expect(subject).to match_array []
       end
     end
   end

@@ -45,6 +45,10 @@ class Event < ActiveRecord::Base
     return false
   end
 
+  def missing_supplies
+    supplies.where("purchased = ? OR purchased = ?", false, nil)
+  end
+
   private
 
   def meals_cost
@@ -59,11 +63,12 @@ class Event < ActiveRecord::Base
 
   def supplies_cost
     total = 0
-    
+
     supplies.each do |supply|
       total += supply.cost if supply.cost
     end
 
     total || 0
   end
+
 end

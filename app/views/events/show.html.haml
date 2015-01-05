@@ -53,10 +53,10 @@
                     Missing Supplies
                 .widget-body
                   .widget-main
-                    %ul
-                      %li.text-danger
-                        = link_to "Napkins: Not Purchased", "#", class: "inherit-color"
-                      %li.text-danger
-                        = link_to "Spoons: Not Purchases", "#", class: "inherit-color"
+                    - if @event.missing_supplies.present?
+                      %ul
+                        - @event.missing_supplies.each do |missing_supply|
+                          %li.text-danger
+                            = link_to "#{missing_supply.name}: Not Purchased", event_supplies_path(@event), class: "inherit-color"
 
     = render "form"
