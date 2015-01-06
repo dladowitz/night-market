@@ -1,0 +1,17 @@
+%h1
+  Costs for
+  = link_to @event.name, event_path(@event)
+
+Total Cost:
+= number_to_currency(@total_cost, precision: 0)
+
+%br
+%br
+
+Items:
+- if @cost_items.present?
+  %ul
+  - @cost_items.each do |item|
+    %li
+      = item.class == Supply ? item.name : item.category
+      = number_to_currency(item.cost, precision: 0)

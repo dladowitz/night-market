@@ -93,4 +93,25 @@ describe Event do
       end
     end
   end
+
+  describe "#get_cost_items" do
+    subject { event.get_cost_items }
+
+    context "when event has meals and supplies with costs" do
+      before :each do
+        @supply1 = create :supply, event: event, cost: 100
+        @meal1   = create :meal,   event: event, cost: 200
+      end
+
+      it "returns an array of items with cost" do
+        expect(subject).to match_array [@supply1, @meal1]
+      end
+    end
+
+    context "when event does not have meals or supplies with costs" do
+      it "returns an empty array" do
+        expect(subject).to match_array []
+      end
+    end
+  end
 end

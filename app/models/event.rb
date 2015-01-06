@@ -47,6 +47,11 @@ class Event < ActiveRecord::Base
     total || 0
   end
 
+  def get_cost_items
+    items =  meals.where("cost is not ?", nil)
+    items += supplies.where("cost is not ?", nil)
+  end
+
   def show_warnings?
     meals.each do |meal|
       return true if meal.warning_messages.present? && !meal.ignore_warnings

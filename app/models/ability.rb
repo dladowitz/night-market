@@ -28,6 +28,9 @@ class Ability
 
       # Supplies
       can :manage, Supply # Dont have to worry about permissions. Already handled on events.
+
+      # Costs
+      can :manage, :costs
     end
 
 

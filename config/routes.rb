@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :supplies
+    resources :costs, only: :index
 
     resources :meals do
       resources :dishes

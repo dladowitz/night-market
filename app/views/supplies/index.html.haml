@@ -6,7 +6,7 @@
   .col-sm-8
     %span.fsize-25
       Total Cost of Supplies:
-      = link_to number_to_currency(@event.supplies_cost, precision: 0), "#"
+      = link_to number_to_currency(@event.supplies_cost, precision: 0), event_costs_path(@event)
 
 .row
   .col-xs-12
