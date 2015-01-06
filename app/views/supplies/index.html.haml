@@ -1,6 +1,12 @@
-%h1.mb30
-  Supplies for
-  = link_to @event.name, event_path(@event)
+%h1.mb80
+  .col-sm-4
+    %span
+      Supplies for
+      = link_to @event.name, event_path(@event)
+  .col-sm-8
+    %span.fsize-25
+      Total Cost of Supplies:
+      = link_to number_to_currency(@event.supplies_cost, precision: 0), "#"
 
 .row
   .col-xs-12

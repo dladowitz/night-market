@@ -37,6 +37,16 @@ class Event < ActiveRecord::Base
     total = meals_cost + supplies_cost
   end
 
+  def supplies_cost
+    total = 0
+
+    supplies.each do |supply|
+      total += supply.cost if supply.cost
+    end
+
+    total || 0
+  end
+
   def show_warnings?
     meals.each do |meal|
       return true if meal.warning_messages.present? && !meal.ignore_warnings
@@ -66,14 +76,6 @@ class Event < ActiveRecord::Base
     total || 0
   end
 
-  def supplies_cost
-    total = 0
 
-    supplies.each do |supply|
-      total += supply.cost if supply.cost
-    end
-
-    total || 0
-  end
 
 end
