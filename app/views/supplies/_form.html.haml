@@ -1,0 +1,33 @@
+.row
+  .col-xs-8.widget-container-col
+    .widget-box.transparent
+      .widget-body
+        .widget-main
+          = form_for [@event, @supply], html: {class: "form-horizontal", role: "form"} do |f|
+            .form-group
+              = f.label :name, class: "control-label col-sm-2"
+              .col-sm-10
+                = f.text_field :name, class: "form-control input-medium"
+            .form-group
+              = f.label :vendor, class: "control-label col-sm-2"
+              .col-sm-10
+                = f.text_field :vendor,  class: "form-control input-medium"
+            .form-group
+              = f.label :cost, "Cost ($)", class: "control-label col-sm-2"
+              .col-sm-10
+                = f.number_field :cost, class: "form-control input-mini"
+            .form-group
+              = f.label :total_needed, class: "control-label col-sm-2"
+              .col-sm-10
+                = f.number_field :total_needed, class: "form-control input-mini", value: @supply.total_needed || @event.recommended_supply_count
+                -#Add note about how recommendation was calculted
+
+            .form-group
+              = f.label :purchaded, "Already Purchased?", class: "control-label col-sm-2"
+              .col-sm-10
+                = f.check_box :purchased, class: "form-control"
+            .form-group
+              .col-sm-11.col-sm-offset-2
+                = button_tag class: "btn btn-sm btn-success" do
+                  %i.fa.fa-floppy-o.bigger-150.mr5
+                  Save

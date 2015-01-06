@@ -27,6 +27,9 @@ class SuppliesController < ApplicationController
     add_breadcrumb "Event",    event_path(@event)
     add_breadcrumb "Supplies", event_supplies_path(@event)
     add_breadcrumb "Supply",   new_event_supply_path(@event)
+  end
+
+  def edit
 
   end
 

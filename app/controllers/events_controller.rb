@@ -25,7 +25,8 @@ class EventsController < ApplicationController
     @event = current_user.events.new(event_params)
 
      if @event.save
-       auto_populate_meals if params[:auto_populate] == "yes"
+       auto_populate_meals    if params[:auto_populate_meals] == "yes"
+       auto_populate_supplies if params[:auto_populate_supplies] == "yes"
 
        flash[:success] = "Nice one. Event created successfully."
        redirect_to event_path(@event)
@@ -72,5 +73,11 @@ class EventsController < ApplicationController
     @event.meals.create category: "Breakfast", guests: @event.guests, start: @event.start_date.to_datetime + 2.day + 9.hours
     @event.meals.create category: "Lunch",     guests: @event.guests, start: @event.start_date.to_datetime + 2.day + 12.hours
     @event.meals.create category: "Dinner",    guests: @event.guests, start: @event.start_date.to_datetime + 2.day + 15.hours
+  end
+
+  def auto_populate_supplies
+    recommended_supplies = ["Paper Plates", "Forks", "Knives", "Sppons", "Napkins", "Cups", "Tub or Cooler for Drinks"]
+
+    recommended_supplies.each {|supply| @event.supplies.create name: supply, total_needed: @event.recommended_supply_count }
   end
 end

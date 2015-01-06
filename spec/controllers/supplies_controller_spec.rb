@@ -102,6 +102,41 @@ describe SuppliesController do
     end
   end
 
+  describe "GET edit" do
+    it_behaves_like "an_unauthenticated_user" do
+      let(:http_request) { patch :update, event_id: "Any", id: "Any" }
+    end
+
+    context "with a logged in user" do
+      before :each do
+        login_user user
+      end
+
+      context "when record is found in the database" do
+        before  { get :edit, id: supply1.id, event_id: event.id }
+
+        it "renders the :edit template" do
+          expect(response).to render_template :edit
+        end
+
+        it "finds the correct object" do
+          expect(assigns(:supply)).to eq supply1
+        end
+      end
+
+      context "when when record is Not found in the database" do
+        before { get :edit, id: "not an id", event_id: event.id }
+        it "redirect to home" do
+          expect(response).to redirect_to home_path
+        end
+
+        it "doesn't find any object" do
+          expect(assigns(:supply)).to be nil
+        end
+      end
+    end
+  end
+
   describe "PATCH update" do
     subject { patch :update, event_id: event.id, id: supply1.id, supply: supply_params }
 
@@ -109,11 +144,9 @@ describe SuppliesController do
       let(:http_request) { patch :update, event_id: "Any", id: "Any" }
     end
 
-
     context "with a logged in user" do
       before :each do
         login_user user
-
       end
 
       context "with valid params" do

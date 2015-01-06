@@ -56,11 +56,21 @@
           .col-xs-9
             %ul.list-inline.fsize-20
               %li
-                = label_tag "auto Populate Seven Meals (fri-sun)"
-                = radio_button_tag "auto_populate", "yes", true
+                = label_tag "Auto Populate Seven Meals (fri-sun)"
+                = radio_button_tag "auto_populate_meals", "yes", true
               %li
                 = label_tag "Don't Add Any Meals"
-                = radio_button_tag  "auto_populate", "no", false
+                = radio_button_tag  "auto_populate_meals", "no", false
+        .form-group
+          .control-label.col-xs-3 Supplies
+          .col-xs-9
+            %ul.list-inline.fsize-20
+              %li
+                = label_tag "Auto Populate Recommended Supplies"
+                = radio_button_tag "auto_populate_supplies", "yes", true
+              %li
+                = label_tag "Don't Add any Supplies"
+                = radio_button_tag "auto_populate_supplies", "no", false
         .form-group
           .col-xs-10.col-xs-offset-3
             = f.submit class: "btn btn-warning"

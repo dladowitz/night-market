@@ -58,5 +58,7 @@
                         - @event.missing_supplies.each do |missing_supply|
                           %li.text-danger
                             = link_to "#{missing_supply.name}: Not Purchased", event_supplies_path(@event), class: "inherit-color"
-
+                    - else
+                      .well
+                        %h4.text-success Nice. All no missing supplies.
     = render "form"

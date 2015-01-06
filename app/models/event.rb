@@ -49,6 +49,11 @@ class Event < ActiveRecord::Base
     supplies.where("purchased = ? OR purchased = ?", false, nil)
   end
 
+  #TODO create spec
+  def recommended_supply_count
+    ((guests * meals.count) + (0.15 * guests * meals.count)).round
+  end
+
   private
 
   def meals_cost
