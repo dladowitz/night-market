@@ -1,9 +1,13 @@
-%h1
-  Costs for
-  = link_to @event.name, event_path(@event)
+%h1.mb80
+  .col-sm-4
+    %span
+      Costs for
+      = link_to @event.name, event_path(@event)
+  .col-sm-8
+    %span.fsize-25
+      Total Cost:
+      = link_to number_to_currency(@event.current_spend, precision: 0), event_costs_path(@event)
 
-Total Cost:
-= number_to_currency(@total_cost, precision: 0)
 
 %br
 %br

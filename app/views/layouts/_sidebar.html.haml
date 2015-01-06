@@ -14,34 +14,22 @@
           %i.menu-icon.fa.fa-desktop
           %span.menu-text Users
         %b.arrow
-    %li
-      %a{href: "#{@event && @event.id ? event_meals_path(@event) : meals_event_select_path }"}
-        %i.menu-icon.fa.fa-tag
-        %span.menu-text Meals
-      %b.arrow
-    -if@event && @event.id
-      %li
-        %a{:href => event_supplies_path(@event)}
-          %i.menu-icon.fa.fa-picture-o
-          %span.menu-text Supplies
-        %b.arrow
-    %li
-      %a{:href => "gallery.html"}
-        %i.menu-icon.fa.fa-calendar
-        %span.menu-text Costs
-      %b.arrow
-    %li
-      %a{:href => "gallery.html"}
+
+    = render "layouts/event_sidebar_items"
+
+    -#need to implement
+    %li.disabled
+      %a{:href => "#"}
         %i.menu-icon.fa.fa-list-alt
         %span.menu-text Task Lists
       %b.arrow
-    %li
-      %a{:href => "gallery.html"}
+    %li.disabled
+      %a{:href => "#"}
         %i.menu-icon.fa.fa-pencil-square-o
         %span.menu-text Vendors
       %b.arrow
-    %li
-      %a{href: "gallery.html"}
+    %li.disabled
+      %a{href: "#"}
         %i.menu-icon.fa.fa-list
         %span.menu-text Recommendations
       %b.arrow
