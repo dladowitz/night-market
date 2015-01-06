@@ -37,6 +37,10 @@ class Event < ActiveRecord::Base
     total = meals_cost + supplies_cost
   end
 
+  def cost_overage
+    current_spend - budget if current_spend > budget
+  end
+
   def supplies_cost
     total = 0
 
@@ -68,6 +72,7 @@ class Event < ActiveRecord::Base
   def recommended_supply_count
     ((guests * meals.count) + (0.15 * guests * meals.count)).round
   end
+
 
   private
 

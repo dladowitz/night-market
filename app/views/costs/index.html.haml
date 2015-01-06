@@ -1,21 +1,29 @@
 %h1.mb80
-  .col-sm-4
-    %span
-      Costs for
-      = link_to @event.name, event_path(@event)
+  .col-sm-12
+    Current Costs for
+    = link_to "#{@event.name}:", event_path(@event)
+    %span{class: (@event.overbudget? ? "text-danger" : "text-success") }
+      = number_to_currency(@event.current_spend, precision: 0)
+      - if @event.overbudget?
+        %span.text-danger.fsize-20= "(over budget by: #{number_to_currency(@event.cost_overage, precision: 0)})"
+
+.row
   .col-sm-8
-    %span.fsize-25
-      Total Cost:
-      = link_to number_to_currency(@event.current_spend, precision: 0), event_costs_path(@event)
+    %table.table.table-hover
+      %tr.fsize-15
+        %th.col-sm-2 Item
+        %th.center.col-sm-2 Cost
+        %th.center.col-sm-2 % of Budget
+        %th.center.col-sm-2 Cost Per Person
 
+      - @cost_items.each do |item|
+        %tr.fsize-15
+          -#TODO create decorator
+          - if item.class == Supply
+            %td= link_to item.name, event_supplies_path(@event)
+          - else
+            %td= link_to item.category, event_meal_path(@event, item)
 
-%br
-%br
-
-Items:
-- if @cost_items.present?
-  %ul
-  - @cost_items.each do |item|
-    %li
-      = item.class == Supply ? item.name : item.category
-      = number_to_currency(item.cost, precision: 0)
+          %td.center= number_to_currency(item.cost, precision: 0)
+          %td.center= "#{((item.cost / @event.budget.to_f) * 100).round(2)}%"
+          %td.center= number_to_currency(item.cost / @event.guests.to_f, precision: 2)

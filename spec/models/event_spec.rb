@@ -114,4 +114,21 @@ describe Event do
       end
     end
   end
+
+  describe "#cost_overage" do
+    subject { event.cost_overage }
+
+    context "when current spend is greater than the budget" do
+      it "returns a positive integer" do
+        create :supply, event: event, cost: event.budget + 100
+        expect(subject).to eq 100
+      end
+    end
+
+    context "when the current spend is not greater than the budet" do
+      it "retunrs nil" do
+        expect(subject).to be_nil
+      end
+    end
+  end
 end
