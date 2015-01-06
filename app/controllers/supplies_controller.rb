@@ -32,7 +32,7 @@ class SuppliesController < ApplicationController
   def edit
     add_breadcrumb "Event",    event_path(@event)
     add_breadcrumb "Supplies", event_supplies_path(@event)
-    add_breadcrumb "Supply",   new_event_supply_path(@event)
+    add_breadcrumb "Supply",   edit_event_supply_path(@event)
 
   end
 
