@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   root to: "static_pages#home"
 
-  # verb  /url                    "controller#action"       :path_name       notes
-  get    :home,               to: "static_pages#home",  as: :home
-  get    :signout,            to: "sessions#destroy",   as: :signout         #used to signout via a url
-  get    :signin,             to: "sessions#new",       as: :signin
-  get    :signup,             to: "users#new",          as: :signup
-  get    :meals_event_select, to: "meals#event_select", as: :meals_event_select  #Dont really like this strategy
+  # verb  /url                    "controller#action"          :path_name       notes
+  get    :home,               to: "static_pages#home",     as: :home
+  get    :signout,            to: "sessions#destroy",      as: :signout         #used to signout via a url
+  get    :signin,             to: "sessions#new",          as: :signin
+  get    :signup,             to: "users#new",             as: :signup
+  get    :meals_event_select, to: "meals#event_select",    as: :meals_event_select  #Dont really like this strategy
+  get    :landing,            to: "landing_pages#landing", as: :landing
 
   resources :users,    only: [:index, :new, :create, :show]
   resources :sessions, only: [:create]

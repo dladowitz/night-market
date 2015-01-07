@@ -5,4 +5,9 @@ class StaticPagesController < ApplicationController
     add_breadcrumb "Home", root_path
 
   end
+
+
+  def landing
+
+  end
 end

@@ -1,0 +1,17 @@
+/*
+ * Manifest for landing pages.
+ * Note that 'bootstrap_start_theme/landing.css' has been added to Rails.application.config.assets.precompile in assets.rb
+ *
+ *= require_self
+ //= require bootstrap_start_theme/template
+ */
+
+//Bootstrap does't seem to be used or needed. template.css has overidden bootstrap classes. Uncomment next line if need full bootstrap classes.
+//@import "bootstrap";
+
+//Doesn't work when called from folder. Needs to call gem if needed.
+//@import "font-awesome";
+/*@import "bootstrap_ace_dashboard_theme/uncompressed/font-awesome.css";*/
+
+
+

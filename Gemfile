@@ -3,7 +3,7 @@ ruby '2.1.2'
 gem 'rails', '4.1.6'
 
 gem 'bcrypt'
-gem 'bootstrap-sass', '~> 3.2.0' #bootstrap is being imported through a theme folder
+gem 'bootstrap-sass', '~> 3.2.0' #bootstrap isn't really being used. Imported through a Ace theme folder for main site.
 gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
 gem 'breadcrumbs_on_rails'
 gem 'cancancan', '~> 1.9'

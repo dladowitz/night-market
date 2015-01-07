@@ -1,0 +1,26 @@
+!!! 5
+%html(lang="en-US")
+  %head
+    %title Night Market
+    -#= stylesheet_link_tag    'bootstrap_start_theme/template', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'bootstrap_start_theme/landing', media: 'all', 'data-turbolinks-track' => true
+    -#= javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body.no-skin
+    -#= render "layouts/header"
+    -#
+    -#.main-container#main-container
+    -#  :javascript
+    -#    try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+    -#
+    -#  = render "layouts/sidebar"
+    -#
+    -#  .main-content
+    -#    = render "layouts/breadcrumbs"
+    -#    .page-content
+    -#      = render "layouts/flash"
+
+    = yield
+
+
