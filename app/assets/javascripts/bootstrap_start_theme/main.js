@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   // Add "loaded" class when a section has been loaded
-  $(window).scroll(function() { 
+  $(window).scroll(function() {
     var scrollTop = $(window).scrollTop();
     $(".section").each(function() {
       var elementTop = $(this).offset().top - $('#header').outerHeight();
@@ -67,4 +67,4 @@ $(document).ready(function(){
     $container.isotope({ filter: selector });
     return false;
   });
-}); 
+});

@@ -9,7 +9,11 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
+
+
+// This is used by the main app. The landing page calls JS from the bottom of the html page
 //
+
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
@@ -17,4 +21,6 @@
 //= require ace-elements
 //= require moment
 //= require bootstrap-datetimepicker
-//= require_tree .
+//= require bootstrap.js
+//= require custom.js
+
