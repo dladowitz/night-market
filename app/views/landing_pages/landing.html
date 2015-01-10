@@ -9,7 +9,7 @@
               <span class="sr-only">Toggle navigation</span>
               <i class="fa fa-bars"></i>
             </button>
-            <h1 class="navbar-brand"><img src="assets/village_hut.png" alt=""/><a href="index.html">Village Market</a></h1>
+            <h1 class="navbar-brand"><img src="assets/village_hut.png" alt=""/><a href="#header">Village Market</a></h1>
           </div>
           <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul id="navigation" class="nav navbar-nav navbar-right">
@@ -35,15 +35,13 @@
           <div class="item active" style="background: url(assets/background/italy_wide_dark.jpg);">
             <div class="container"><img src="assets/background/hero_text_1.png" alt="First slide"></div>
           </div>
-          <div class="item" style="background: url(assets/background/stockholm_wide_dark_2.jpg);">
-            <div class="container"><img src="assets/background/hero_text_2.png" alt="Second slide"></div>
-          </div>
-          <div class="item" style="background: url(assets/background/sri_lanka_wide_dark_2.jpg);">
-            <div class="container"><img src="assets/background/hero_text_3.png" alt="Third slide"></div>
-          </div>
+          <!--<div class="item" style="background: url(assets/background/sri_lanka_wide_dark_2.jpg);">-->
+            <!--<div class="container"><img src="assets/background/hero_text_3.png" alt="Third slide"></div>-->
+          <!--</div>-->
         </div>
-        <a class="left carousel-control" href="#carousel-1" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
-        <a class="right carousel-control" href="#carousel-1" data-slide="next"><span class="fa fa-chevron-right"></span></a>
+        <!--turning off carousel feature-->
+        <!--<a class="left carousel-control" href="#carousel-1" data-slide="prev"><span class="fa fa-chevron-left"></span></a>-->
+        <!--<a class="right carousel-control" href="#carousel-1" data-slide="next"><span class="fa fa-chevron-right"></span></a>-->
       </section>
 
       <section class="section section-center section-cta">
@@ -57,7 +55,16 @@
         </div>
       </section>
 
-      <section id="features" class="section section-center section-hilite section-features">
+      <!--Kinda a hack. Just using carousel as a full width banner so I don't have to learn how it's css works.-->
+      <section id="carousel-1" class="carousel slide section-slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="item active" style="background: url(assets/background/stockholm_wide_dark_2.jpg);">
+            <div class="container"><img src="assets/background/hero_text_2.png" alt="First slide"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="section section-center section-features">
         <div class="container">
           <h2 class="section-title"><span>How it works?</span></h2>
           <div class="row">
@@ -98,6 +105,14 @@
               <p>Access a growing database of food vendors used by other events in your area (coming soon).</p>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      <section id="carousel-1" class="carousel slide section-slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="item active" style="background: url(assets/background/spain_wide_dark_2.jpg);">
+            <div class="container"><img src="assets/background/hero_text_3.png" alt="First slide"></div>
           </div>
         </div>
       </section>

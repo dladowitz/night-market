@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "static_pages#home"
+  root to: "landing_pages#landing"
 
   # verb  /url                    "controller#action"          :path_name       notes
   get    :home,               to: "static_pages#home",     as: :home
