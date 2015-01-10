@@ -29,6 +29,7 @@ class SessionsController < ApplicationController
       flash[:danger] = "Errr, you can't log out when you aren't logged in. That's science."
     end
 
+    # TODO redirect_to root_path. Not sure why this calls destroy method one more time
     redirect_to signin_path
   end
 

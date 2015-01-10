@@ -12,11 +12,12 @@
       %span.icon-bar
 
     .navbar-header.pull-left
-
       / #section:basics/navbar.layout.brand
-      %a.navbar-brand{:href => "/"}
+      %span.pull-left
+        = link_to((image_tag "village_hut.png", height: 40), "/events")
+      %a.navbar-brand{:href => "/events"}
         %small
-          %i.fa.fa-cutlery
+
           Night Market - Food Management
 
     / #section:basics/navbar.dropdown
