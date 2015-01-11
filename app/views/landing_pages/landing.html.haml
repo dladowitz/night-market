@@ -1,0 +1,234 @@
+%body
+  #page
+    %header#header.site-header
+      %nav#navbar.site-navbar.navbar.navbar-static-top{:role => "navigation"}
+        .container
+          .navbar-header
+            %button.navbar-toggle{"data-target" => "#navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+              %span.sr-only Toggle navigation
+              %i.fa.fa-bars
+            %h1.navbar-brand
+              = image_tag "village_hut.png", height: 40
+              %a{:href => "#header"} Village Market
+          #navbar-collapse-1.collapse.navbar-collapse
+            %ul#navigation.nav.navbar-nav.navbar-right
+              %li.active
+                %a.current{:href => "#header"} Home
+              %li
+                %a{:href => "#features"} Features
+              %li
+                %a{:href => "#testimonials"} Testimonials
+              %li
+                %a{:href => "#pricing"} Price
+              %li
+                %a{:href => "#blog"} Team
+              %li
+                %a{:href => "#footer"} Contact
+              %li ______
+              %li
+                %a.external{:href => "/signin"} Sign In
+              %li
+                %a.external{:href => "/signup"} Register
+    %main#main.site-main
+      %section#carousel-1.carousel.slide.section-slide{"data-ride" => "carousel"}
+        .carousel-inner
+          .item.active{:style => "background: url(assets/background/italy_wide_dark.jpg);"}
+            .container
+              = image_tag "assets/background/hero_text_1.png"
+      / <div class="item" style="background: url(assets/background/sri_lanka_wide_dark_2.jpg);">
+      / <div class="container"><img src="assets/background/hero_text_3.png" alt="Third slide"></div>
+      / </div>
+      / turning off carousel feature
+      / <a class="left carousel-control" href="#carousel-1" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
+      / <a class="right carousel-control" href="#carousel-1" data-slide="next"><span class="fa fa-chevron-right"></span></a>
+      %section.section.section-center.section-cta
+        .container
+          %h2.section-title
+            %span Ready to Start?
+          %h3
+            Village Market is an online food planning tool. It was born out of organizing food for dozens of
+            %a.text-primary{:href => "http://www.startupweekend.com"} Startup Weekend
+            events. It's hard planning seven meals over three days. There are hundreds of things than need to happen to make an event successful. We are here to help. We've been there.
+          .main-action.row
+            .col-md-3.col-md-offset-3.col-sm-4.col-sm-offset-2
+              %a.smooth-scroll.btn.btn-lg.btn-block.btn-danger{:href => "signup"} Sign Up
+            .col-md-3.col-sm-4
+              %a.smooth-scroll.btn.btn-lg.btn-block.btn-default{:href => "/signin"} Log In
+      / Kinda a hack. Just using carousel as a full width banner so I don't have to learn how it's css works.
+      %section#carousel-1.carousel.slide.section-slide{"data-ride" => "carousel"}
+        .carousel-inner
+          .item.active{:style => "background: url(assets/background/stockholm_wide_dark_2.jpg);"}
+            .container
+              %img{:alt => "First slide", :src => "assets/background/hero_text_2.png"}/
+      %section#features.section.section-center.section-features
+        .container
+          %h2.section-title
+            %span How it works?
+          .row
+            .col-md-4.col-sm-6
+              .icon-wrap
+                %img{:alt => "", :src => "assets/flat-icons/letter.png"}/
+              %h4 Events and Meals
+              %p List out your events and meals to keep track of what you're serving. Track food preferences and head count.
+            .col-md-4.col-sm-6
+              .icon-wrap
+                %img{:alt => "", :src => "assets/flat-icons/calculator.png"}/
+              %h4 Budgets and Costs
+              %p Keep track of how much you are spending. We'll warn you if you are over budget. See meal and person costs.
+            .col-md-4.col-sm-6
+              .icon-wrap
+                %img{:alt => "", :src => "assets/flat-icons/clock.png"}/
+              %h4 Scheduling
+              %p Timing is everything when it comes to food. Keep track of delivery and pickup times.
+            .col-md-4.col-sm-6
+              .icon-wrap
+                %img{:alt => "", :src => "assets/flat-icons/comments.png"}/
+              %h4 Recommendations
+              %p We've designed this app to show you what works and warn you about common pitfalls.
+            .col-md-4.col-sm-6
+              .icon-wrap
+                %img{:alt => "", :src => "assets/flat-icons/bag.png"}/
+              %h4 Supplies
+              %p Don't forget plates, fork and napkins. Keep track of all the supplies you'll need for the event.
+            .col-md-4.col-sm-6
+              .icon-wrap
+                %img{:alt => "", :src => "assets/flat-icons/book.png"}/
+              %h4 Vendors
+              %p Access a growing database of food vendors used by other events in your area (coming soon).
+      %section#carousel-1.carousel.slide.section-slide{"data-ride" => "carousel"}
+        .carousel-inner
+          .item.active{:style => "background: url(assets/background/spain_wide_dark_2.jpg);"}
+            .container
+              %img{:alt => "First slide", :src => "assets/background/hero_text_3.png"}/
+      %section#testimonials.section.section-center.section-testimonial
+        .container
+          %h2.section-title
+            %span What are people saying?
+          %i.fa.fa-quote-left.fa-3x
+          #carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
+            .carousel-inner
+              .item.active
+                %blockquote
+                  %p The site is free. Whats the worst that could happen?
+                  %small
+                    Teresa
+                    %cite{:title => "Source Title"} (site creator)
+              .item
+                %blockquote
+                  %p One of the top 10 websites I've ever used. Solves all my problems, gives me peace of mind and combats greenhouse gases.
+                  %small
+                    David
+                    %cite{:title => "Source Title"} (site creator)
+              .item
+                %blockquote
+                  %p Meow meow meow, thumbs up, meow meow.
+                  %small
+                    Dusty
+                    %cite{:title => "Source Title"} (Teresa's Cat)
+            %ol.carousel-indicators
+              %li.active{"data-slide-to" => "0", "data-target" => "#carousel-example-generic"}
+                = image_tag "profiles/teresa.jpg", height: 64, width: 64, class: "img-circle"
+                -#%img.img-circle{:alt => "", :height => "64", :src => "assets/profiles/teresa.jpg", :width => "64"}/
+              %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
+                %img.img-circle{:alt => "", :height => "64", :src => "assets/profiles/david.jpg", :width => "64"}/
+              %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
+                %img.img-circle{:alt => "", :height => "64", :src => "assets/profiles/dusty.jpg", :width => "64"}/
+      %section#pricing.section.section-center.section-hilite.section-pricing
+        .container
+          %h2.section-title
+            %span Pricing Table Made Easy
+          .pricing-table
+            .row
+              .col-sm-6.col-sm-offset-3
+                .panel.panel-primary
+                  %header.panel-heading
+                    %h1 Free
+                    .the-price
+                      $0
+                      %span.subscript / month
+                  .panel-body
+                    %table.table
+                      %tbody
+                        %tr
+                          %td 1 Account
+                        %tr.active
+                          %td Create Unlimited Events
+                        %tr
+                          %td Watch Costs
+                        %tr.active
+                          %td Manage Food Preferences
+                        %tr
+                          %td Track Supplies
+                        %tr.active
+                          %td Be a Hero!!!
+                  %footer.panel-footer
+                    %a.btn.btn-primary{:href => "/signup"} Sign up now
+      %section#blog.section.section-blog
+        .container
+          %h2.section-title
+            %span Creators
+          .row
+            .col-md-6
+              %article.hentry.post
+                .row
+                  .entry-thumbnail.col-lg-4.col-md-5.col-sm-4
+                    %a.hover-effect{:href => "https://github.com/dladowitz"}
+                      = image_tag "profiles/david.jpg"
+                      -#%img{:alt => "", :src => "assets/profiles/david.jpg"}/
+                      %span.overlay
+                        %i.fa.fa-plus
+                  .col-lg-8.col-md-7.col-sm-8
+                    %header.entry-header
+                      %h2.entry-title
+                        %a{:href => "https://github.com/dladowitz"} David
+                    / <div class="entry-meta">By <a href="#">Jackie Lord</a> in <a href="#">Category</a></div>
+                    .entry-content
+                      %p
+                        David is a software developer by day. He's organized a number of tech workshops and conferences including Startup Weekend. He works part time at
+                        %a.text-primary{:href => "http://littlecatcatering.com/"} Little Cat Catering
+                        with Teresa.
+            / <a href="#" class="more"><span class="btn btn-primary">Continue Reading</span></a>
+            .col-md-6
+              %article.hentry.post
+                .row
+                  .entry-thumbnail.col-lg-4.col-md-5.col-sm-4
+                    %a.hover-effect{:href => "https://github.com/terhuang"}
+                      %img{:alt => "", :src => "assets/profiles/teresa_tahoe.jpg"}/
+                      %span.overlay
+                        %i.fa.fa-plus
+                  .col-lg-8.col-md-7.col-sm-8
+                    %header.entry-header
+                      %h2.entry-title
+                        %a{:href => "https://github.com/terhuang"} Teresa
+                    / <div class="entry-meta">By <a href="#">Jackie Lord</a> in <a href="#">Category</a></div>
+                    .entry-content
+                      %p
+                        Teresa owns and runs
+                        = succeed "." do
+                          %a.text-primary{:href => "http://littlecatcatering.com/"} Little Cat Catering
+    / <a href="#" class="more"><span class="btn btn-primary">Continue Reading</span></a>
+    %footer#footer.site-footer
+      .container
+        #sidebar-footer-1
+          .row
+            %aside.widget.col-md-3.col-md-push-3.col-sm-6
+              %h5.widget-title Contact us
+              %p
+                Tell us what you think or connect with us at
+                %a{:href => "mailto:david@littlecatcatering.com?Subject=The Village Market"} david@littlecatcatering.com
+            %aside.widget.col-md-3.col-md-push-3.col-sm-6
+              %h5.widget-title Need Help?
+              %p Want some help or feeling overwhelmed with your event. We are always willing to talk to folks and share our knowledge.
+        .copyright
+          %p
+            © 2015 Little Cat Labs.
+            %br/
+  .scroll-to-top{"data-offset-top" => "200", "data-spy" => "affix"}
+    %a.smooth-scroll{:href => "#page"}
+      %i.fa.fa-arrow-up
+  / TODO Move to JS manifest
+  %script{:src => "https://code.jquery.com/jquery-1.10.2.min.js", :type => "text/javascript"}
+  %script{:src => "assets/bootstrap_start_theme/bootstrap-3.1.1.min.js", :type => "text/javascript"}
+  %script{:src => "assets/bootstrap_start_theme/jquery.isotope.min.js?v=1.5.26", :type => "text/javascript"}
+  %script{:src => "assets/bootstrap_start_theme/jquery.singlePageNav.min.js", :type => "text/javascript"}
+  %script{:src => "assets/bootstrap_start_theme/main.js", :type => "text/javascript"}
