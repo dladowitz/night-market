@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  add_breadcrumb "Home",    :events_path
+  add_breadcrumb "Events",  :events_path
+
+
   helper_method :current_user  #makes available in view
 
 

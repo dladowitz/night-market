@@ -111,9 +111,9 @@
 :javascript
   $(function () {
     $('.dish-datetimepicker').datetimepicker({
+      sideBySide: true,
       icons: {
         //disabledDates:[], Set this to only allow dates during event
-        sideBySide: true,
         time: "fa fa-clock-o",
         date: "fa fa-calendar",
         up: "fa fa-arrow-up",
@@ -121,6 +121,7 @@
       }
     });
   });
+
 
   //shows ordered/unordered buttons
   $( ".ordering-needed" ).click(function() {

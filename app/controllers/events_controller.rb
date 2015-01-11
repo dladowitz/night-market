@@ -3,8 +3,6 @@ class EventsController < ApplicationController
 
   load_and_authorize_resource except: :index
 
-  add_breadcrumb "Home", :root_path
-
   def index
     # For some reason load_resource is returning nothing. So need to load and authorize this way.
     authorize! :index, Event
@@ -14,8 +12,6 @@ class EventsController < ApplicationController
     else
       @events = current_user.events
     end
-
-    add_breadcrumb "Events", events_path
   end
 
   def new
@@ -37,7 +33,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    add_breadcrumb "Events", events_path
     add_breadcrumb "Event", event_path(@event)
   end
 

@@ -65,7 +65,10 @@ class Event < ActiveRecord::Base
   end
 
   def missing_supplies
-    supplies.where("purchased = ? OR purchased = ?", false, nil)
+    # not sure why this doesn't work
+    # supplies.where("purchased = ? OR purchased = ?", false, nil)
+
+    supplies.where(purchased: nil) || supplies.where(purchased: false)
   end
 
   #TODO create spec

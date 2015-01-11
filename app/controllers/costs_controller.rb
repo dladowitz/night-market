@@ -1,8 +1,6 @@
 class CostsController < ApplicationController
   authorize_resource :event
 
-  add_breadcrumb "Home",    :root_path
-  add_breadcrumb "Events",  :events_path
 
   def index
     # Problem loading event through cancan for some reason. Need to do it here.
