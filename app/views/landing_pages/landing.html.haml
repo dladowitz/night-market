@@ -34,7 +34,7 @@
         .carousel-inner
           .item.active{:style => "background: url(assets/background/italy_wide_dark.jpg);"}
             .container
-              = image_tag "assets/background/hero_text_1.png"
+              = image_tag "background/hero_text_1.png"
       / <div class="item" style="background: url(assets/background/sri_lanka_wide_dark_2.jpg);">
       / <div class="container"><img src="assets/background/hero_text_3.png" alt="Third slide"></div>
       / </div>
@@ -59,7 +59,7 @@
         .carousel-inner
           .item.active{:style => "background: url(assets/background/stockholm_wide_dark_2.jpg);"}
             .container
-              %img{:alt => "First slide", :src => "assets/background/hero_text_2.png"}/
+              = image_tag "background/hero_text_2.png"
       %section#features.section.section-center.section-features
         .container
           %h2.section-title
@@ -67,39 +67,39 @@
           .row
             .col-md-4.col-sm-6
               .icon-wrap
-                %img{:alt => "", :src => "assets/flat-icons/letter.png"}/
+                = image_tag "flat-icons/letter.png"
               %h4 Events and Meals
               %p List out your events and meals to keep track of what you're serving. Track food preferences and head count.
             .col-md-4.col-sm-6
               .icon-wrap
-                %img{:alt => "", :src => "assets/flat-icons/calculator.png"}/
+                = image_tag "flat-icons/calculator.png"
               %h4 Budgets and Costs
               %p Keep track of how much you are spending. We'll warn you if you are over budget. See meal and person costs.
             .col-md-4.col-sm-6
               .icon-wrap
-                %img{:alt => "", :src => "assets/flat-icons/clock.png"}/
+                = image_tag "flat-icons/clock.png"
               %h4 Scheduling
               %p Timing is everything when it comes to food. Keep track of delivery and pickup times.
             .col-md-4.col-sm-6
               .icon-wrap
-                %img{:alt => "", :src => "assets/flat-icons/comments.png"}/
+                = image_tag "flat-icons/comments.png"
               %h4 Recommendations
               %p We've designed this app to show you what works and warn you about common pitfalls.
             .col-md-4.col-sm-6
               .icon-wrap
-                %img{:alt => "", :src => "assets/flat-icons/bag.png"}/
+                = image_tag "flat-icons/bag.png"
               %h4 Supplies
               %p Don't forget plates, fork and napkins. Keep track of all the supplies you'll need for the event.
             .col-md-4.col-sm-6
               .icon-wrap
-                %img{:alt => "", :src => "assets/flat-icons/book.png"}/
+                = image_tag "flat-icons/book.png"
               %h4 Vendors
               %p Access a growing database of food vendors used by other events in your area (coming soon).
       %section#carousel-1.carousel.slide.section-slide{"data-ride" => "carousel"}
         .carousel-inner
           .item.active{:style => "background: url(assets/background/spain_wide_dark_2.jpg);"}
             .container
-              %img{:alt => "First slide", :src => "assets/background/hero_text_3.png"}/
+              = image_tag "background/hero_text_3.png"
       %section#testimonials.section.section-center.section-testimonial
         .container
           %h2.section-title
@@ -128,11 +128,10 @@
             %ol.carousel-indicators
               %li.active{"data-slide-to" => "0", "data-target" => "#carousel-example-generic"}
                 = image_tag "profiles/teresa.jpg", height: 64, width: 64, class: "img-circle"
-                -#%img.img-circle{:alt => "", :height => "64", :src => "assets/profiles/teresa.jpg", :width => "64"}/
               %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
-                %img.img-circle{:alt => "", :height => "64", :src => "assets/profiles/david.jpg", :width => "64"}/
+                = image_tag "profiles/david.jpg", height: 64, width: 64, class: "img-circle"
               %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
-                %img.img-circle{:alt => "", :height => "64", :src => "assets/profiles/dusty.jpg", :width => "64"}/
+                = image_tag "profiles/dusty.jpg", height: 64, width: 64, class: "img-circle"
       %section#pricing.section.section-center.section-hilite.section-pricing
         .container
           %h2.section-title
@@ -174,7 +173,6 @@
                   .entry-thumbnail.col-lg-4.col-md-5.col-sm-4
                     %a.hover-effect{:href => "https://github.com/dladowitz"}
                       = image_tag "profiles/david.jpg"
-                      -#%img{:alt => "", :src => "assets/profiles/david.jpg"}/
                       %span.overlay
                         %i.fa.fa-plus
                   .col-lg-8.col-md-7.col-sm-8
@@ -193,7 +191,7 @@
                 .row
                   .entry-thumbnail.col-lg-4.col-md-5.col-sm-4
                     %a.hover-effect{:href => "https://github.com/terhuang"}
-                      %img{:alt => "", :src => "assets/profiles/teresa_tahoe.jpg"}/
+                      = image_tag "profiles/teresa_tahoe.jpg"
                       %span.overlay
                         %i.fa.fa-plus
                   .col-lg-8.col-md-7.col-sm-8
