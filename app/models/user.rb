@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates :password,        presence: { on: create }, length: { minimum: 6 }, if: :password_digest_changed?
   validates :password_digest, presence: true
 
-  before_save :downcase_email_address
+  before_validation :downcase_email_address, :if => Proc.new {|user| user.new_record? }
 
   has_many :events
 
@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
   private
 
   def downcase_email_address
-    self.email_address = self.email_address.downcase
+    if self.email_address
+      self.email_address = self.email_address.downcase
+    end
   end
 end

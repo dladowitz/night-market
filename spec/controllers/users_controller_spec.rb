@@ -109,9 +109,12 @@ describe UsersController do
           expect{ subject }.to_not change{ User.count }
         end
 
-        it "renders the new page" do
-          subject
-          expect(response).to render_template :new
+        context "when uses duplicate email address that with uppercase chars" do
+          let(:params) { { user: { email_address: @other_user.email_address.upcase, password: "asdfasdf", password_confirmation: "asdfasdf" } } }
+
+          it "doesn't create a new user in the database" do
+            expect{ subject }.to_not change{ User.count }
+          end
         end
       end
     end
