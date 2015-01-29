@@ -57,7 +57,7 @@ describe UsersController do
     subject { post :create, params }
 
     context "with valid params" do
-      let(:params) { { user: { email_address: "jpinkman@gmail.com", password: "asdfasdf" } } }
+      let(:params) { { user: { email_address: "jpinkman@gmail.com", password: "asdfasdf", password_confirmation: "asdfasdf" } } }
 
       it "creates a new user in the database" do
         expect{ subject }.to change{ User.count }.by 1
@@ -73,16 +73,46 @@ describe UsersController do
       end
     end
 
-    context "with invalid params" do
-      let(:params) { { user: { email_address: nil, password: nil } } }
+    context "with INVALID params" do
+      context "with missing email_address" do
+        let(:params) { { user: { email_address: nil, password: "asdfasdf", password_confirmation: "asdfasdf" } } }
 
-      it "doesn't create a new user in the database" do
-        expect{ subject }.to_not change{ User.count }
+        it "doesn't create a new user in the database" do
+          expect{ subject }.to_not change{ User.count }
+        end
+
+        it "renders the new page" do
+          subject
+          expect(response).to render_template :new
+        end
       end
 
-      it "renders the new page" do
-        subject
-        expect(response).to render_template :new
+      context "when passwords don't match" do
+        let(:params) { { user: { email_address: "volta@gmail.com", password: "asdfasdf", password_confirmation: "12345678" } } }
+
+        it "doesn't create a new user in the database" do
+          expect{ subject }.to_not change{ User.count }
+        end
+
+        it "renders the new page" do
+          subject
+          expect(response).to render_template :new
+        end
+      end
+
+      context "with email_address is not unique" do
+        before { @other_user = create :user }
+
+        let(:params) { { user: { email_address: @other_user.email_address, password: "asdfasdf", password_confirmation: "asdfasdf" } } }
+
+        it "doesn't create a new user in the database" do
+          expect{ subject }.to_not change{ User.count }
+        end
+
+        it "renders the new page" do
+          subject
+          expect(response).to render_template :new
+        end
       end
     end
   end

@@ -1,0 +1,9 @@
+#validation_errors
+  - if model.errors.any?
+    #error_explanation
+      %h2
+        Whooaa tiger, something has gone wrong.
+
+      %ul
+        - model.errors.full_messages.each do |msg|
+          %li= msg

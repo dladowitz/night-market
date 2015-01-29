@@ -14,6 +14,7 @@
 
 class User < ActiveRecord::Base
   validates :email_address,   presence: true, uniqueness: true
+  validates :password,        presence: { on: create }, length: { minimum: 6 }, if: :password_digest_changed?
   validates :password_digest, presence: true
 
   before_save :downcase_email_address

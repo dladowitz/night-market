@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user,  only: [:index, :show]
 
-  layout "guest", only: :new
-
   load_and_authorize_resource
 
   def index
@@ -10,16 +8,18 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    render layout: "guest"
   end
 
   def create
     @user = User.new user_params
 
+
     if @user.save
       login_user(@user)
       redirect_to events_path
     else
-      render :new
+      render new_user_path, layout: "guest"
     end
   end
 
@@ -33,6 +33,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email_address, :password, :first_name, :last_name)
+    params.require(:user).permit(:email_address, :password, :password_confirmation, :first_name, :last_name)
   end
 end
