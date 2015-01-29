@@ -23,4 +23,5 @@
 //= require bootstrap-datetimepicker
 //= require bootstrap.js
 //= require custom.js
+//= require google_analytics.js
 
