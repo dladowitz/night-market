@@ -12,5 +12,13 @@ describe User do
     it "concatanates first and last name" do
       expect(user.full_name).to eq "Gus Fring"
     end
+
+    context "when email address is entered with uppercase letters" do
+      let(:upcase_user) { create :user, email_address: "GusFring@gmail.com", first_name: "Gus", last_name: "Fring" }
+
+      it "downcases all email addresses" do
+        expect(upcase_user.email_address).to eq "gusfring@gmail.com"
+      end
+    end
   end
 end

@@ -80,8 +80,15 @@ describe Event do
     subject { event.missing_supplies }
 
     context "when event has supplies that have not been purchased" do
+      # Having issues between purchased being nil or false, so testing for both
+
       it "returns an array of missing supplies" do
-        supply1 = create :supply, event_id: event.id
+        supply1 = create :supply, event_id: event.id, purchased: nil
+        expect(subject).to match_array supply1
+      end
+
+      it "returns an array of missing supplies" do
+        supply1 = create :supply, event_id: event.id, purchased: false
         expect(subject).to match_array supply1
       end
     end

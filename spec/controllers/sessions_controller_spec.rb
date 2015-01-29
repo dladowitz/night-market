@@ -95,6 +95,14 @@ describe SessionsController do
         expect(session[:user_id]).to be_nil
       end
     end
+
+    context "when user enters an email address with uppercase letters" do
+      let(:params) { {email_address: user.email_address.upcase, password: "asdfasdf"} }
+
+      it "still logs in the user correctly" do
+        expect(session[:user_id]).to eq user.id
+      end
+    end
   end
 
   describe "GET destroy" do #used for signing out via url instead of a link or button {DELETE destroy}

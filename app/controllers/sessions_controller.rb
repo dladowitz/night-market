@@ -36,6 +36,6 @@ class SessionsController < ApplicationController
   private
 
   def set_user
-    @user = User.find_by_email_address params[:email_address]
+    @user = User.find_by_email_address (params[:email_address]).downcase
   end
 end

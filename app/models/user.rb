@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   validates :email_address,   presence: true, uniqueness: true
   validates :password_digest, presence: true
 
+  before_save :downcase_email_address
+
   has_many :events
 
   has_secure_password
@@ -23,5 +25,11 @@ class User < ActiveRecord::Base
   #TODO look at making this a decorator or helper
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  private
+
+  def downcase_email_address
+    self.email_address = self.email_address.downcase
   end
 end
